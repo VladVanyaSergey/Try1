@@ -1,5 +1,0 @@
-E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\ClassLibrary1\ClassLibrary1\bin\Debug\ClassLibrary1.dll
-E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\ClassLibrary1\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
-E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.csproj.CoreCompileInputs.cache
-E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.dll
-E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
