@@ -13,6 +13,7 @@ namespace IvanNS
 {
 	public class Ivan
 	{
+		//////////
 		private static int[] outdata = new int[2];
 		public static int[] SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox)
 		{
