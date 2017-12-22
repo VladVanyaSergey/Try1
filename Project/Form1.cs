@@ -11,7 +11,7 @@ using System.IO;
 using Word = Microsoft.Office.Interop.Word; //Введение алиаса пространства имен Word
 using System.Reflection;
 using IvanNS;
-
+using SergeyLibrary;
 
 namespace WindowsFormsApp1
 {
