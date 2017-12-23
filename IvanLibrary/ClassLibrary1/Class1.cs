@@ -11,7 +11,7 @@ using System.IO;
 
 namespace IvanNS
 {
-	public class Ivan
+	public class CreateSemanticFile
 	{
 		private static int[] outdata = new int[2];
 		public static int[] SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox)
@@ -59,10 +59,10 @@ namespace IvanNS
 		public static void AddIndexIntoSemanticFragmentTable(string File)
 		{
 			int[,] index = ReadInformFromSemanticFragmentTable(File);
-			index = Ivan.SortMatrix(index);
+			index = SortMatrix(index);
 			index[0, 0] = outdata[0];
 			index[0, 1] = outdata[1];
-			index = Ivan.CheckCrossingElements(index);
+			index = CheckCrossingElements(index);
 			WriteInformIntoSemanticFragmentTable(File, index);
 		}
 		private static int[,] SortMatrix(int[,] index)
