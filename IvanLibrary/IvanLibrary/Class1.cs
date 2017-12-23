@@ -29,17 +29,18 @@ namespace IvanLibrary
 		}
 		public static void AddIndexIntoSemanticFragmentTable(string File, int[] outdata)
 		{
-			int[,] index = ReadInformFromSemanticFragmentTable(File);
+			string[,] index = ReadInformFromSemanticFragmentTable(File);
 			index = SortMatrix(index);
-			index[0, 0] = outdata[0];
-			index[0, 1] = outdata[1];
-			index = CheckCrossingElements(index);
+			index[0, 0] = outdata[0].ToString();
+			index[0, 1] = outdata[1].ToString();
+			index[0, 2] = "СФ";
+			//index = CheckCrossingElements(index);
 			WriteInformIntoSemanticFragmentTable(File, index);
 		}
-		private static int[,] ReadInformFromSemanticFragmentTable(string File)
+		private static string[,] ReadInformFromSemanticFragmentTable(string File)
 		{
 			int lengthTable = System.IO.File.ReadAllLines(File).Length + 1;
-			int[,] index = new int[lengthTable, 2];
+			string[,] index = new string[lengthTable, 3];
 			int ind = 0;
 			using (StreamReader sr = new StreamReader(File))   //System.IO.File.Create(File))
 			{
@@ -47,8 +48,9 @@ namespace IvanLibrary
 				{
 					string s = sr.ReadLine();
 					string[] s1 = s.Split('\t');
-					index[ind, 0] = Convert.ToInt32(s1[1]);
-					index[ind, 1] = Convert.ToInt32(s1[2]);
+					index[ind, 0] = s1[1];
+					index[ind, 1] = s1[2];
+					index[ind, 2] = s1[0];
 					ind = ind + 1;
 				}
 			}
@@ -60,27 +62,31 @@ namespace IvanLibrary
 			{
 				for (int i = 0; i < index.Length / 2; i++)
 				{
-					sw.WriteLine("СФ" + i.ToString() + "\t" + index[i, 0].ToString() + "\t" + index[i, 1].ToString());
+					sw.WriteLine(index[0,2] + "\t" + index[i, 0] + "\t" + index[i, 1]);
 				}
 			}
 		}
-		private static int[,] SortMatrix(int[,] index)
+		private static string[,] SortMatrix(string[,] index)
 		{
 			List<int> FirstElement = new List<int>();
 			List<int> SecondElement = new List<int>();
-			int[,] timeindex = new int[index.GetLength(0), index.GetLength(1)];
+			List<string> ThirdElement = new List<string>();
+			string[,] timeindex = new string[index.GetLength(0), index.GetLength(1)];
 			for (int i = 0; i < index.GetLength(0); i++)
 			{
-				FirstElement.Add(index[i, 0]);
-				SecondElement.Add(index[i, 1]);
+				FirstElement.Add(Convert.ToInt32(index[i, 0]));
+				SecondElement.Add(Convert.ToInt32(index[i, 1]));
+				ThirdElement.Add(index[i, 2]);
 			}
 			for (int i = 0; i < index.GetLength(0); i++)
 			{
 				int c = FirstElement.IndexOf(FirstElement.Min());
-				timeindex[i, 0] = FirstElement[c];
-				timeindex[i, 1] = SecondElement[c];
+				timeindex[i, 0] = FirstElement[c].ToString();
+				timeindex[i, 1] = SecondElement[c].ToString();
+				timeindex[i, 2] = ThirdElement[c];
 				FirstElement.RemoveAt(c);
 				SecondElement.RemoveAt(c);
+				ThirdElement.RemoveAt(c);
 			}
 			return timeindex;
 		}
