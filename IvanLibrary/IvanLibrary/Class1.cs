@@ -26,7 +26,7 @@ namespace IvanLibrary
 			{
 				MessageBox.Show("Вы не выделили смысловой фрагмент");
 			}
-		}
+		} //Эта функция вытаскивает выделенный фрагмент и извлекает начальную и конечную координату
 		public static void AddIndexIntoSemanticFragmentTable(string File, int[] outdata)
 		{
 			string[,] index = ReadInformFromSemanticFragmentTable(File);
@@ -55,7 +55,7 @@ namespace IvanLibrary
 				}
 			}
 			return index;
-		}
+		}											//Считываение из таблицы смысловых фрагментов
 		private static string[,] SortMatrix(string[,] index)
 		{
 			List<int> FirstElement = new List<int>();
@@ -79,7 +79,7 @@ namespace IvanLibrary
 				ThirdElement.RemoveAt(c);
 			}
 			return timeindex;
-		}
+		}																	//Сортировка матрицы по начальному индексу																														//Сортировка по индексу
 		private static void WriteInformIntoSemanticFragmentTable(string File, string[,] index)
 		{
 			using (StreamWriter sw = new StreamWriter(File))
@@ -89,7 +89,7 @@ namespace IvanLibrary
 					sw.WriteLine(index[i,2] + "\t" + index[i, 0] + "\t" + index[i, 1]);
 				}
 			}
-		}
+		}							//Запись списка элементов в таблицу смысловых фрагментов
 		private static string NewNameOfSemanticFragment(string[,] index)
 		{
 			int ind = 1;
@@ -102,12 +102,8 @@ namespace IvanLibrary
 				}
 			}
 			return "СФ"+ind;
-		}
-		
-		//private static int[,] RemoveOneElement(int [,]index)
-		//{
+		}													//Дефолтное название
 
-		//}
 		private static int[,] CheckCrossingElements(int[,] index)
 		{
 			if (index.Length > 2)
