@@ -14,28 +14,39 @@ namespace IvanLibrary
 
 	public class CreateSemanticFile
 	{
-		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File)
+		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File, System.Windows.Forms.Form rewriting)
 		{
 			if (textBox.SelectionLength > 0)
 			{
 				int[] outdata = new int[2];
 				outdata[0] = textBox.SelectionStart;
 				outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
-				AddIndexIntoSemanticFragmentTable(File, outdata);
+				AddIndexIntoSemanticFragmentTable(File, outdata, rewriting);
 			}
 			else
 			{
 				MessageBox.Show("Вы не выделили смысловой фрагмент");
 			}
 		} //Эта функция вытаскивает выделенный фрагмент и извлекает начальную и конечную координату
-		private static void AddIndexIntoSemanticFragmentTable(string File, int[] outdata)
+		private static void AddIndexIntoSemanticFragmentTable(string File, int[] outdata, System.Windows.Forms.Form rewriting)
 		{
 			string[,] index = ReadInformFromSemanticFragmentTable(File);
 			index = SortMatrix(index);
 			index[0, 0] = outdata[0].ToString();
 			index[0, 1] = outdata[1].ToString();
 			index[0, 2] = NewNameOfSemanticFragment(index);
-			index = CheckCrossingElements(index);
+			List<int> ProblemElements = CheckCrossingElements(index);
+			if (ProblemElements.Count() > 0)
+			{
+				if (MessageBox.Show("Затронуты области пересечения. Вы хотите...", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+				{
+					rewriting.ShowDialog();
+				}
+				else
+				{
+					index = RemoveOneLineInSemanticFragmentTable(index, 0);
+				}
+			}
 			WriteInformIntoSemanticFragmentTable(File, index);
 		}
 		private static string[,] ReadInformFromSemanticFragmentTable(string File)
@@ -107,11 +118,11 @@ namespace IvanLibrary
 			}
 			return "СФ" + ind;
 		}                                                   //Дефолтное название
-		private static string[,] CheckCrossingElements(string[,] index)
+		private static List<int> CheckCrossingElements(string[,] index)
 		{
+			List<int> ProblemElements = new List<int>();
 			if (index.GetLength(0) > 1)
 			{
-				List<int> ProblemElements = new List<int>();
 				for (int i = 1; i < index.GetLength(0); i++)
 				{
 					int x1 = Convert.ToInt32(index[0, 0]);
@@ -123,18 +134,8 @@ namespace IvanLibrary
 						ProblemElements.Add(i);
 					}
 				}
-				if (ProblemElements.Count() > 0)
-				{
-					if (MessageBox.Show("Затронуты области пересечения. Вы хотите...", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-					{
-					}
-					else
-					{
-						index = RemoveOneLineInSemanticFragmentTable(index, 0);
-					}
-				}
 			}
-			return index;
+			return ProblemElements;
 		}
 		private static string[,] RemoveOneLineInSemanticFragmentTable(string[,] index, int NumberOfLine)
 		{

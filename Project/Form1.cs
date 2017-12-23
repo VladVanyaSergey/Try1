@@ -24,10 +24,10 @@ namespace WindowsFormsApp1
             InitializeComponent();
             textBox1.Text = "1111qwertyuiop[]asdfghjklzxcvbnm";
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt");
+			Rewriting rewriting = new Rewriting();
+			IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt", rewriting);
 			//CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt");
 			//Vlad.b1(listBox1);
 		}

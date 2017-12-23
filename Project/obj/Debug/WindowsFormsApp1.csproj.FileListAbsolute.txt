@@ -62,7 +62,6 @@ C:\Users\ivan_\YandexDisk\Документы\СНК\WindowsFormsApp2\WindowsForm
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.ResolveComReference.cache
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.Form1.resources
-E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.Form2.resources
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
@@ -95,3 +94,4 @@ C:\Users\Влад\Documents\GitHub\Try1\Project\bin\Debug\IvanLibrary.dll
 C:\Users\Влад\Documents\GitHub\Try1\Project\bin\Debug\IvanLibrary.pdb
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\VladLibrary.dll
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\VladLibrary.pdb
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.Rewriting.resources
