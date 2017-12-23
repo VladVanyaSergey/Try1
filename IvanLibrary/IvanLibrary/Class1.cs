@@ -56,7 +56,7 @@ namespace IvanLibrary
 			}
 			return index;
 		}
-		private static void WriteInformIntoSemanticFragmentTable(string File, int[,] index)
+		private static void WriteInformIntoSemanticFragmentTable(string File, string[,] index)
 		{
 			using (StreamWriter sw = new StreamWriter(File))
 			{
