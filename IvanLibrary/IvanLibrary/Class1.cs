@@ -60,9 +60,9 @@ namespace IvanLibrary
 		{
 			using (StreamWriter sw = new StreamWriter(File))
 			{
-				for (int i = 0; i < index.Length / 2; i++)
+				for (int i = 0; i < index.Length / 3; i++)
 				{
-					sw.WriteLine(index[0,2] + "\t" + index[i, 0] + "\t" + index[i, 1]);
+					sw.WriteLine(index[i,2] + "\t" + index[i, 0] + "\t" + index[i, 1]);
 				}
 			}
 		}
