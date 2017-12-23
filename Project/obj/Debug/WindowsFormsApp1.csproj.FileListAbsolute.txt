@@ -71,7 +71,6 @@ E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Deb
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\WindowsFormsApp1.exe.config
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\WindowsFormsApp1.exe
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\WindowsFormsApp1.pdb
-E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\ClassLibrary1.dll
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\ClassLibrary1.pdb
 C:\Users\Влад\Documents\GitHub\Try1\Project\bin\Debug\WindowsFormsApp1.exe.config
 C:\Users\Влад\Documents\GitHub\Try1\Project\bin\Debug\WindowsFormsApp1.exe
@@ -90,3 +89,7 @@ C:\Users\Влад\Documents\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.cspro
 C:\Users\Влад\Documents\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\Влад\Documents\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Влад\Documents\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.pdb
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\IvanLibrary.dll
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\SergeyLibrary.dll
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\IvanLibrary.pdb
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\SergeyLibrary.pdb

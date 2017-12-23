@@ -13,19 +13,28 @@ namespace IvanLibrary
 {
 	public class CreateSemanticFile
 	{
-		private static int[] outdata = new int[2];
 		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File)
 		{
 			if (textBox.SelectionLength > 0)
 			{
+				int[] outdata = new int[2];
 				outdata[0] = textBox.SelectionStart;
 				outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
-				AddIndexIntoSemanticFragmentTable(File);
+				AddIndexIntoSemanticFragmentTable(File, outdata);
 			}
 			else
 			{
 				MessageBox.Show("Вы не выделили смысловой фрагмент");
 			}
+		}
+		public static void AddIndexIntoSemanticFragmentTable(string File, int[] outdata)
+		{
+			int[,] index = ReadInformFromSemanticFragmentTable(File);
+			index = SortMatrix(index);
+			index[0, 0] = outdata[0];
+			index[0, 1] = outdata[1];
+			index = CheckCrossingElements(index);
+			WriteInformIntoSemanticFragmentTable(File, index);
 		}
 		private static int[,] ReadInformFromSemanticFragmentTable(string File)
 		{
@@ -54,15 +63,6 @@ namespace IvanLibrary
 					sw.WriteLine("СФ" + i.ToString() + "\t" + index[i, 0].ToString() + "\t" + index[i, 1].ToString());
 				}
 			}
-		}
-		public static void AddIndexIntoSemanticFragmentTable(string File)
-		{
-			int[,] index = ReadInformFromSemanticFragmentTable(File);
-			index = SortMatrix(index);
-			index[0, 0] = outdata[0];
-			index[0, 1] = outdata[1];
-			index = CheckCrossingElements(index);
-			WriteInformIntoSemanticFragmentTable(File, index);
 		}
 		private static int[,] SortMatrix(int[,] index)
 		{
