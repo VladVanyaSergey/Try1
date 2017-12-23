@@ -28,14 +28,14 @@ namespace IvanLibrary
 				MessageBox.Show("Вы не выделили смысловой фрагмент");
 			}
 		} //Эта функция вытаскивает выделенный фрагмент и извлекает начальную и конечную координату
-		public static void AddIndexIntoSemanticFragmentTable(string File, int[] outdata)
+		private static void AddIndexIntoSemanticFragmentTable(string File, int[] outdata)
 		{
 			string[,] index = ReadInformFromSemanticFragmentTable(File);
 			index = SortMatrix(index);
 			index[0, 0] = outdata[0].ToString();
 			index[0, 1] = outdata[1].ToString();
 			index[0, 2] = NewNameOfSemanticFragment(index);
-			//index = CheckCrossingElements(index);
+			index = CheckCrossingElements(index);
 			WriteInformIntoSemanticFragmentTable(File, index);
 		}
 		private static string[,] ReadInformFromSemanticFragmentTable(string File)
@@ -112,25 +112,25 @@ namespace IvanLibrary
 			if (index.GetLength(0) > 1)
 			{
 				List<int> ProblemElements = new List<int>();
-				for (int i = 0; i < index.GetLength(0); i++)
+				for (int i = 1; i < index.GetLength(0); i++)
 				{
 					int x1 = Convert.ToInt32(index[0, 0]);
 					int x2 = Convert.ToInt32(index[0, 1]);
 					int y1 = Convert.ToInt32(index[i, 0]);
 					int y2 = Convert.ToInt32(index[i, 1]);
-					if (((x1 < y1) && (x1 <= y2)) || ((x2 < y2) && (x2 >= y1)) || ((x1 <= y1) && (x2 >= y2)))
+					if (((x1 > y1) && (x1 < y2)) || ((x2 < y2) && (x2 > y1)) || ((x1 < y1) && (x2 > y2)) || (x1 == y1) || (x1 == y2) || (x2 == y1) || (x2 == y2))
 					{
 						ProblemElements.Add(i);
 					}
 				}
 				if (ProblemElements.Count() > 0)
 				{
-					if (MessageBox.Show("Удалить все существующие документы?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+					if (MessageBox.Show("Затронуты области пересечения. Вы хотите...", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
 					{
 					}
 					else
 					{
-						//index = RemoveOneLineInSemanticFragmentTable(index, 0);
+						index = RemoveOneLineInSemanticFragmentTable(index, 0);
 					}
 				}
 			}
@@ -138,10 +138,10 @@ namespace IvanLibrary
 		}
 		private static string[,] RemoveOneLineInSemanticFragmentTable(string[,] index, int NumberOfLine)
 		{
-			string[,] timeindex = new string[index.GetLength(0), index.GetLength(1)];
+			string[,] timeindex = new string[index.GetLength(0) - 1, index.GetLength(1)];
+			int delta = 0;
 			for (int i = 0; i < index.GetLength(0); i++)
 			{
-				int delta = 0;
 				if (i != NumberOfLine)
 				{
 
