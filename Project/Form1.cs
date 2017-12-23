@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
 			IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt", rewriting);
 			
 			//CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt");
-			//Vlad.b1(listBox1);
+			Vlad.b1(listBox1, @"C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\СФы.txt");
 		}
 
         private void button4_Click(object sender, EventArgs e)

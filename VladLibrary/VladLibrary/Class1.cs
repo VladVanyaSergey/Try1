@@ -20,9 +20,11 @@ namespace VladLibrary
         //(@"C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\СФы.txt")
         static List<string> rlt = new List<string>();
 
-        public static void b1(System.Windows.Forms.ListBox listBox1)
+        public static void b1(System.Windows.Forms.ListBox listBox1, string adr)
         {
-            using (StreamReader rdr = new StreamReader(@"C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\СФы.txt"))
+            listBox1.Items.Clear();
+            sfchi = 0;
+            using (StreamReader rdr = new StreamReader(adr))
             {
                 listBox1.Items.Clear();
                 sfchi = 0;
