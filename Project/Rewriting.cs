@@ -11,10 +11,10 @@ using IvanLibrary;
 
 namespace WindowsFormsApp1
 {
-	public static string[,] index;
-	public static List<int> ProblemElements = new List<int>();
 	public partial class Rewriting : Form
 	{
+		public static string[,] index;
+		public static List<int> ProblemElements = new List<int>();
 		public Rewriting()
 		{
 			InitializeComponent();
