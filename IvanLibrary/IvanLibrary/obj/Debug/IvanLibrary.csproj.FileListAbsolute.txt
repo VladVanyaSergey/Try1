@@ -1,0 +1,6 @@
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\IvanLibrary.dll
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\IvanLibrary.pdb
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.csprojResolveAssemblyReference.cache
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.csproj.CoreCompileInputs.cache
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.dll
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.pdb
