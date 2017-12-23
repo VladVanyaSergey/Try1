@@ -10,3 +10,9 @@ C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\Try1\Vlad
 C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\Try1\VladLibrary\VladLibrary\obj\Debug\VladLibrary.csproj.CoreCompileInputs.cache
 C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\Try1\VladLibrary\VladLibrary\obj\Debug\VladLibrary.dll
 C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\Try1\VladLibrary\VladLibrary\obj\Debug\VladLibrary.pdb
+C:\Users\Влад\Documents\GitHub\Try1\VladLibrary\VladLibrary\bin\Debug\VladLibrary.dll
+C:\Users\Влад\Documents\GitHub\Try1\VladLibrary\VladLibrary\bin\Debug\VladLibrary.pdb
+C:\Users\Влад\Documents\GitHub\Try1\VladLibrary\VladLibrary\obj\Debug\VladLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Влад\Documents\GitHub\Try1\VladLibrary\VladLibrary\obj\Debug\VladLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Влад\Documents\GitHub\Try1\VladLibrary\VladLibrary\obj\Debug\VladLibrary.dll
+C:\Users\Влад\Documents\GitHub\Try1\VladLibrary\VladLibrary\obj\Debug\VladLibrary.pdb

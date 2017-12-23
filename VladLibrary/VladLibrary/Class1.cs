@@ -24,6 +24,8 @@ namespace VladLibrary
         {
             using (StreamReader rdr = new StreamReader(@"C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\СФы.txt"))
             {
+                listBox1.Items.Clear();
+                sfchi = 0;
                 do
                 {
                     tmp = rdr.ReadLine();
@@ -41,7 +43,7 @@ namespace VladLibrary
             t = Convert.ToString(rlt.ElementAt(i));
             string[] t1 = t.Split('\t');
             ts = Convert.ToInt32(t1[1]);
-            tl = Convert.ToInt32(t1[2]);
+            tl = Convert.ToInt32(t1[2]) - ts + 1;
             textBox1.Select(ts, tl);
         }
     }
