@@ -45,9 +45,13 @@ namespace IvanLibrary
 				else
 				{
 					index = RemoveOneLineInSemanticFragmentTable(index, 0);
+					WriteInformIntoSemanticFragmentTable(File, index);
 				}
 			}
-			WriteInformIntoSemanticFragmentTable(File, index);
+			else
+			{
+				WriteInformIntoSemanticFragmentTable(File, index);
+			}
 		}
 		private static string[,] ReadInformFromSemanticFragmentTable(string File)
 		{
@@ -157,5 +161,9 @@ namespace IvanLibrary
 			}
 			return timeindex;
 		}
+	}
+	public class RewritingClass
+	{
+
 	}
 }
