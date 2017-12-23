@@ -11,6 +11,7 @@ using System.IO;
 
 namespace IvanLibrary
 {
+
 	public class CreateSemanticFile
 	{
 		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File)
@@ -41,7 +42,10 @@ namespace IvanLibrary
 		{
 			int lengthTable = System.IO.File.ReadAllLines(File).Length + 1;
 			string[,] index = new string[lengthTable, 3];
-			int ind = 0;
+			index[0, 0] = "-1";
+			index[0, 1] = "-1";
+			index[0, 2] = "-1";
+			int ind = 1;
 			using (StreamReader sr = new StreamReader(File))   //System.IO.File.Create(File))
 			{
 				while (sr.Peek() >= 0)
@@ -55,7 +59,7 @@ namespace IvanLibrary
 				}
 			}
 			return index;
-		}											//Считываение из таблицы смысловых фрагментов
+		}                                           //Считываение из таблицы смысловых фрагментов
 		private static string[,] SortMatrix(string[,] index)
 		{
 			List<int> FirstElement = new List<int>();
@@ -79,17 +83,17 @@ namespace IvanLibrary
 				ThirdElement.RemoveAt(c);
 			}
 			return timeindex;
-		}																	//Сортировка матрицы по начальному индексу																														//Сортировка по индексу
+		}                                                                   //Сортировка матрицы по начальному индексу																														//Сортировка по индексу
 		private static void WriteInformIntoSemanticFragmentTable(string File, string[,] index)
 		{
 			using (StreamWriter sw = new StreamWriter(File))
 			{
 				for (int i = 0; i < index.Length / 3; i++)
 				{
-					sw.WriteLine(index[i,2] + "\t" + index[i, 0] + "\t" + index[i, 1]);
+					sw.WriteLine(index[i, 2] + "\t" + index[i, 0] + "\t" + index[i, 1]);
 				}
 			}
-		}							//Запись списка элементов в таблицу смысловых фрагментов
+		}                           //Запись списка элементов в таблицу смысловых фрагментов
 		private static string NewNameOfSemanticFragment(string[,] index)
 		{
 			int ind = 1;
@@ -97,24 +101,60 @@ namespace IvanLibrary
 			{
 				if ("СФ" + ind.ToString() == index[i, 2])
 				{
-					i = 0;
+					i = -1;
 					ind += 1;
 				}
 			}
-			return "СФ"+ind;
-		}													//Дефолтное название
-
-		private static int[,] CheckCrossingElements(int[,] index)
+			return "СФ" + ind;
+		}                                                   //Дефолтное название
+		private static string[,] CheckCrossingElements(string[,] index)
 		{
-			if (index.Length > 2)
+			if (index.GetLength(0) > 1)
 			{
-				//Если новый интервал полоностью покрывает старый
-				if (index[0, 0] <= index[1, 0] && index[1, 0] >= index[0, 0])
+				List<int> ProblemElements = new List<int>();
+				for (int i = 0; i < index.GetLength(0); i++)
 				{
-
+					int x1 = Convert.ToInt32(index[0, 0]);
+					int x2 = Convert.ToInt32(index[0, 1]);
+					int y1 = Convert.ToInt32(index[i, 0]);
+					int y2 = Convert.ToInt32(index[i, 1]);
+					if (((x1 < y1) && (x1 <= y2)) || ((x2 < y2) && (x2 >= y1)) || ((x1 <= y1) && (x2 >= y2)))
+					{
+						ProblemElements.Add(i);
+					}
+				}
+				if (ProblemElements.Count() > 0)
+				{
+					if (MessageBox.Show("Удалить все существующие документы?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+					{
+					}
+					else
+					{
+						//index = RemoveOneLineInSemanticFragmentTable(index, 0);
+					}
 				}
 			}
 			return index;
+		}
+		private static string[,] RemoveOneLineInSemanticFragmentTable(string[,] index, int NumberOfLine)
+		{
+			string[,] timeindex = new string[index.GetLength(0), index.GetLength(1)];
+			for (int i = 0; i < index.GetLength(0); i++)
+			{
+				int delta = 0;
+				if (i != NumberOfLine)
+				{
+
+					timeindex[i - delta, 0] = index[i, 0];
+					timeindex[i - delta, 1] = index[i, 1];
+					timeindex[i - delta, 2] = index[i, 2];
+				}
+				else
+				{
+					delta = 1;
+				}
+			}
+			return timeindex;
 		}
 	}
 }
