@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
             int[] x = new int[2];
             x = Ivan.SelectedTextIntoIndexForSemanticFragmentTable(textBox1);
             Ivan.AddIndexIntoSemanticFragmentTable("C://Users/ivan_/Desktop/time.txt");
-
+            //Vlad.b1(listBox1);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //Vlad.lb1(listBox1, textBox1);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
