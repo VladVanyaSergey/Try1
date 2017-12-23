@@ -11,21 +11,20 @@ using System.IO;
 
 namespace IvanNS
 {
-	public class Ivan
+	public class CreateSemanticTable
 	{
 		private static int[] outdata = new int[2];
-		public static int[] SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox)
+		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File)
 		{
 			if (textBox.SelectionLength > 0)
 			{
 				outdata[0] = textBox.SelectionStart;
 				outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
-				return outdata;
+				AddIndexIntoSemanticFragmentTable(File);
 			}
 			else
 			{
 				MessageBox.Show("Вы не выделили смысловой фрагмент");
-				return outdata;
 			}
 		}
 		private static int[,] ReadInformFromSemanticFragmentTable(string File)
@@ -59,10 +58,10 @@ namespace IvanNS
 		public static void AddIndexIntoSemanticFragmentTable(string File)
 		{
 			int[,] index = ReadInformFromSemanticFragmentTable(File);
-			index = Ivan.SortMatrix(index);
+			index = SortMatrix(index);
 			index[0, 0] = outdata[0];
 			index[0, 1] = outdata[1];
-			index = Ivan.CheckCrossingElements(index);
+			index = CheckCrossingElements(index);
 			WriteInformIntoSemanticFragmentTable(File, index);
 		}
 		private static int[,] SortMatrix(int[,] index)

@@ -26,8 +26,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             int[] x = new int[2];
-            x = Ivan.SelectedTextIntoIndexForSemanticFragmentTable(textBox1);
-            Ivan.AddIndexIntoSemanticFragmentTable("C://Users/ivan_/Desktop/time.txt");
+			IvanNS.CreateSemanticTable.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt");
 
         }
 

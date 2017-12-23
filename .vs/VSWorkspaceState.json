@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\IvanLibrary",
+    "\\IvanLibrary\\ClassLibrary1",
+    "\\Project"
   ],
-  "SelectedNode": "\\Form1.cs",
+  "SelectedNode": "\\Project\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }
