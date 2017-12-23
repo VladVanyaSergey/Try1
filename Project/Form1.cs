@@ -12,6 +12,7 @@ using Word = Microsoft.Office.Interop.Word; //Введение алиаса пр
 using System.Reflection;
 using IvanLibrary;
 using SergeyLibrary;
+using VladLibrary;
 
 
 namespace WindowsFormsApp1
@@ -28,7 +29,7 @@ namespace WindowsFormsApp1
         {
             int[] x = new int[2];
             IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt");
-            //Vlad.b1(listBox1);
+            Vlad.b1(listBox1);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace WindowsFormsApp1
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Vlad.lb1(listBox1, textBox1);
+            Vlad.lb1(listBox1, textBox1);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
