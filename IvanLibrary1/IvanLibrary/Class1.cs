@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace IvanNS
+namespace IvanLibrary
 {
 	public class CreateSemanticFile
 	{
