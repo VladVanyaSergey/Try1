@@ -33,7 +33,7 @@ namespace IvanLibrary
 			index = SortMatrix(index);
 			index[0, 0] = outdata[0].ToString();
 			index[0, 1] = outdata[1].ToString();
-			index[0, 2] = "СФ";
+			index[0, 2] = NewNameOfSemanticFragment(index);
 			//index = CheckCrossingElements(index);
 			WriteInformIntoSemanticFragmentTable(File, index);
 		}
@@ -55,16 +55,6 @@ namespace IvanLibrary
 				}
 			}
 			return index;
-		}
-		private static void WriteInformIntoSemanticFragmentTable(string File, string[,] index)
-		{
-			using (StreamWriter sw = new StreamWriter(File))
-			{
-				for (int i = 0; i < index.Length / 3; i++)
-				{
-					sw.WriteLine(index[i,2] + "\t" + index[i, 0] + "\t" + index[i, 1]);
-				}
-			}
 		}
 		private static string[,] SortMatrix(string[,] index)
 		{
@@ -90,6 +80,30 @@ namespace IvanLibrary
 			}
 			return timeindex;
 		}
+		private static void WriteInformIntoSemanticFragmentTable(string File, string[,] index)
+		{
+			using (StreamWriter sw = new StreamWriter(File))
+			{
+				for (int i = 0; i < index.Length / 3; i++)
+				{
+					sw.WriteLine(index[i,2] + "\t" + index[i, 0] + "\t" + index[i, 1]);
+				}
+			}
+		}
+		private static string NewNameOfSemanticFragment(string[,] index)
+		{
+			int ind = 1;
+			for (int i = 0; i < index.GetLength(0); i++)
+			{
+				if ("СФ" + ind.ToString() == index[i, 2])
+				{
+					i = 0;
+					ind += 1;
+				}
+			}
+			return "СФ"+ind;
+		}
+		
 		//private static int[,] RemoveOneElement(int [,]index)
 		//{
 
