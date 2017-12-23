@@ -28,6 +28,7 @@ namespace WindowsFormsApp1
         {
 			Rewriting rewriting = new Rewriting();
 			IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt", rewriting);
+
 			//CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt");
 			//Vlad.b1(listBox1);
 		}

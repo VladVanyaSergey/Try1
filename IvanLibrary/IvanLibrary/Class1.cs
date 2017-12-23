@@ -50,6 +50,7 @@ namespace IvanLibrary
 			}
 			else
 			{
+				index = SortMatrix(index);
 				WriteInformIntoSemanticFragmentTable(File, index);
 			}
 		}
