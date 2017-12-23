@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using Word = Microsoft.Office.Interop.Word; //Введение алиаса пространства имен Word
 using System.Reflection;
-using IvanNS;
+using IvanLibrary;
 using SergeyLibrary;
 
 
@@ -27,8 +27,8 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             int[] x = new int[2];
-            x = Ivan.SelectedTextIntoIndexForSemanticFragmentTable(textBox1);
-            Ivan.AddIndexIntoSemanticFragmentTable("C://Users/ivan_/Desktop/time.txt");
+            //x = Ivan.SelectedTextIntoIndexForSemanticFragmentTable(textBox1);
+            //Ivan.AddIndexIntoSemanticFragmentTable("C://Users/ivan_/Desktop/time.txt");
             //Vlad.b1(listBox1);
         }
 
