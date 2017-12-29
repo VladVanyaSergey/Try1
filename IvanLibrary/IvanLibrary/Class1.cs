@@ -185,18 +185,17 @@ namespace IvanLibrary
 	}
 	public class RewritingClass
 	{
-		public string index;
-		public List<int> ProblemElements;
-		public RewritingClass(string asd)
+		public static void StartWork(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
 		{
-			index = asd;
-		}
-		public static void StartWork(System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
-		{
-			for (int i=0; i<ProblemElements.Count;i++)
+			for (int i = 0; i < ProblemElements.Count; i++)
 			{
-				listbox.Items.Add(index[ProblemElements[i], 3]);
+				listbox.Items.Add(index[ProblemElements[i], 2]);
+				listbox.SetSelected(0,true);
 			}
+		}
+		public static void TextNewSFwithOldSF(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
+		{
+				textbox.Text = listbox.SelectedIndex.ToString();
 		}
 	}
 }

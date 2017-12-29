@@ -16,12 +16,21 @@ namespace WindowsFormsApp1
 		public Rewriting()
 		{
 			InitializeComponent();
-			IvanLibrary.RewritingClass.StartWork(listBox1, Form1.CSF.index, Form1.CSF.ProblemElements);
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
 		{
 
+		}
+
+		private void Rewriting_Load(object sender, EventArgs e)
+		{
+			IvanLibrary.RewritingClass.StartWork(textBox1, listBox1, Form1.CSF.index, Form1.CSF.ProblemElements);
+		}
+
+		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			IvanLibrary.RewritingClass.TextNewSFwithOldSF(textBox1, listBox1, Form1.CSF.index, Form1.CSF.ProblemElements);
 		}
 	}
 }

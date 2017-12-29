@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
 		private void button1_Click(object sender, EventArgs e)
         {
 			CSF.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt", rewriting);
-			Vlad.b1(listBox1, @"C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\СФы.txt");
+			Vlad.b1(listBox1, "C://Users/ivan_/Desktop/time.txt");
 		}
 
         private void button4_Click(object sender, EventArgs e)

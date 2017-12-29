@@ -39,6 +39,7 @@
 			this.listBox1.Name = "listBox1";
 			this.listBox1.Size = new System.Drawing.Size(110, 186);
 			this.listBox1.TabIndex = 0;
+			this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
 			// 
 			// textBox1
 			// 
@@ -58,6 +59,7 @@
 			this.Controls.Add(this.listBox1);
 			this.Name = "Rewriting";
 			this.Text = "Rewriting";
+			this.Load += new System.EventHandler(this.Rewriting_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
