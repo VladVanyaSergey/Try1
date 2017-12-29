@@ -19,17 +19,19 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        public Form1()
+		//
+		public static IvanLibrary.CreateSemanticFile CSF = new CreateSemanticFile();
+		Rewriting rewriting = new Rewriting();
+		//
+		public Form1()
         {
             InitializeComponent();
             textBox1.Text = "1111qwertyuiop[]asdfghjklzxcvbnm";
         }
-        private void button1_Click(object sender, EventArgs e)
+
+		private void button1_Click(object sender, EventArgs e)
         {
-			Rewriting rewriting = new Rewriting();
-			IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt", rewriting);
-			
-			//CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt");
+			CSF.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt", rewriting);
 			Vlad.b1(listBox1, @"C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\СФы.txt");
 		}
 

@@ -13,11 +13,10 @@ namespace WindowsFormsApp1
 {
 	public partial class Rewriting : Form
 	{
-		public static string[,] index;
-		public static List<int> ProblemElements = new List<int>();
 		public Rewriting()
 		{
 			InitializeComponent();
+			IvanLibrary.RewritingClass.StartWork(listBox1, Form1.CSF.index, Form1.CSF.ProblemElements);
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
