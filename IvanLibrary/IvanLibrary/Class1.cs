@@ -187,15 +187,18 @@ namespace IvanLibrary
 	{
 		public static void StartWork(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
 		{
+			listbox.Items.Clear();
 			for (int i = 0; i < ProblemElements.Count; i++)
 			{
 				listbox.Items.Add(index[ProblemElements[i], 2]);
 				listbox.SetSelected(0,true);
 			}
+
 		}
 		public static void TextNewSFwithOldSF(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
 		{
-				textbox.Text = listbox.SelectedIndex.ToString();
+			textbox.Text = listbox.SelectedIndex.ToString();
+			//ProblemElements[listbox.SelectedIndex]
 		}
 	}
 }
