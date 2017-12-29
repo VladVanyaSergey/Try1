@@ -11,10 +11,30 @@ using System.IO;
 
 namespace IvanLibrary
 {
+	class MyClass
+	{
+		public string Name;
+		public byte Age;
 
+		// Создаем параметрический конструктор
+		public MyClass(string s, byte b)
+		{
+			Name = s;
+			Age = b;
+		}
+
+		public void reWrite()
+		{
+			Console.WriteLine("Имя: {0}\nВозраст: {1}", Name, Age);
+		}
+	}
 	public class CreateSemanticFile
 	{
-		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File, System.Windows.Forms.Form rewriting)
+		public string[,] index;
+		public List<int> ProblemElements;
+		public CreateSemanticFile()
+		{}
+		public void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File, System.Windows.Forms.Form rewriting)
 		{
 			if (textBox.SelectionLength > 0)
 			{
@@ -28,14 +48,14 @@ namespace IvanLibrary
 				MessageBox.Show("Вы не выделили смысловой фрагмент");
 			}
 		} //Эта функция вытаскивает выделенный фрагмент и извлекает начальную и конечную координату
-		private static void AddIndexIntoSemanticFragmentTable(string File, int[] outdata, System.Windows.Forms.Form rewriting)
+		private void AddIndexIntoSemanticFragmentTable(string File, int[] outdata, System.Windows.Forms.Form rewriting)
 		{
-			string[,] index = ReadInformFromSemanticFragmentTable(File);
+			index = ReadInformFromSemanticFragmentTable(File);
 			index = SortMatrix(index);
 			index[0, 0] = outdata[0].ToString();
 			index[0, 1] = outdata[1].ToString();
 			index[0, 2] = NewNameOfSemanticFragment(index);
-			List<int> ProblemElements = CheckCrossingElements(index);
+			ProblemElements = CheckCrossingElements(index);
 			if (ProblemElements.Count() > 0)
 			{
 				if (MessageBox.Show("Затронуты области пересечения. Вы хотите...", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
@@ -54,10 +74,10 @@ namespace IvanLibrary
 				WriteInformIntoSemanticFragmentTable(File, index);
 			}
 		}
-		private static string[,] ReadInformFromSemanticFragmentTable(string File)
+		private string[,] ReadInformFromSemanticFragmentTable(string File)
 		{
 			int lengthTable = System.IO.File.ReadAllLines(File).Length + 1;
-			string[,] index = new string[lengthTable, 3];
+			index = new string[lengthTable, 3];
 			index[0, 0] = "-1";
 			index[0, 1] = "-1";
 			index[0, 2] = "-1";
@@ -76,7 +96,7 @@ namespace IvanLibrary
 			}
 			return index;
 		}                                           //Считываение из таблицы смысловых фрагментов
-		private static string[,] SortMatrix(string[,] index)
+		private string[,] SortMatrix(string[,] index)
 		{
 			List<int> FirstElement = new List<int>();
 			List<int> SecondElement = new List<int>();
@@ -100,7 +120,7 @@ namespace IvanLibrary
 			}
 			return timeindex;
 		}                                                                   //Сортировка матрицы по начальному индексу																														//Сортировка по индексу
-		private static void WriteInformIntoSemanticFragmentTable(string File, string[,] index)
+		private void WriteInformIntoSemanticFragmentTable(string File, string[,] index)
 		{
 			using (StreamWriter sw = new StreamWriter(File))
 			{
@@ -110,7 +130,7 @@ namespace IvanLibrary
 				}
 			}
 		}                           //Запись списка элементов в таблицу смысловых фрагментов
-		private static string NewNameOfSemanticFragment(string[,] index)
+		private string NewNameOfSemanticFragment(string[,] index)
 		{
 			int ind = 1;
 			for (int i = 0; i < index.GetLength(0); i++)
@@ -123,7 +143,7 @@ namespace IvanLibrary
 			}
 			return "СФ" + ind;
 		}                                                   //Дефолтное название
-		private static List<int> CheckCrossingElements(string[,] index)
+		private List<int> CheckCrossingElements(string[,] index)
 		{
 			List<int> ProblemElements = new List<int>();
 			if (index.GetLength(0) > 1)
@@ -142,7 +162,7 @@ namespace IvanLibrary
 			}
 			return ProblemElements;
 		}
-		private static string[,] RemoveOneLineInSemanticFragmentTable(string[,] index, int NumberOfLine)
+		private string[,] RemoveOneLineInSemanticFragmentTable(string[,] index, int NumberOfLine)
 		{
 			string[,] timeindex = new string[index.GetLength(0) - 1, index.GetLength(1)];
 			int delta = 0;
@@ -165,6 +185,18 @@ namespace IvanLibrary
 	}
 	public class RewritingClass
 	{
-
+		public string index;
+		public List<int> ProblemElements;
+		public RewritingClass(string asd)
+		{
+			index = asd;
+		}
+		public static void StartWork(System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
+		{
+			for (int i=0; i<ProblemElements.Count;i++)
+			{
+				listbox.Items.Add(index[ProblemElements[i], 3]);
+			}
+		}
 	}
 }
