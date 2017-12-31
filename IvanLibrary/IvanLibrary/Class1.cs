@@ -11,28 +11,13 @@ using System.IO;
 
 namespace IvanLibrary
 {
-	class MyClass
-	{
-		public string Name;
-		public byte Age;
-
-		// Создаем параметрический конструктор
-		public MyClass(string s, byte b)
-		{
-			Name = s;
-			Age = b;
-		}
-
-		public void reWrite()
-		{
-			Console.WriteLine("Имя: {0}\nВозраст: {1}", Name, Age);
-		}
-	}
 	public class CreateSemanticFile
 	{
 		public string[,] index;
 		public List<int> ProblemElements;
-		public CreateSemanticFile()
+        public string ProblemText;
+        public int StartIndexOfProblemText;
+        public CreateSemanticFile()
 		{}
 		public void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File, System.Windows.Forms.Form rewriting)
 		{
@@ -41,14 +26,14 @@ namespace IvanLibrary
 				int[] outdata = new int[2];
 				outdata[0] = textBox.SelectionStart;
 				outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
-				AddIndexIntoSemanticFragmentTable(File, outdata, rewriting);
+				AddIndexIntoSemanticFragmentTable(File, outdata, rewriting, textBox);
 			}
 			else
 			{
 				MessageBox.Show("Вы не выделили смысловой фрагмент");
 			}
 		} //Эта функция вытаскивает выделенный фрагмент и извлекает начальную и конечную координату
-		private void AddIndexIntoSemanticFragmentTable(string File, int[] outdata, System.Windows.Forms.Form rewriting)
+		private void AddIndexIntoSemanticFragmentTable(string File, int[] outdata, System.Windows.Forms.Form rewriting, System.Windows.Forms.TextBox textBox)
 		{
 			index = ReadInformFromSemanticFragmentTable(File);
 			index = SortMatrix(index);
@@ -60,6 +45,7 @@ namespace IvanLibrary
 			{
 				if (MessageBox.Show("Затронуты области пересечения. Вы хотите...", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
 				{
+                    TakeProblemPartOfTheText(textBox);
 					rewriting.ShowDialog();
 				}
 				else
@@ -182,22 +168,40 @@ namespace IvanLibrary
 			}
 			return timeindex;
 		}
-	}
+        //Все, чтобы вытащить нужный кусок текста
+        private void TakeProblemPartOfTheText(System.Windows.Forms.TextBox textBox)
+        {
+            List<int> ListIndex = ArrayIntoList();
+            ProblemText = textBox.Text.Substring(ListIndex.Min(), ListIndex.Max() - ListIndex.Min());
+            StartIndexOfProblemText = ListIndex.Min();
+        }
+        private List<int> ArrayIntoList()
+        {
+            List<int> ListIndex = new List<int>();
+            for (int i = 0; i < ProblemElements.Count(); i++)
+            {
+                ListIndex.Add(Convert.ToInt32(index[ProblemElements[i], 0]));
+                ListIndex.Add(Convert.ToInt32(index[ProblemElements[i], 1]));
+            }
+            return ListIndex;
+        }
+
+    }
 	public class RewritingClass
 	{
-		public static void StartWork(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
+		public static void StartWork(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements, string ProblemText)
 		{
 			listbox.Items.Clear();
 			for (int i = 0; i < ProblemElements.Count; i++)
 			{
 				listbox.Items.Add(index[ProblemElements[i], 2]);
 				listbox.SetSelected(0,true);
-			}
-
+                textbox.Text = ProblemText;
+            }
 		}
 		public static void TextNewSFwithOldSF(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
 		{
-			textbox.Text = listbox.SelectedIndex.ToString();
+			//textbox.Text = textbox.Text + listbox.SelectedIndex.ToString();
 			//ProblemElements[listbox.SelectedIndex]
 		}
 	}

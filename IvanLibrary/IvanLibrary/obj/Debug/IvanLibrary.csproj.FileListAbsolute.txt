@@ -4,3 +4,9 @@ E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\Iva
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.csproj.CoreCompileInputs.cache
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.dll
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\IvanLibrary.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\IvanLibrary.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.csprojResolveAssemblyReference.cache
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.csproj.CoreCompileInputs.cache
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\obj\Debug\IvanLibrary.pdb

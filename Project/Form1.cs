@@ -18,7 +18,7 @@ using VladLibrary;
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
-    {
+    {   
 		//
 		public static IvanLibrary.CreateSemanticFile CSF = new CreateSemanticFile();
 		Rewriting rewriting = new Rewriting();
@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
 		public Form1()
         {
             InitializeComponent();
-            textBox1.Text = "1111qwertyuiop[]asdfghjklzxcvbnm";
+            textBox1.Text = "Волнения, случившиеся за полтора месяца до окончания Великой Отечественной войны в 34-й запасной стрелковой дивизии, дислоцировавшейся в Бобруйске, спровоцировали новобранцы, призванные из Западной Белоруссии. Они не хотели служить в РККА и стремились попасть в польскую армию, надеясь на то, что после окончания Второй Мировой их малая родина отойдет к Польше, а не к СССР.";
         }
 
 		private void button1_Click(object sender, EventArgs e)
