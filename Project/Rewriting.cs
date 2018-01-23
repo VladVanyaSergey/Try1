@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
 
 		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			IvanLibrary.RewritingClass.TextNewSFwithOldSF(textBox1, listBox1, Form1.CSF.index, Form1.CSF.ProblemElements);
+			IvanLibrary.RewritingClass.SelectingText(textBox1, listBox1, Form1.CSF.index, Form1.CSF.ProblemElements);
 		}
 	}
 }

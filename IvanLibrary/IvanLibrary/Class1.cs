@@ -178,6 +178,8 @@ namespace IvanLibrary
         private List<int> ArrayIntoList()
         {
             List<int> ListIndex = new List<int>();
+            ListIndex.Add(Convert.ToInt32(index[0, 0]));
+            ListIndex.Add(Convert.ToInt32(index[0, 1]));
             for (int i = 0; i < ProblemElements.Count(); i++)
             {
                 ListIndex.Add(Convert.ToInt32(index[ProblemElements[i], 0]));
@@ -192,17 +194,18 @@ namespace IvanLibrary
 		public static void StartWork(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements, string ProblemText)
 		{
 			listbox.Items.Clear();
+            listbox.Items.Add(index[0, 2]);
 			for (int i = 0; i < ProblemElements.Count; i++)
 			{
 				listbox.Items.Add(index[ProblemElements[i], 2]);
 				listbox.SetSelected(0,true);
-                textbox.Text = ProblemText;
             }
-		}
-		public static void TextNewSFwithOldSF(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
+            textbox.Text = ProblemText;
+        }
+		public static void SelectingText(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
 		{
-			//textbox.Text = textbox.Text + listbox.SelectedIndex.ToString();
-			//ProblemElements[listbox.SelectedIndex]
+
+		    //textbox.Select
 		}
 	}
 }
