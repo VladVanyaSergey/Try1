@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Sergey.button2_Click(comboBox1);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,6 +72,23 @@ namespace WindowsFormsApp1
         private void удалитьВсеДокументыToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Sergey.удалитьВсеДокументыToolStripMenuItem_Click(comboBox1, textBox1);  //Удаление всех существующих документов
+        }
+
+        private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            Sergey.создатьToolStripMenuItem_Click(folderBrowserDialog);
+        }
+
+        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            Sergey.открытьToolStripMenuItemToolStripMenuItem_Click(folderBrowserDialog, textBox1, comboBox1);
+        }
+
+        private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
