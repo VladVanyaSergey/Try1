@@ -95,6 +95,7 @@ C:\Users\Влад\Documents\GitHub\Try1\Project\bin\Debug\IvanLibrary.pdb
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\VladLibrary.dll
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\VladLibrary.pdb
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.Rewriting.resources
+<<<<<<< HEAD
 C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\WindowsFormsApp1.exe.config
 C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\WindowsFormsApp1.exe
 C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\WindowsFormsApp1.pdb
@@ -114,3 +115,24 @@ C:\Users\blhjk\Desktop\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.GenerateRe
 C:\Users\blhjk\Desktop\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\blhjk\Desktop\Try1\Project\obj\Debug\WindowsFormsApp1.exe
 C:\Users\blhjk\Desktop\Try1\Project\obj\Debug\WindowsFormsApp1.pdb
+=======
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\WindowsFormsApp1.exe
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\IvanLibrary.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\SergeyLibrary.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\VladLibrary.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\ClassLibrary1.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\IvanLibrary.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\SergeyLibrary.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\VladLibrary.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.ResolveComReference.cache
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.Rewriting.resources
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.exe
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.pdb
+>>>>>>> 39abb34cdcad790dbe79d88f6c69b5a31858a140

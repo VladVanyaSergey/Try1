@@ -13,8 +13,6 @@ namespace WindowsFormsApp1
 {
 	public partial class Rewriting : Form
 	{
-		public static string[,] index;
-		public static List<int> ProblemElements = new List<int>();
 		public Rewriting()
 		{
 			InitializeComponent();
@@ -23,6 +21,16 @@ namespace WindowsFormsApp1
 		private void textBox1_TextChanged(object sender, EventArgs e)
 		{
 
+		}
+
+		private void Rewriting_Load(object sender, EventArgs e)
+		{
+			IvanLibrary.RewritingClass.StartWork(textBox1, listBox1, Form1.CSF.index, Form1.CSF.ProblemElements, Form1.CSF.ProblemText);
+		}
+
+		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			IvanLibrary.RewritingClass.SelectingText(textBox1, listBox1, Form1.CSF.index, Form1.CSF.ProblemElements);
 		}
 	}
 }
