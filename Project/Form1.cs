@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {   
-		//
+        //
 		public static IvanLibrary.CreateSemanticFile CSF = new CreateSemanticFile();
 		Rewriting rewriting = new Rewriting();
 		//
@@ -31,8 +31,11 @@ namespace WindowsFormsApp1
 
 		private void button1_Click(object sender, EventArgs e)
         {
-			CSF.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "../../../time.txt", rewriting);
-			Vlad.b1(listBox1, "../../../time.txt");
+
+            string A = comboBox1.Text;
+            CSF.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", rewriting);
+			Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+
 		}
 
         private void button4_Click(object sender, EventArgs e)
@@ -42,7 +45,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Sergey.button2_Click(comboBox1);
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

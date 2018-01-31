@@ -46,10 +46,13 @@ namespace SergeyLibrary
                 if (S_Osnova != S_STD)
                 {
                     System.IO.File.WriteAllText((S_STD + "/" + S_namefile + ".txt"), S_text); //Создание текстового файла txt и запись в него текста из буфера обмена
+                    System.IO.File.WriteAllText((S_Osnova + "/" + "The table of semantic fragments" + "/" + S_namefile + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
                 }
                 if (S_Osnova == S_STD)
                 {
                     System.IO.File.WriteAllText((S_STD + "/" + S_namefile + ".txt"), S_text); //Создание текстового файла txt и запись в него текста из буфера обмена
+                    System.IO.File.WriteAllText((S_Dobavl + "/" + "The table of semantic fragments" + "/" + S_namefile + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
+
                 }
                 textBox.Text = S_text;                                                                                //Извлекаем из буфера обмена копированный текст.
                 comboBox.Items.Add(S_namefile);                                                                       //Добавление в combobox1 имени файла, с которого мы скопировали текст 
@@ -99,7 +102,7 @@ namespace SergeyLibrary
                             }
                             if (S_Osnova == S_STD)   //удаление таблици смысловых фрагментов у вновь созданного проекта
                             {
-                                FileInfo file = new FileInfo(S_Dobavl + "/" + "Таблици смысловых фрагментов" + "/" + S_Perem1 + ".txt");
+                                FileInfo file = new FileInfo(S_Dobavl + "/" + "The table of semantic fragments" + "/" + S_Perem1 + ".txt");
                                 if (file.Exists)
                                 {
                                     file.Delete();
@@ -107,7 +110,7 @@ namespace SergeyLibrary
                             }
                             if (S_Osnova != S_STD)    //удаление таблици смысловых фрагментов у существующего открытого
                             {
-                                FileInfo file = new FileInfo(S_Osnova + "/" + "Таблици смысловых фрагментов" + "/" + S_Perem1 + ".txt");
+                                FileInfo file = new FileInfo(S_Osnova + "/" + "The table of semantic fragments" + "/" + S_Perem1 + ".txt");
                                 if (file.Exists)
                                 {
                                     file.Delete();
@@ -125,7 +128,7 @@ namespace SergeyLibrary
                             }
                             if (S_Osnova == S_STD)   //удаление таблици смысловых фрагментов у вновь созданного проекта
                             {
-                                FileInfo file = new FileInfo(S_Dobavl + "/" + "Таблици смысловых фрагментов" + "/" + S_Perem1 + ".txt");
+                                FileInfo file = new FileInfo(S_Dobavl + "/" + "The table of semantic fragments" + "/" + S_Perem1 + ".txt");
                                 if (file.Exists)
                                 {
                                     file.Delete();
@@ -133,7 +136,7 @@ namespace SergeyLibrary
                             }
                             if (S_Osnova != S_STD)    //удаление таблици смысловых фрагментов у существующего открытого
                             {
-                                FileInfo file = new FileInfo(S_Osnova + "/" + "Таблици смысловых фрагментов" + "/" + S_Perem1 + ".txt");
+                                FileInfo file = new FileInfo(S_Osnova + "/" + "The table of semantic fragments" + "/" + S_Perem1 + ".txt");
                                 if (file.Exists)
                                 {
                                     file.Delete();
@@ -154,7 +157,7 @@ namespace SergeyLibrary
                             }
                             if (S_Osnova == S_STD)   //удаление таблици смысловых фрагментов у вновь созданного проекта
                             {
-                                FileInfo file = new FileInfo(S_Dobavl + "/" + "Таблици смысловых фрагментов" + "/" + S_Perem1 + ".txt");
+                                FileInfo file = new FileInfo(S_Dobavl + "/" + "The table of semantic fragments" + "/" + S_Perem1 + ".txt");
                                 if (file.Exists)
                                 {
                                     file.Delete();
@@ -162,7 +165,7 @@ namespace SergeyLibrary
                             }
                             if (S_Osnova != S_STD)    //удаление таблици смысловых фрагментов у существующего открытого проекта
                             {
-                                FileInfo file = new FileInfo(S_Osnova + "/" + "Таблици смысловых фрагментов" + "/" + S_Perem1 + ".txt");
+                                FileInfo file = new FileInfo(S_Osnova + "/" + "The table of semantic fragments" + "/" + S_Perem1 + ".txt");
                                 if (file.Exists)
                                 {
                                     file.Delete();
@@ -186,7 +189,7 @@ namespace SergeyLibrary
                 {
                     try
                     {
-                        DirectoryInfo dirInfo = new DirectoryInfo(S_Dobavl + "/" + "Список текстовых документов");
+                        DirectoryInfo dirInfo = new DirectoryInfo(S_Dobavl + "/" + "Text documents");
                         dirInfo.Delete(true);
                     }
                     catch (Exception ex)
@@ -195,21 +198,21 @@ namespace SergeyLibrary
                     }
                     try
                     {
-                        DirectoryInfo dirInfo = new DirectoryInfo(S_Dobavl + "/" + "Таблици смысловых фрагментов");
+                        DirectoryInfo dirInfo = new DirectoryInfo(S_Dobavl + "/" + "The table of semantic fragments");
                         dirInfo.Delete(true);
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
                     }
-                    Directory.CreateDirectory(S_Dobavl + "/" + "Таблици смысловых фрагментов");      //Создание папки таблици смысловых фрагментов
-                    Directory.CreateDirectory(S_Dobavl + "/" + "Список текстовых документов");       //Создание папки список текстовых документов
+                    Directory.CreateDirectory(S_Dobavl + "/" + "The table of semantic fragments");      //Создание папки таблици смысловых фрагментов
+                    Directory.CreateDirectory(S_Dobavl + "/" + "Text documents");       //Создание папки список текстовых документов
                 }
                 if (S_Osnova != S_STD) //удаление всего из открытого существующего файла 
                 {
                     try
                     {
-                        DirectoryInfo dirInfo = new DirectoryInfo(S_Osnova + "/" + "Список текстовых документов");
+                        DirectoryInfo dirInfo = new DirectoryInfo(S_Osnova + "/" + "Text documents");
                         dirInfo.Delete(true);
                     }
                     catch (Exception ex)
@@ -218,15 +221,15 @@ namespace SergeyLibrary
                     }
                     try
                     {
-                        DirectoryInfo dirInfo = new DirectoryInfo(S_Osnova + "/" + "Таблици смысловых фрагментов");
+                        DirectoryInfo dirInfo = new DirectoryInfo(S_Osnova + "/" + "The table of semantic fragments");
                         dirInfo.Delete(true);
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
                     }
-                    Directory.CreateDirectory(S_Dobavl + "/" + "Таблици смысловых фрагментов");      //Создание папки таблици смысловых фрагментов
-                    Directory.CreateDirectory(S_Dobavl + "/" + "Список текстовых документов");       //Создание папки список текстовых документов
+                    Directory.CreateDirectory(S_Dobavl + "/" + "The table of semantic fragments");      //Создание папки таблици смысловых фрагментов
+                    Directory.CreateDirectory(S_Dobavl + "/" + "Text documents");       //Создание папки список текстовых документов
                 }
             }
         }
@@ -240,10 +243,10 @@ namespace SergeyLibrary
                 {
                     dirInfo.Create();
                 }
-                Directory.CreateDirectory(S_Osnova + "/" + "Таблици смысловых фрагментов");      //Создание папки таблици смысловых фрагментов
-                Directory.CreateDirectory(S_Osnova + "/" + "Список текстовых документов");       //Создание папки список текстовых документов
+                Directory.CreateDirectory(S_Osnova + "/" + "The table of semantic fragments");      //Создание папки таблици смысловых фрагментов
+                Directory.CreateDirectory(S_Osnova + "/" + "Text documents");       //Создание папки список текстовых документов
                 S_Dobavl = S_Osnova;
-                S_Osnova = (folderBrowserDialog.SelectedPath + "/" + "Список текстовых документов");
+                S_Osnova = (folderBrowserDialog.SelectedPath + "/" + "Text documents");
                 S_STD = S_Osnova;
             }
         }
@@ -253,7 +256,7 @@ namespace SergeyLibrary
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)                           //диалоговое окно для выбора папки
             {
                 S_Osnova = folderBrowserDialog.SelectedPath;
-                S_STD = (folderBrowserDialog.SelectedPath + "/" + "Список текстовых документов");  //директория, в которой содержатся текстовые документы
+                S_STD = (folderBrowserDialog.SelectedPath + "/" + "Text documents");  //директория, в которой содержатся текстовые документы
                 string[] fileEntries = Directory.GetFiles(S_STD);                             //в массив записываем имена файлов из директории
                 for (int i = 0; i < fileEntries.Length; i++)                                   //создание цикла на проход по массиву
                 {
@@ -271,10 +274,10 @@ namespace SergeyLibrary
                 }
             }
         }
-
+        
         public static void button2_Click(System.Windows.Forms.ComboBox comboBox)
         {
-            FileInfo fileInf = new FileInfo(S_Osnova + "/" + "Таблици смысловых фрагментов" + "/" + comboBox.Text + ".txt");
+            FileInfo fileInf = new FileInfo(S_Osnova + "/" + "The table of semantic fragments" + "/" + comboBox.Text + ".txt");
             if (fileInf.Exists)
             {
                 //Обновление таблици
@@ -283,11 +286,11 @@ namespace SergeyLibrary
             {
                 if (S_Osnova != S_STD) //При открытии существующего проекта
                 {
-                    System.IO.File.WriteAllText((S_Osnova + "/" + "Таблици смысловых фрагментов" + "/" + comboBox.Text + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
+                    System.IO.File.WriteAllText((S_Osnova + "/" + "The table of semantic fragments" + "/" + comboBox.Text + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
                 }
                 if (S_Osnova == S_STD) //При создании нового проекта
                 {
-                    System.IO.File.WriteAllText((S_Dobavl + "/" + "Таблици смысловых фрагментов" + "/" + comboBox.Text + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
+                    System.IO.File.WriteAllText((S_Dobavl + "/" + "The table of semantic fragments" + "/" + comboBox.Text + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
                 }
             }
             //если файла нет, то создаем файл
