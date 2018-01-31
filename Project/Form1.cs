@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
         {
 
             string A = comboBox1.Text;
-			A = "Иван";
+			A = "Иван"; // Потом убрать, это времянка!!!!
             CSF.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", rewriting);
 			Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
 
