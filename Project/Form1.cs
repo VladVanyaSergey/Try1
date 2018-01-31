@@ -18,20 +18,26 @@ using VladLibrary;
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
-    {   
+    {
+		//
+		int[,] Intron;
+		//
 		public Form1()
         {
             InitializeComponent();
-            textBox1.Text = "111Волнения, случившиеся за полтора месяца до окончания Великой Отечественной войны в 34-й запасной стрелковой дивизии, дислоцировавшейся в Бобруйске, спровоцировали новобранцы, призванные из Западной Белоруссии. Они не хотели служить в РККА и стремились попасть в польскую армию, надеясь на то, что после окончания Второй Мировой их малая родина отойдет к Польше, а не к СССР.";
-        }
+			// Для Сережи! При запуске и подгрузки страницы должен запускаться вот этот фрагемнт!!!
+			string A = "Иван"; // Потом убрать, это времянка!!!!
+			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
+			//
+		}
 
 		private void button1_Click(object sender, EventArgs e)
         {
 
             string A = comboBox1.Text;
 			A = "Иван"; // Потом убрать, это времянка!!!!
-			IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
-			//IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+			IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", Intron);
+			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
 			//Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
 
 		}

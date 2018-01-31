@@ -13,12 +13,13 @@ namespace IvanLibrary
 {
 	public static class GiveMeBlockStructureWithRemainElements
 	{
-		public static void StartWorking(string AdressTextFile ,string adressIndex, TextBox textbox)
+		public static int[,] StartWorking(string AdressTextFile ,string adressIndex, TextBox textbox)
 		{
 			string[,] index = ReadInformFromSemanticFragmentTable(adressIndex);
 			string text = ReadText(AdressTextFile);
 			int inaccuracy = 0;
 			string underline = "";
+			int[,] Intron = new int[index.Length*2/3,2];
 			for (double i = 1; i < textbox.Size.Width / 6.135; i++)
 			{
 				underline = underline + "_";
@@ -28,13 +29,18 @@ namespace IvanLibrary
 			{
 				string timetext = "\r\n" + "\r\n" + index[i, 2] + "\r\n" + "\r\n";
 				text = text.Insert(Convert.ToInt32(index[i,0])+ inaccuracy, timetext);
+				Intron[i*2, 0] = Convert.ToInt32(index[i, 0]) + inaccuracy;
 				inaccuracy = inaccuracy + timetext.Length;
+				Intron[i*2, 1] = Convert.ToInt32(index[i, 0]) + inaccuracy;
 
 				timetext = "\r\n" + underline + "\r\n" + "\r\n";
-				text = text.Insert(Convert.ToInt32(index[i, 1]) + inaccuracy, timetext);
+				text = text.Insert(Convert.ToInt32(index[i, 1])+1 + inaccuracy, timetext);
+				Intron[i * 2 + 1, 0] = Convert.ToInt32(index[i, 0]) + inaccuracy;
 				inaccuracy = inaccuracy + timetext.Length;
+				Intron[i * 2 + 1, 1] = Convert.ToInt32(index[i, 0]) + inaccuracy;
 			}
 			textbox.Text = text;
+			return Intron;
 		}
 		private static string[,] ReadInformFromSemanticFragmentTable(string File)
 		{
@@ -72,14 +78,19 @@ namespace IvanLibrary
 	{
 		static string[,] index;
 		static List<int> ProblemElements;
-		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File)
+		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File, int[,] Intron)
 		{
 			if (textBox.SelectionLength > 0)
 			{
 				int[] outdata = new int[2];
 				outdata[0] = textBox.SelectionStart;
 				outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
-				AddIndexIntoSemanticFragmentTable(File, outdata, textBox);
+				if (CheckUserSelectedIntrons(outdata[0], outdata[1], Intron))
+				{
+					outdata = CorrectionOutdata(outdata, Intron);
+					AddIndexIntoSemanticFragmentTable(File, outdata, textBox);
+				}
+				
 			}
 			else
 			{
@@ -221,6 +232,37 @@ namespace IvanLibrary
 				}
 			}
 			return timeindex;
+		}
+		private static bool CheckUserSelectedIntrons(int start, int end, int[,] Intron)
+		{
+			bool condition=false;
+			for (int i = 0; i < Intron.Length / 2; i++)
+			{
+				condition = (((start >= Intron[i, 0]) && (start <= Intron[i, 1])) || ((end >= Intron[i, 0]) && (end <= Intron[i, 1])));
+				condition = condition || (start <= Intron[i, 0]) && (end >= Intron[i, 0]);
+				condition = condition || (start <= Intron[i, 1]) && (end >= Intron[i, 1]);
+				if (condition)
+				{
+					MessageBox.Show("Неправильное магическое число. Попробуйте выделить повторно.");
+					return !condition;
+				}
+			}
+			return !condition;
+		}
+		private static int[] CorrectionOutdata(int[] outdata, int[,] Intron)
+		{
+			int Correction=0;
+			for (int i = 0; i < Intron.Length / 2; i++)
+			{
+				if (outdata[0] > Intron[i, 0])
+				{
+					Correction = Correction + Intron[i, 1] - Intron[i, 0];
+				}
+			}
+			outdata[0] = outdata[0] - Correction;
+			outdata[1] = outdata[1] - Correction;
+			return outdata;
+
 		}
         //Все, чтобы вытащить нужный кусок текста
         private static List<int> ArrayIntoList()
