@@ -191,7 +191,7 @@ namespace IvanLibrary
     }
 	public class RewritingClass
 	{
-		public static void StartWork(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements, string ProblemText)
+		public static void StartWork(TextBox textbox,RichTextBox richtextbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements, string ProblemText)
 		{
 			listbox.Items.Clear();
             listbox.Items.Add(index[0, 2]);
@@ -201,8 +201,15 @@ namespace IvanLibrary
 				listbox.SetSelected(0,true);
             }
             textbox.Text = ProblemText;
-        }
-		public static void SelectingText(TextBox textbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
+			richtextbox.Text = ProblemText;
+			richtextbox.Select(1,9);
+			richtextbox.SelectionBackColor = Color.BlueViolet;
+			richtextbox.Select(31, 9);
+			richtextbox.SelectionBackColor = Color.Aquamarine;
+
+
+		}
+		public static void SelectingText(TextBox textbox, RichTextBox richtextbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
 		{
 
 		    //textbox.Select

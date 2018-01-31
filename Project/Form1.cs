@@ -26,13 +26,13 @@ namespace WindowsFormsApp1
 		public Form1()
         {
             InitializeComponent();
-            textBox1.Text = "Волнения, случившиеся за полтора месяца до окончания Великой Отечественной войны в 34-й запасной стрелковой дивизии, дислоцировавшейся в Бобруйске, спровоцировали новобранцы, призванные из Западной Белоруссии. Они не хотели служить в РККА и стремились попасть в польскую армию, надеясь на то, что после окончания Второй Мировой их малая родина отойдет к Польше, а не к СССР.";
+            textBox1.Text = "111Волнения, случившиеся за полтора месяца до окончания Великой Отечественной войны в 34-й запасной стрелковой дивизии, дислоцировавшейся в Бобруйске, спровоцировали новобранцы, призванные из Западной Белоруссии. Они не хотели служить в РККА и стремились попасть в польскую армию, надеясь на то, что после окончания Второй Мировой их малая родина отойдет к Польше, а не к СССР.";
         }
 
 		private void button1_Click(object sender, EventArgs e)
         {
-			CSF.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "C://Users/ivan_/Desktop/time.txt", rewriting);
-			Vlad.b1(listBox1, "C://Users/ivan_/Desktop/time.txt");
+			CSF.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "../../../time.txt", rewriting);
+			Vlad.b1(listBox1, "../../../time.txt");
 		}
 
         private void button4_Click(object sender, EventArgs e)
