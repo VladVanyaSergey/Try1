@@ -19,10 +19,6 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {   
-        //
-		public static IvanLibrary.CreateSemanticFile CSF = new CreateSemanticFile();
-		Rewriting rewriting = new Rewriting();
-		//
 		public Form1()
         {
             InitializeComponent();
@@ -34,8 +30,9 @@ namespace WindowsFormsApp1
 
             string A = comboBox1.Text;
 			A = "Иван"; // Потом убрать, это времянка!!!!
-            CSF.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", rewriting);
-			Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+			IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
+			//IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+			//Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
 
 		}
 

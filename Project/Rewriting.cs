@@ -25,12 +25,12 @@ namespace WindowsFormsApp1
 
 		private void Rewriting_Load(object sender, EventArgs e)
 		{
-			IvanLibrary.RewritingClass.StartWork(textBox1, richTextBox1, listBox1, Form1.CSF.index, Form1.CSF.ProblemElements, Form1.CSF.ProblemText);
+			//IvanLibrary.RewritingClass.StartWork(textBox1, richTextBox1, listBox1, Form1.CSF.index, Form1.CSF.ProblemElements, Form1.CSF.ProblemText);
 		}
 
 		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			IvanLibrary.RewritingClass.SelectingText(textBox1, richTextBox1, listBox1, Form1.CSF.index, Form1.CSF.ProblemElements);
+			//IvanLibrary.RewritingClass.SelectingText(textBox1, richTextBox1, listBox1, Form1.CSF.index, Form1.CSF.ProblemElements);
 		}
 	}
 }

@@ -11,29 +11,82 @@ using System.IO;
 
 namespace IvanLibrary
 {
-	public class CreateSemanticFile
+	public static class GiveMeBlockStructureWithRemainElements
 	{
-		public string[,] index;
-		public List<int> ProblemElements;
-        public string ProblemText;
-        public int StartIndexOfProblemText;
-        public CreateSemanticFile()
-		{}
-		public void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File, System.Windows.Forms.Form rewriting)
+		public static void StartWorking(string AdressTextFile ,string adressIndex, TextBox textbox)
+		{
+			string[,] index = ReadInformFromSemanticFragmentTable(adressIndex);
+			string text = ReadText(AdressTextFile);
+			int inaccuracy = 0;
+			string underline = "";
+			for (double i = 1; i < textbox.Size.Width / 6.135; i++)
+			{
+				underline = underline + "_";
+			}
+
+			for (int i = 0; i < index.Length / 3; i++)
+			{
+				string timetext = "\r\n" + "\r\n" + index[i, 2] + "\r\n" + "\r\n";
+				text = text.Insert(Convert.ToInt32(index[i,0])+ inaccuracy, timetext);
+				inaccuracy = inaccuracy + timetext.Length;
+
+				timetext = "\r\n" + underline + "\r\n" + "\r\n";
+				text = text.Insert(Convert.ToInt32(index[i, 1]) + inaccuracy, timetext);
+				inaccuracy = inaccuracy + timetext.Length;
+			}
+			textbox.Text = text;
+		}
+		private static string[,] ReadInformFromSemanticFragmentTable(string File)
+		{
+			int lengthTable = System.IO.File.ReadAllLines(File).Length;
+			string[,]  index = new string[lengthTable, 3];
+			int ind = 0;
+			using (StreamReader sr = new StreamReader(File))   //System.IO.File.Create(File))
+			{
+				while (sr.Peek() >= 0)
+				{
+					string s = sr.ReadLine();
+					string[] s1 = s.Split('\t');
+					index[ind, 0] = s1[1];
+					index[ind, 1] = s1[2];
+					index[ind, 2] = s1[0];
+					ind = ind + 1;
+				}
+			}
+			return index;
+		}
+		private static string ReadText(string AdressTextFile)
+		{
+			string text = "";
+			using (StreamReader sr = new StreamReader(AdressTextFile))   //System.IO.File.Create(File))
+			{
+				while (sr.Peek() >= 0)
+				{
+					text = text + sr.ReadToEnd();
+				}
+			}
+			return text;
+		}
+	}
+	public static class CreateSemanticFile
+	{
+		static string[,] index;
+		static List<int> ProblemElements;
+		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File)
 		{
 			if (textBox.SelectionLength > 0)
 			{
 				int[] outdata = new int[2];
 				outdata[0] = textBox.SelectionStart;
 				outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
-				AddIndexIntoSemanticFragmentTable(File, outdata, rewriting, textBox);
+				AddIndexIntoSemanticFragmentTable(File, outdata, textBox);
 			}
 			else
 			{
 				MessageBox.Show("Вы не выделили смысловой фрагмент");
 			}
 		} //Эта функция вытаскивает выделенный фрагмент и извлекает начальную и конечную координату
-		private void AddIndexIntoSemanticFragmentTable(string File, int[] outdata, System.Windows.Forms.Form rewriting, System.Windows.Forms.TextBox textBox)
+		private static void AddIndexIntoSemanticFragmentTable(string File, int[] outdata, System.Windows.Forms.TextBox textBox)
 		{
 			index = ReadInformFromSemanticFragmentTable(File);
 			index = SortMatrix(index);
@@ -61,7 +114,7 @@ namespace IvanLibrary
 				WriteInformIntoSemanticFragmentTable(File, index);
 			}
 		}
-		private string[,] ReadInformFromSemanticFragmentTable(string File)
+		private static string[,] ReadInformFromSemanticFragmentTable(string File)
 		{
 			int lengthTable = System.IO.File.ReadAllLines(File).Length + 1;
 			index = new string[lengthTable, 3];
@@ -83,7 +136,7 @@ namespace IvanLibrary
 			}
 			return index;
 		}                                           //Считываение из таблицы смысловых фрагментов
-		private string[,] SortMatrix(string[,] index)
+		private static string[,] SortMatrix(string[,] index)
 		{
 			List<int> FirstElement = new List<int>();
 			List<int> SecondElement = new List<int>();
@@ -107,7 +160,7 @@ namespace IvanLibrary
 			}
 			return timeindex;
 		}                                                                   //Сортировка матрицы по начальному индексу																														//Сортировка по индексу
-		private void WriteInformIntoSemanticFragmentTable(string File, string[,] index)
+		private static void WriteInformIntoSemanticFragmentTable(string File, string[,] index)
 		{
 			using (StreamWriter sw = new StreamWriter(File))
 			{
@@ -117,7 +170,7 @@ namespace IvanLibrary
 				}
 			}
 		}                           //Запись списка элементов в таблицу смысловых фрагментов
-		private string NewNameOfSemanticFragment(string[,] index)
+		private static string NewNameOfSemanticFragment(string[,] index)
 		{
 			int ind = 1;
 			for (int i = 0; i < index.GetLength(0); i++)
@@ -130,7 +183,7 @@ namespace IvanLibrary
 			}
 			return "СФ" + ind;
 		}                                                   //Дефолтное название
-		private List<int> CheckCrossingElements(string[,] index)
+		private static List<int> CheckCrossingElements(string[,] index)
 		{
 			List<int> ProblemElements = new List<int>();
 			if (index.GetLength(0) > 1)
@@ -149,7 +202,7 @@ namespace IvanLibrary
 			}
 			return ProblemElements;
 		}
-		private string[,] RemoveOneLineInSemanticFragmentTable(string[,] index, int NumberOfLine)
+		private static string[,] RemoveOneLineInSemanticFragmentTable(string[,] index, int NumberOfLine)
 		{
 			string[,] timeindex = new string[index.GetLength(0) - 1, index.GetLength(1)];
 			int delta = 0;
@@ -170,13 +223,7 @@ namespace IvanLibrary
 			return timeindex;
 		}
         //Все, чтобы вытащить нужный кусок текста
-        private void TakeProblemPartOfTheText(System.Windows.Forms.TextBox textBox)
-        {
-            List<int> ListIndex = ArrayIntoList();
-            ProblemText = textBox.Text.Substring(ListIndex.Min(), ListIndex.Max() - ListIndex.Min());
-            StartIndexOfProblemText = ListIndex.Min();
-        }
-        private List<int> ArrayIntoList()
+        private static List<int> ArrayIntoList()
         {
             List<int> ListIndex = new List<int>();
             ListIndex.Add(Convert.ToInt32(index[0, 0]));
@@ -188,7 +235,6 @@ namespace IvanLibrary
             }
             return ListIndex;
         }
-
     }
 	public class RewritingClass
 	{
@@ -215,5 +261,6 @@ namespace IvanLibrary
 
 		    //textbox.Select
 		}
-	}
+	}//Временно потерянный код, возможно я к нему еще вернусь. Если я не помню зачем это нужно, то можно смело удалять (нужен для мастера выделения)
+	//public class Neo4j
 }
