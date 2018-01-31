@@ -43,16 +43,17 @@ namespace IvanLibrary
 			ProblemElements = CheckCrossingElements(index);
 			if (ProblemElements.Count() > 0)
 			{
-				if (MessageBox.Show("Затронуты области пересечения. Вы хотите...", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-				{
-                    TakeProblemPartOfTheText(textBox);
-					rewriting.ShowDialog();
-				}
-				else
-				{
-					index = RemoveOneLineInSemanticFragmentTable(index, 0);
-					WriteInformIntoSemanticFragmentTable(File, index);
-				}
+				//if (MessageBox.Show("Затронуты области пересечения. Вы хотите...", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+				//{
+				//   TakeProblemPartOfTheText(textBox);
+				//	rewriting.ShowDialog();
+				//}
+				//else
+				//{
+				//	index = RemoveOneLineInSemanticFragmentTable(index, 0);
+				//	WriteInformIntoSemanticFragmentTable(File, index);
+				//}
+				MessageBox.Show("Затронуты области пересечения. Попробуйте выделить повторно.");
 			}
 			else
 			{
