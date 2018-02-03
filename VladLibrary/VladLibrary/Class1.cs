@@ -53,6 +53,7 @@ namespace VladLibrary
         static public void tb1change(TextBox textBox1)
         {
             textBox1.RightToLeft = RightToLeft.No;
+            textBox1.TextAlign = HorizontalAlignment.Left;
             textBox1.ScrollBars = ScrollBars.Vertical;
         }
     }
