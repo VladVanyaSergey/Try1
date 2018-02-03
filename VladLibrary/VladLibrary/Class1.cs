@@ -12,29 +12,29 @@ namespace VladLibrary
     {
         static string tmp;
         static string t;
-        static string sf = "СФ";
-        static int sfchi = 0;
         static int tl;
         static int ts;
         static int i;
-        //(@"C:\Users\Влад\Desktop\Влад сем9\Нетрогать_Влад\СФы.txt")
+        static string namesf;
         static List<string> rlt = new List<string>();
 
         public static void b1(System.Windows.Forms.ListBox listBox1, string adr)
         {
-            listBox1.Items.Clear();
-            sfchi = 0;
             using (StreamReader rdr = new StreamReader(adr))
             {
                 listBox1.Items.Clear();
-                sfchi = 0;
+                i = 0;
+                rlt.Clear();
                 do
                 {
                     tmp = rdr.ReadLine();
                     if (tmp == null) break;
                     rlt.Add(tmp);
-                    sfchi = sfchi + 1;
-                    listBox1.Items.Add(sf + Convert.ToString(sfchi));
+                    t = Convert.ToString(rlt.ElementAt(i));
+                    i = i + 1;
+                    string[] t1 = t.Split('\t');
+                    namesf = t1[0];
+                    listBox1.Items.Add(namesf);
                 } while (true);
             }
         }
@@ -47,6 +47,13 @@ namespace VladLibrary
             ts = Convert.ToInt32(t1[1]);
             tl = Convert.ToInt32(t1[2]) - ts + 1;
             textBox1.Select(ts, tl);
+            textBox1.ScrollToCaret();
+        }
+
+        static public void tb1change(TextBox textBox1)
+        {
+            textBox1.RightToLeft = RightToLeft.No;
+            textBox1.ScrollBars = ScrollBars.Vertical;
         }
     }
 }
