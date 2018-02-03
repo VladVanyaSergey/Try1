@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
 			string A = "Иван"; // Потом убрать, это времянка!!!!
 			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
 			//Эксперимент
-			IvanLibrary.Neo4j.start();
+			//IvanLibrary.Neo4j.start();
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
 			A = "Иван"; // Потом убрать, это времянка!!!!
 			IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", Intron);
 			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
-			//Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+			Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
 
 		}
 
@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Vlad.lb1(listBox1, textBox1);
+            Vlad.lb1(listBox1, textBox1, Intron);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
