@@ -55,6 +55,7 @@ namespace VladLibrary
             textBox1.RightToLeft = RightToLeft.No;
             textBox1.TextAlign = HorizontalAlignment.Left;
             textBox1.ScrollBars = ScrollBars.Vertical;
+            textBox1.ReadOnly = true;
         }
     }
 }
