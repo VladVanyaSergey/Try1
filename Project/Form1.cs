@@ -28,7 +28,8 @@ namespace WindowsFormsApp1
 			// Для Сережи! При запуске и подгрузки страницы должен запускаться вот этот фрагемнт!!!
 			string A = "Иван"; // Потом убрать, это времянка!!!!
 			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
-			//
+			//Эксперимент
+			IvanLibrary.Neo4j.start();
 		}
 
 		private void button1_Click(object sender, EventArgs e)

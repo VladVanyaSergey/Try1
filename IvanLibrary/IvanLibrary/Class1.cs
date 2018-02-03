@@ -304,5 +304,12 @@ namespace IvanLibrary
 		    //textbox.Select
 		}
 	}//Временно потерянный код, возможно я к нему еще вернусь. Если я не помню зачем это нужно, то можно смело удалять (нужен для мастера выделения)
-	//public class Neo4j
+	public static class Neo4j
+	{
+		public static void start()
+		{
+			var client = new Neo4jClient.GraphClient(new Uri(" http://localhost:7474/"));
+
+		}
+	}
 }
