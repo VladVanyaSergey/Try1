@@ -39,13 +39,11 @@ namespace VladLibrary
             }
         }
 
-        static public void lb1(System.Windows.Forms.ListBox listBox1, TextBox textBox1)
+        static public void lb1(System.Windows.Forms.ListBox listBox1, TextBox textBox1, int[,] Intron)
         {
             i = listBox1.SelectedIndex;
-            t = Convert.ToString(rlt.ElementAt(i));
-            string[] t1 = t.Split('\t');
-            ts = Convert.ToInt32(t1[1]);
-            tl = Convert.ToInt32(t1[2]) - ts + 1;
+            ts = Intron[i * 2, 0];
+            tl = Intron[i * 2, 1] - ts;
             textBox1.Select(ts, tl);
             textBox1.ScrollToCaret();
         }
