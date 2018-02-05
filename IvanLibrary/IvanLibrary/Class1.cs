@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Neo4jClient;
+
 
 namespace IvanLibrary
 {
@@ -304,12 +306,16 @@ namespace IvanLibrary
 		    //textbox.Select
 		}
 	}//Временно потерянный код, возможно я к нему еще вернусь. Если я не помню зачем это нужно, то можно смело удалять (нужен для мастера выделения)
-	public static class Neo4j
+	public class Neo4j
 	{
-		public static void start()
+		GraphClient client;
+		public Neo4j()
 		{
-			var client = new Neo4jClient.GraphClient(new Uri(" http://localhost:7474/"));
-
+			client = new GraphClient(new Uri("http://localhost:7474/db/data"), "neo4j", "1234");
+		}
+		public void ConnectToDataBase()
+		{
+			client.Connect();
 		}
 	}
 }
