@@ -43,7 +43,7 @@ namespace IvanLibrary
 			}
 			textbox.Text = text;
 			return Intron;
-		}
+		} // Текст --> текст разбитый на смысловой фрагмент 
 		private static string[,] ReadInformFromSemanticFragmentTable(string File)
 		{
 			int lengthTable = System.IO.File.ReadAllLines(File).Length;
@@ -62,7 +62,7 @@ namespace IvanLibrary
 				}
 			}
 			return index;
-		}
+		}// Считывание данных из таблицы смысловых фрагемнтов
 		private static string ReadText(string AdressTextFile)
 		{
 			string text = "";
@@ -74,11 +74,11 @@ namespace IvanLibrary
 				}
 			}
 			return text;
-		}
+		}//Считывание файла с текстом. Нужно пересмотреть!!! Тут я написал индуский код
 	}
 	public static class CreateSemanticFile
 	{
-		static string[,] index;
+		static string[,] index; //Таблица смысловых фрагментов
 		static List<int> ProblemElements;
 		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File, int[,] Intron)
 		{
@@ -126,7 +126,7 @@ namespace IvanLibrary
 				index = SortMatrix(index);
 				WriteInformIntoSemanticFragmentTable(File, index);
 			}
-		}
+		}//добавление СФ в таблицу смысловых фрагментов
 		private static string[,] ReadInformFromSemanticFragmentTable(string File)
 		{
 			int lengthTable = System.IO.File.ReadAllLines(File).Length + 1;
@@ -148,7 +148,7 @@ namespace IvanLibrary
 				}
 			}
 			return index;
-		}                                           //Считываение из таблицы смысловых фрагментов
+		}//Считываение из файла таблицы смысловых фрагментов
 		private static string[,] SortMatrix(string[,] index)
 		{
 			List<int> FirstElement = new List<int>();
@@ -172,7 +172,7 @@ namespace IvanLibrary
 				ThirdElement.RemoveAt(c);
 			}
 			return timeindex;
-		}                                                                   //Сортировка матрицы по начальному индексу																														//Сортировка по индексу
+		}//Сортировка матрицы по начальному индексу																														//Сортировка по индексу
 		private static void WriteInformIntoSemanticFragmentTable(string File, string[,] index)
 		{
 			using (StreamWriter sw = new StreamWriter(File))
@@ -182,7 +182,7 @@ namespace IvanLibrary
 					sw.WriteLine(index[i, 2] + "\t" + index[i, 0] + "\t" + index[i, 1]);
 				}
 			}
-		}                           //Запись списка элементов в таблицу смысловых фрагментов
+		}//Запись списка элементов в таблицу смысловых фрагментов
 		private static string NewNameOfSemanticFragment(string[,] index)
 		{
 			int ind = 1;
@@ -195,7 +195,7 @@ namespace IvanLibrary
 				}
 			}
 			return "СФ" + ind;
-		}                                                   //Дефолтное название
+		}//Дефолтное название смысловых фрагментов
 		private static List<int> CheckCrossingElements(string[,] index)
 		{
 			List<int> ProblemElements = new List<int>();
@@ -214,7 +214,7 @@ namespace IvanLibrary
 				}
 			}
 			return ProblemElements;
-		}
+		} //Выдает список пересекающиеся фрагментов с новым  
 		private static string[,] RemoveOneLineInSemanticFragmentTable(string[,] index, int NumberOfLine)
 		{
 			string[,] timeindex = new string[index.GetLength(0) - 1, index.GetLength(1)];
@@ -234,7 +234,7 @@ namespace IvanLibrary
 				}
 			}
 			return timeindex;
-		}
+		}//Удаляет один элемент из таблицы смысловых фрагментов
 		private static bool CheckUserSelectedIntrons(int start, int end, int[,] Intron)
 		{
 			bool condition=false;
@@ -250,7 +250,7 @@ namespace IvanLibrary
 				}
 			}
 			return !condition;
-		}
+		}//Проверка выделенного текста на появление в нем элементов по типу "СФ" или "____"
 		private static int[] CorrectionOutdata(int[] outdata, int[,] Intron)
 		{
 			int Correction=0;
@@ -265,7 +265,7 @@ namespace IvanLibrary
 			outdata[1] = outdata[1] - Correction;
 			return outdata;
 
-		}
+		}//Поправка выделенных координат с учетом координат элементов по типу "СФ" или "___"
         //Все, чтобы вытащить нужный кусок текста
         private static List<int> ArrayIntoList()
         {
@@ -278,7 +278,7 @@ namespace IvanLibrary
                 ListIndex.Add(Convert.ToInt32(index[ProblemElements[i], 1]));
             }
             return ListIndex;
-        }
+        }//Перевод массива в список 
     }
 	public class RewritingClass
 	{
@@ -312,10 +312,10 @@ namespace IvanLibrary
 		public Neo4j()
 		{
 			client = new GraphClient(new Uri("http://localhost:7474/db/data"), "neo4j", "1234");
-		}
+		}//Конструктор. Тут будет окно для ввода данных о сервере
 		public void ConnectToDataBase()
 		{
 			client.Connect();
-		}
+		}//Команда для подключения к базе данных
 	}
 }
