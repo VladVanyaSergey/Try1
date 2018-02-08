@@ -151,3 +151,14 @@ E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Deb
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\System.Security.Cryptography.Primitives.dll
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\System.Security.Cryptography.X509Certificates.dll
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\IvanLibrary.dll.config
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\Neo4j.Driver.dll
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\Neo4jClient.dll
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\Newtonsoft.Json.dll
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\System.Net.Http.dll
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\Neo4jClient.pdb
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\Neo4jClient.xml
+C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\Newtonsoft.Json.xml

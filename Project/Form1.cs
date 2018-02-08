@@ -29,8 +29,8 @@ namespace WindowsFormsApp1
 			string A = "Иван"; // Потом убрать, это времянка!!!!
 			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
 			//Эксперимент
-			var neo4j = new IvanLibrary.Neo4j();
-			neo4j.ConnectToDataBase();
+			//var neo4j = new IvanLibrary.Neo4j();
+			//neo4j.ConnectToDataBase();
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace WindowsFormsApp1
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-
-		}
+            Sergey.button3_Click(button1, button3, button4, button5, button6, button7, textBox1);
+        }
 	}
 }

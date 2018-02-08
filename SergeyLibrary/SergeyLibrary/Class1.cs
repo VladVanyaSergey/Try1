@@ -297,5 +297,16 @@ namespace SergeyLibrary
             // System.IO.File.WriteAllText((S_Osnova + "/" + "Таблици смысловых фрагментов" +"/" + comboBox.Text + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
             //еслий файл есть, то пишем меседж бокс, о том, что таблица смысловых фрагментов для данного файла создана
         }
+
+        public static void button3_Click(System.Windows.Forms.Button button1, System.Windows.Forms.Button button3, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox)
+        {
+            button1.Visible = false; //кнопки окна СФ
+            button3.Visible = false;
+            button4.Visible = false;
+            button5.Visible = true; //кнопки окна Понятий
+            button6.Visible = true;
+            button7.Visible = true;
+            textBox.Clear();
+        }
     }
 }
