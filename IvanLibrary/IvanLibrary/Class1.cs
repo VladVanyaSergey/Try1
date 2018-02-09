@@ -22,7 +22,7 @@ namespace IvanLibrary
 			int inaccuracy = 0;
 			string underline = "";
 			int[,] Intron = new int[index.Length*2/3,2];
-			for (double i = 1; i < textbox.Size.Width / 6.135; i++)
+			for (double i = 1; i < (textbox.Size.Width-21) / 6.135; i++)
 			{
 				underline = underline + "_";
 			}
@@ -37,9 +37,9 @@ namespace IvanLibrary
 
 				timetext = "\r\n" + underline + "\r\n" + "\r\n";
 				text = text.Insert(Convert.ToInt32(index[i, 1])+1 + inaccuracy, timetext);
-				Intron[i * 2 + 1, 0] = Convert.ToInt32(index[i, 0]) + inaccuracy;
+				Intron[i * 2 + 1, 0] = Convert.ToInt32(index[i, 1]) + inaccuracy;
 				inaccuracy = inaccuracy + timetext.Length;
-				Intron[i * 2 + 1, 1] = Convert.ToInt32(index[i, 0]) + inaccuracy;
+				Intron[i * 2 + 1, 1] = Convert.ToInt32(index[i, 1]) + inaccuracy;
 			}
 			textbox.Text = text;
 			return Intron;
