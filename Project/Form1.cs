@@ -25,8 +25,16 @@ namespace WindowsFormsApp1
 		public Form1()
         {
             InitializeComponent();
-			// Для Сережи! При запуске и подгрузки страницы должен запускаться вот этот фрагемнт!!!
-			string A = "Иван"; // Потом убрать, это времянка!!!!
+            //////////////////////////////
+            button1.Visible = true; //кнопки окна СФ
+            button3.Visible = true;
+            button4.Visible = true;
+            button5.Visible = false; //кнопки окна Понятий
+            button6.Visible = false;
+            button7.Visible = false;
+            /////////////////////////////
+            // Для Сережи! При запуске и подгрузки страницы должен запускаться вот этот фрагемнт!!!
+            string A = "Иван"; // Потом убрать, это времянка!!!!
 			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
 			//Эксперимент
 			//var neo4j = new IvanLibrary.Neo4j();
@@ -106,5 +114,6 @@ namespace WindowsFormsApp1
 		{
             Sergey.button3_Click(button1, button3, button4, button5, button6, button7, textBox1);
         }
-	}
+
+    }
 }
