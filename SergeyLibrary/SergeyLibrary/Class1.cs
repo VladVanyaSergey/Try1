@@ -233,7 +233,7 @@ namespace SergeyLibrary
                 }
             }
         }
-        public static void создатьToolStripMenuItem_Click(System.Windows.Forms.FolderBrowserDialog folderBrowserDialog)
+        public static void создатьToolStripMenuItem_Click(System.Windows.Forms.FolderBrowserDialog folderBrowserDialog, System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel)
         {
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
@@ -249,9 +249,10 @@ namespace SergeyLibrary
                 S_Osnova = (folderBrowserDialog.SelectedPath + "/" + "Text documents");
                 S_STD = S_Osnova;
             }
+            toolStripStatusLabel.Text = "Проект создан"; //изменение в строке состояний
         }
 
-        public static void открытьToolStripMenuItemToolStripMenuItem_Click(System.Windows.Forms.FolderBrowserDialog folderBrowserDialog, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox)
+        public static void открытьToolStripMenuItemToolStripMenuItem_Click(System.Windows.Forms.FolderBrowserDialog folderBrowserDialog, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel)
         {
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)                           //диалоговое окно для выбора папки
             {
@@ -273,6 +274,7 @@ namespace SergeyLibrary
                     comboBox.Text = S_namefile;                                                //Надпись комбобокса меняется на имя файла
                 }
             }
+            toolStripStatusLabel.Text = "Проект открыт"; //изменение в строке состояний
         }
         
         public static void button2_Click(System.Windows.Forms.ComboBox comboBox)

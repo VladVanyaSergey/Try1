@@ -96,13 +96,13 @@ namespace WindowsFormsApp1
         private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            Sergey.создатьToolStripMenuItem_Click(folderBrowserDialog);
+            Sergey.создатьToolStripMenuItem_Click(folderBrowserDialog, toolStripStatusLabel1);
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            Sergey.открытьToolStripMenuItemToolStripMenuItem_Click(folderBrowserDialog, textBox1, comboBox1);
+            Sergey.открытьToolStripMenuItemToolStripMenuItem_Click(folderBrowserDialog, textBox1, comboBox1, toolStripStatusLabel1);
         }
 
         private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
@@ -114,6 +114,5 @@ namespace WindowsFormsApp1
 		{
             Sergey.button3_Click(button1, button3, button4, button5, button6, button7, textBox1);
         }
-
     }
 }
