@@ -12,6 +12,7 @@ namespace VladLibrary
     {
         static string tmp;
         static string t;
+        static string trez;
         static int tl;
         static int ts;
         static int i;
@@ -48,6 +49,26 @@ namespace VladLibrary
             textBox1.ScrollToCaret();
         }
 
+        static public void b3(TextBox textBox1, int[,] Intron)//удаление лишнего текста
+        {
+            i = 0;
+            trez = textBox1.Text;//пусть пока будет
+            t = textBox1.Text;
+            tl = t.Length;
+            ts = Intron.Length;
+            t = t.Remove(Intron[ts / 2 - 1, 1]);
+            ts = ts / 4;
+            for (i = ts - 1; i > 0;)
+            {
+                t = t.Remove(Intron[i * 2 - 1, 1], Intron[i * 2, 0] - Intron[i * 2 - 1, 1]);
+                i = i - 1;
+            }
+            if (Intron[0, 0] != 0)
+            {
+                t = t.Remove(0, Intron[0, 0] + 3);
+            }
+            textBox1.Text = t;
+        }
         static public void tb1change(TextBox textBox1)
         {
             textBox1.RightToLeft = RightToLeft.No;
