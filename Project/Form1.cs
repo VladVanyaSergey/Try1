@@ -27,8 +27,8 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             // Для Сережи! При запуске и подгрузки страницы должен запускаться вот этот фрагемнт!!!
-            //string A = "Иван"; // Потом убрать, это времянка!!!!
-			//Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
+            string A = "Иван"; // Потом убрать, это времянка!!!!
+			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1,0);
 			//Эксперимент
 		}
 
@@ -36,9 +36,12 @@ namespace WindowsFormsApp1
         {
 
             string A = comboBox1.Text;
-			//A = "Иван"; // Потом убрать, это времянка!!!!
-			IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", Intron);
-			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
+			A = "Иван"; // Потом убрать, это времянка!!!!
+			int[] outdata=IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", Intron);
+			if (outdata[0] != -1)
+			{
+				Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, outdata[0]);
+			}
 			Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
 
 		}

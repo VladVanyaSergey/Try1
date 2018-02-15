@@ -15,11 +15,12 @@ namespace IvanLibrary
 {
 	public static class GiveMeBlockStructureWithRemainElements
 	{
-		public static int[,] StartWorking(string AdressTextFile ,string adressIndex, TextBox textbox)
+		public static int[,] StartWorking(string AdressTextFile ,string adressIndex, TextBox textbox, int startExon)
 		{
 			string[,] index = ReadInformFromSemanticFragmentTable(adressIndex);
 			string text = ReadText(AdressTextFile);
 			int inaccuracy = 0;
+			int start = startExon;
 			string underline = "";
 			int[,] Intron = new int[index.Length*2/3,2];
 			for (double i = 1; i < (textbox.Size.Width-21) / 6.135; i++)
@@ -40,8 +41,19 @@ namespace IvanLibrary
 				Intron[i * 2 + 1, 0] = Convert.ToInt32(index[i, 1]) + inaccuracy;
 				inaccuracy = inaccuracy + timetext.Length;
 				Intron[i * 2 + 1, 1] = Convert.ToInt32(index[i, 1]) + inaccuracy;
+				if ((startExon >= Convert.ToInt32(index[i, 0]))&&(startExon >= Convert.ToInt32(index[i, 1])))
+				{
+					start += Intron[i * 2, 1] - Intron[i * 2, 0]+ Intron[i * 2 + 1, 1]- Intron[i * 2 + 1, 0];
+				}
+				if ((startExon >= Convert.ToInt32(index[i, 0])) && (startExon <= Convert.ToInt32(index[i, 1])))
+				{
+					start += Intron[i * 2, 1] - Intron[i * 2, 0];
+				}
 			}
 			textbox.Text = text;
+			textbox.Select(start, 50);
+			textbox.ScrollToCaret();
+			textbox.Select(0,0);
 			return Intron;
 		} // Текст --> текст разбитый на смысловой фрагмент 
 		private static string[,] ReadInformFromSemanticFragmentTable(string File)
@@ -80,11 +92,11 @@ namespace IvanLibrary
 	{
 		static string[,] index; //Таблица смысловых фрагментов
 		static List<int> ProblemElements;
-		public static void SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File, int[,] Intron)
+		public static int[] SelectedTextIntoIndexForSemanticFragmentTable(System.Windows.Forms.TextBox textBox, string File, int[,] Intron)
 		{
+			int[] outdata = new int[2];
 			if (textBox.SelectionLength > 0)
 			{
-				int[] outdata = new int[2];
 				outdata[0] = textBox.SelectionStart;
 				outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
 				if (CheckUserSelectedIntrons(outdata[0], outdata[1], Intron))
@@ -96,8 +108,10 @@ namespace IvanLibrary
 			}
 			else
 			{
+				outdata[0] = -1;
 				MessageBox.Show("Вы не выделили смысловой фрагмент");
 			}
+			return outdata;
 		} //Эта функция вытаскивает выделенный фрагмент и извлекает начальную и конечную координату
 		private static void AddIndexIntoSemanticFragmentTable(string File, int[] outdata, System.Windows.Forms.TextBox textBox)
 		{
