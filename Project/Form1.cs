@@ -114,5 +114,11 @@ namespace WindowsFormsApp1
 		{
             Sergey.button3_Click(button1, button3, button4, button5, button6, button7, textBox1);
         }
-    }
+
+		private void подключениеToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var window = new ConnectToDBNeo4j();
+			window.ShowDialog();
+		}
+	}
 }
