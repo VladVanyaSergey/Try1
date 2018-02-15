@@ -44,7 +44,7 @@ namespace VladLibrary
         {
             i = listBox1.SelectedIndex;
             ts = Intron[i * 2, 0];
-            tl = Intron[i * 2, 1] - ts;
+            tl = Intron[i * 2, 1] - ts-3;
             textBox1.Select(ts, tl);
             textBox1.ScrollToCaret();
         }
