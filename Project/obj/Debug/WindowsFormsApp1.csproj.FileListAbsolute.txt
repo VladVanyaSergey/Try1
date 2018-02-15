@@ -163,3 +163,4 @@ C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\Neo4jClient.pdb
 C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\Neo4jClient.xml
 C:\Users\blhjk\Desktop\Try1\Project\bin\Debug\Newtonsoft.Json.xml
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.ConnectToDBNeo4j.resources
+C:\Users\blhjk\Desktop\Try1\Project\obj\Debug\WindowsFormsApp1.ConnectToDBNeo4j.resources

@@ -5,3 +5,7 @@ C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.
 C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.csproj.CoreCompileInputs.cache
 C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.dll
 C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.pdb
+C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\IvanLibrary.dll
+C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\VladLibrary.dll
+C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\IvanLibrary.pdb
+C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\VladLibrary.pdb

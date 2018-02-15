@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Word = Microsoft.Office.Interop.Word; //Введение алиаса пространства имен Word
+using VladLibrary;
+using IvanLibrary;
 
 namespace SergeyLibrary
 {
@@ -68,18 +70,21 @@ namespace SergeyLibrary
         }
 
 
-        public static void ComboBox1_SelectedIndexChanged(System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.TextBox textBox)
+        public static int[,] ComboBox1_SelectedIndexChanged(System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ListBox listBox,int[,] Intron)
         {
             for (int i = 0; i < S_nameFile.Count; i++)
             {
                 if (comboBox.Text == S_nameFile[i])
                 {
                     textBox.Text = S_textFile[i];
+                    Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox);
+                    Vlad.b1(listBox, "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt");
                 }
             }
+            return Intron;
         }
 
-        public static void удалитьФайлToolStripMenuItem_Click(System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.TextBox textBox)
+        public static int[,] удалитьФайлToolStripMenuItem_Click(System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ListBox listBox, int[,] Intron)
         {
             if (MessageBox.Show("Удалить текущий документы?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
@@ -95,6 +100,8 @@ namespace SergeyLibrary
                         {
                             comboBox.Text = S_nameFile[i];
                             textBox.Text = S_textFile[i];
+                            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox); //вставка
+                            Vlad.b1(listBox, "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt");//вставка
                             FileInfo fileInf = new FileInfo(S_STD + "/" + S_Perem1 + ".txt");
                             if (fileInf.Exists)
                             {
@@ -121,6 +128,8 @@ namespace SergeyLibrary
                         {
                             comboBox.Text = S_nameFile[i - 1];
                             textBox.Text = S_textFile[i - 1];
+                            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i-1] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i-1] + ".txt", textBox); //вставка
+                            Vlad.b1(listBox, "Primer/The table of semantic fragments/" + S_nameFile[i-1] + ".txt");//вставка
                             FileInfo fileInf = new FileInfo(S_STD + "/" + S_Perem1 + ".txt");
                             if (fileInf.Exists)
                             {
@@ -175,6 +184,7 @@ namespace SergeyLibrary
                     }
                 }
             }
+            return Intron;
         }
         public static void удалитьВсеДокументыToolStripMenuItem_Click(System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.TextBox textBox)
         {
@@ -300,7 +310,7 @@ namespace SergeyLibrary
             //еслий файл есть, то пишем меседж бокс, о том, что таблица смысловых фрагментов для данного файла создана
         }
 
-        public static void button3_Click(System.Windows.Forms.Button button1, System.Windows.Forms.Button button3, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox)
+        public static void button3_Click(System.Windows.Forms.Button button1, System.Windows.Forms.Button button3, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox, int[,] Intron)
         {
             button1.Visible = false; //кнопки окна СФ
             button3.Visible = false;
@@ -308,7 +318,7 @@ namespace SergeyLibrary
             button5.Visible = true; //кнопки окна Понятий
             button6.Visible = true;
             button7.Visible = true;
-            textBox.Clear();
+            Vlad.b3(textBox, Intron);
         }
     }
 }

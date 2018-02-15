@@ -26,17 +26,9 @@ namespace WindowsFormsApp1
 		public Form1()
         {
             InitializeComponent();
-            //////////////////////////////
-            button1.Visible = true; //кнопки окна СФ
-            button3.Visible = true;
-            button4.Visible = true;
-            button5.Visible = false; //кнопки окна Понятий
-            button6.Visible = false;
-            button7.Visible = false;
-            /////////////////////////////
             // Для Сережи! При запуске и подгрузки страницы должен запускаться вот этот фрагемнт!!!
-            string A = "Иван"; // Потом убрать, это времянка!!!!
-			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
+            //string A = "Иван"; // Потом убрать, это времянка!!!!
+			//Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
 			//Эксперимент
 		}
 
@@ -44,7 +36,7 @@ namespace WindowsFormsApp1
         {
 
             string A = comboBox1.Text;
-			A = "Иван"; // Потом убрать, это времянка!!!!
+			//A = "Иван"; // Потом убрать, это времянка!!!!
 			IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", Intron);
 			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
 			Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
@@ -73,12 +65,12 @@ namespace WindowsFormsApp1
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Sergey.ComboBox1_SelectedIndexChanged(comboBox1,textBox1);          //Переход между документами в комбобоксе
+            Intron = Sergey.ComboBox1_SelectedIndexChanged(comboBox1,textBox1,listBox1,Intron);          //Переход между документами в комбобоксе
         }
 
         private void удалитьДокументToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Sergey.удалитьФайлToolStripMenuItem_Click(comboBox1, textBox1);    //Удаление текущего документа (по значению в комбобоксе)
+           Intron = Sergey.удалитьФайлToolStripMenuItem_Click(comboBox1, textBox1, listBox1, Intron);    //Удаление текущего документа (по значению в комбобоксе)
         }
 
         private void добавитьДокументToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,7 +103,7 @@ namespace WindowsFormsApp1
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-            Sergey.button3_Click(button1, button3, button4, button5, button6, button7, textBox1);
+            Sergey.button3_Click(button1, button3, button4, button5, button6, button7, textBox1,Intron);
         }
 
 		private void подключениеToolStripMenuItem_Click(object sender, EventArgs e)
