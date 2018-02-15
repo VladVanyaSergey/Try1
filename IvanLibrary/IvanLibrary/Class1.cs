@@ -308,13 +308,19 @@ namespace IvanLibrary
 	}//Временно потерянный код, возможно я к нему еще вернусь. Если я не помню зачем это нужно, то можно смело удалять (нужен для мастера выделения)
 	public class Neo4j
 	{
+		public string adress = "http://localhost:7474/db/data";
+		public string username = "neo4j";
+		public string password = "1234";
 		GraphClient client;
 		public Neo4j()
+		{ 
+		}//Конструктор
+		public void ConnectToDataBase(string ad, string us, string pa)
 		{
-			client = new GraphClient(new Uri("http://localhost:7474/db/data"), "neo4j", "1234");
-		}//Конструктор. Тут будет окно для ввода данных о сервере
-		public void ConnectToDataBase()
-		{
+			adress = ad;
+			username = us;
+			password = pa;
+			client = new GraphClient(new Uri(adress),username, password);
 			client.Connect();
 		}//Команда для подключения к базе данных
 	}

@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
     {
 		//
 		int[,] Intron;
+		public static IvanLibrary.Neo4j neo4j = new IvanLibrary.Neo4j();
 		//
 		public Form1()
         {
@@ -37,8 +38,6 @@ namespace WindowsFormsApp1
             string A = "Иван"; // Потом убрать, это времянка!!!!
 			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
 			//Эксперимент
-			//var neo4j = new IvanLibrary.Neo4j();
-			//neo4j.ConnectToDataBase();
 		}
 
 		private void button1_Click(object sender, EventArgs e)

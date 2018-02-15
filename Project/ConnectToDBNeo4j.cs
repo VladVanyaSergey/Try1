@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IvanLibrary;
 
 namespace WindowsFormsApp1
 {
@@ -15,6 +16,9 @@ namespace WindowsFormsApp1
 		public ConnectToDBNeo4j()
 		{
 			InitializeComponent();
+			richTextBox1.Text = Form1.neo4j.adress;
+			richTextBox2.Text = Form1.neo4j.username;
+			richTextBox3.Text = Form1.neo4j.password;
 		}
 
 		private void label1_Click(object sender, EventArgs e)
@@ -34,7 +38,8 @@ namespace WindowsFormsApp1
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-
+			Form1.neo4j.ConnectToDataBase(richTextBox1.Text, richTextBox2.Text, richTextBox3.Text);
+			this.Close();
 		}
 	}
 }
