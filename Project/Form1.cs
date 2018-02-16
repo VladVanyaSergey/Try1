@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
         {
 
             string A = comboBox1.Text;
-			A = "Иван"; // Потом убрать, это времянка!!!!
+			//A = "Иван"; // Потом убрать, это времянка!!!!
 			int[] outdata=IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", Intron);
 			if (outdata[0] != -1)
 			{
@@ -84,7 +84,7 @@ namespace WindowsFormsApp1
         private void добавитьДокументToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();             //Открытие диалогового окна для подгрузки текста из файла
-            Sergey.добавитьФайлToolStripMenuItem_Click(textBox1, comboBox1, listBox1, openFileDialog, Intron);
+            Intron = Sergey.добавитьФайлToolStripMenuItem_Click(textBox1, comboBox1, listBox1, openFileDialog, Intron);
         }
 
         private void удалитьВсеДокументыToolStripMenuItem_Click_1(object sender, EventArgs e)
