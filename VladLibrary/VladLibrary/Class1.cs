@@ -16,10 +16,11 @@ namespace VladLibrary
         static int tl;
         static int ts;
         static int i;
+        static int i1;
         static string namesf;
         static List<string> rlt = new List<string>();
 
-        public static void b1(System.Windows.Forms.ListBox listBox1, string adr)
+        public static void b1(System.Windows.Forms.ListBox listBox1, string adr)//считывание данных из txt-файла и формирование СФ-ов в Listbox
         {
             using (StreamReader rdr = new StreamReader(adr))
             {
@@ -40,7 +41,7 @@ namespace VladLibrary
             }
         }
 
-        static public void lb1(System.Windows.Forms.ListBox listBox1, TextBox textBox1, int[,] Intron)
+        static public void lb1(System.Windows.Forms.ListBox listBox1, TextBox textBox1, int[,] Intron)//навигация
         {
             i = listBox1.SelectedIndex;
             ts = Intron[i * 2, 0];
@@ -68,6 +69,24 @@ namespace VladLibrary
                 t = t.Remove(0, Intron[0, 0] + 3);
             }
             textBox1.Text = t;
+        }
+        public static void b5(System.Windows.Forms.ListBox listBox1, string adr)//удаление СФа
+        {
+            if (i == listBox1.SelectedIndex)
+            {
+                using (StreamWriter sdelSF = new StreamWriter(adr))
+                {
+
+                    for (int k = 0; k < i1; k++)
+                    {
+                        if (k != i)
+                        {
+                            sdelSF.WriteLine(rlt.ElementAt(k));
+                        }
+                    }
+                }
+            }
+            //Vlad.b1(listBox1, adr);
         }
         static public void tb1change(TextBox textBox1)
         {

@@ -27,8 +27,8 @@ namespace WindowsFormsApp1
         {
 			InitializeComponent();
             // Для Сережи! При запуске и подгрузки страницы должен запускаться вот этот фрагемнт!!!
-            //string A = "Иван"; // Потом убрать, это времянка!!!!
-			//Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1,0);
+            string A = "Иван"; // Потом убрать, это времянка!!!!
+			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1,0);
 			//Эксперимент
 		}
 
@@ -119,5 +119,15 @@ namespace WindowsFormsApp1
 			var window = new ConnectToDBNeo4j();
 			window.ShowDialog();
 		}
-	}
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

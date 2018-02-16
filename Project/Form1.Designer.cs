@@ -226,6 +226,7 @@
             this.button5.Text = "Удалить понятие";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Visible = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -236,6 +237,7 @@
             this.button6.Text = "Добавить понятие";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Visible = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
