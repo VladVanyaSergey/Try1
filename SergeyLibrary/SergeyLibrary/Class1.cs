@@ -28,7 +28,7 @@ namespace SergeyLibrary
         static List<string> S_nameFile = new List<string>();
         static List<string> S_textFile = new List<string>();
 
-        public static void добавитьФайлToolStripMenuItem_Click(System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.OpenFileDialog openFileDialog1)
+        public static int[,]  добавитьФайлToolStripMenuItem_Click(System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox,System.Windows.Forms.ListBox listBox, System.Windows.Forms.OpenFileDialog openFileDialog1, int[,] Intron)
         {
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)                           //Открытие диалогового окна для открытия файла
@@ -56,17 +56,21 @@ namespace SergeyLibrary
                     System.IO.File.WriteAllText((S_Dobavl + "/" + "The table of semantic fragments" + "/" + S_namefile + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
 
                 }
-                textBox.Text = S_text;                                                                                //Извлекаем из буфера обмена копированный текст.
+                //textBox.Text = S_text;                                                                                //Извлекаем из буфера обмена копированный текст.
                 comboBox.Items.Add(S_namefile);                                                                       //Добавление в combobox1 имени файла, с которого мы скопировали текст 
                 comboBox.Text = S_namefile;                                                                           //Надпись комбобокса меняется на имя файла
+                listBox.Items.Clear();                                                                                //очистка листбкса
                 S_nameFile.Add(S_namefile);                                                                           //Добавление в список имени файла
                 S_textFile.Add(S_text);                                                                               //Добавление в список текста файла
+                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_namefile + ".txt", "Primer/The table of semantic fragments/" + S_namefile + ".txt", textBox, 0);
+                Vlad.b1(listBox, "Primer/The table of semantic fragments/" + S_namefile + ".txt");
                 Object saveChanges = Word.WdSaveOptions.wdPromptToSaveChanges;
                 Object originalFormat = Word.WdOriginalFormat.wdWordDocument;
                 Object routeDocument = Type.Missing;
                 S_wordapp.Quit(ref saveChanges, ref originalFormat, ref routeDocument);    // Закрытие файла
                 S_wordapp = null;
             }
+            return Intron;
         }
 
 
