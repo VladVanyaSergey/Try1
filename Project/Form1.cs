@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
         {
             string A = comboBox1.Text; //хотелось бы убрать по возможности
             A = "Иван"; // Потом убрать, это времянка!!!!
-            Vlad.b4(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+            Vlad.b5(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
             Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1,0); // потом добавить 0 в конец из-за изменений вани
         }
 
