@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
         {
 
             string A = comboBox1.Text;
-			//A = "Иван"; // Потом убрать, это времянка!!!!
+			A = "Иван"; // Потом убрать, это времянка!!!!
 			int[] outdata=IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", Intron);
 			if (outdata[0] != -1)
 			{
@@ -53,6 +53,7 @@ namespace WindowsFormsApp1
             A = "Иван"; // Потом убрать, это времянка!!!!
             Vlad.b4(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
             Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1,0); // потом добавить 0 в конец из-за изменений вани
+            Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
         }
 
         private void button2_Click(object sender, EventArgs e)
