@@ -325,17 +325,29 @@ namespace IvanLibrary
 		public string adress = "http://localhost:7474/db/data";
 		public string username = "neo4j";
 		public string password = "1234";
+		public Exception ex;
 		GraphClient client;
 		public Neo4j()
 		{ 
 		}//Конструктор
-		public void ConnectToDataBase(string ad, string us, string pa)
+		public bool ConnectToDataBase(string ad, string us, string pa)
 		{
 			adress = ad;
 			username = us;
 			password = pa;
-			client = new GraphClient(new Uri(adress),username, password);
-			client.Connect();
+			try
+			{
+				client = new GraphClient(new Uri(adress), username, password);
+				client.Connect();
+				return true;
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(e.Message.ToString());
+				ex = e;
+				return false;
+			}
+			
 		}//Команда для подключения к базе данных
 	}
 }

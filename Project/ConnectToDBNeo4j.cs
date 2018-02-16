@@ -38,8 +38,11 @@ namespace WindowsFormsApp1
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			Form1.neo4j.ConnectToDataBase(richTextBox1.Text, richTextBox2.Text, richTextBox3.Text);
-			this.Close();
+			if (Form1.neo4j.ConnectToDataBase(richTextBox1.Text, richTextBox2.Text, richTextBox3.Text))
+			{
+				this.Close();
+			}
+			
 		}
 	}
 }
