@@ -32,18 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClassLibrary1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\IvanLibrary\ClassLibrary1\bin\Debug\ClassLibrary1.dll</HintPath>
-    </Reference>
     <Reference Include="IvanLibrary">
       <HintPath>..\IvanLibrary\IvanLibrary\bin\Debug\IvanLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Neo4j.Driver, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Neo4j.Driver.1.4.1\lib\net452\Neo4j.Driver.dll</HintPath>
+    <Reference Include="Neo4j.Driver, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Neo4j.Driver.1.5.2\lib\net452\Neo4j.Driver.dll</HintPath>
     </Reference>
-    <Reference Include="Neo4jClient, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Neo4jClient.3.0.0\lib\net46\Neo4jClient.dll</HintPath>
+    <Reference Include="Neo4jClient, Version=3.0.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Neo4jClient.3.0.1.1\lib\net46\Neo4jClient.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -132,15 +128,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="LCC11">
-      <Guid>{EDCD5812-6A06-43C3-AFAC-46EF5D14E22C}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
