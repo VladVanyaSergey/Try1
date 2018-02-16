@@ -26,6 +26,7 @@ namespace VladLibrary
             {
                 listBox1.Items.Clear();
                 i = 0;
+                i1 = 0;
                 rlt.Clear();
                 do
                 {
@@ -34,6 +35,7 @@ namespace VladLibrary
                     rlt.Add(tmp);
                     t = Convert.ToString(rlt.ElementAt(i));
                     i = i + 1;
+                    i1 = i1 + 1;
                     string[] t1 = t.Split('\t');
                     namesf = t1[0];
                     listBox1.Items.Add(namesf);
