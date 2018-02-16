@@ -70,14 +70,14 @@ namespace SergeyLibrary
         }
 
 
-        public static int[,] ComboBox1_SelectedIndexChanged(System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ListBox listBox,int[,] Intron)
+        public static int[,] ComboBox1_SelectedIndexChanged(System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ListBox listBox, int[,] Intron)
         {
             for (int i = 0; i < S_nameFile.Count; i++)
             {
                 if (comboBox.Text == S_nameFile[i])
                 {
                     textBox.Text = S_textFile[i];
-                    Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox);
+                    Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0);
                     Vlad.b1(listBox, "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt");
                 }
             }
@@ -100,7 +100,7 @@ namespace SergeyLibrary
                         {
                             comboBox.Text = S_nameFile[i];
                             textBox.Text = S_textFile[i];
-                            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox); //вставка
+                            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0); //вставка
                             Vlad.b1(listBox, "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt");//вставка
                             FileInfo fileInf = new FileInfo(S_STD + "/" + S_Perem1 + ".txt");
                             if (fileInf.Exists)
@@ -128,8 +128,8 @@ namespace SergeyLibrary
                         {
                             comboBox.Text = S_nameFile[i - 1];
                             textBox.Text = S_textFile[i - 1];
-                            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i-1] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i-1] + ".txt", textBox); //вставка
-                            Vlad.b1(listBox, "Primer/The table of semantic fragments/" + S_nameFile[i-1] + ".txt");//вставка
+                            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i - 1] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i - 1] + ".txt", textBox, 0); //вставка
+                            Vlad.b1(listBox, "Primer/The table of semantic fragments/" + S_nameFile[i - 1] + ".txt");//вставка
                             FileInfo fileInf = new FileInfo(S_STD + "/" + S_Perem1 + ".txt");
                             if (fileInf.Exists)
                             {
@@ -310,15 +310,37 @@ namespace SergeyLibrary
             //еслий файл есть, то пишем меседж бокс, о том, что таблица смысловых фрагментов для данного файла создана
         }
 
-        public static void button3_Click(System.Windows.Forms.Button button1, System.Windows.Forms.Button button3, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox, int[,] Intron)
+        public static void button3_Click(System.Windows.Forms.Button button1, System.Windows.Forms.Button button3, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox1, System.Windows.Forms.ComboBox comboBox2, int[,] Intron)
         {
             button1.Visible = false; //кнопки окна СФ
             button3.Visible = false;
             button4.Visible = false;
+            comboBox1.Visible = false;
             button5.Visible = true; //кнопки окна Понятий
             button6.Visible = true;
             button7.Visible = true;
+            comboBox2.Visible = true;
+            for (int i = 0; i < S_nameFile.Count; i++)
+            {
+                comboBox2.Items.Add(S_nameFile[i]);
+                comboBox2.Text = comboBox1.Text;
+            }
+
             Vlad.b3(textBox, Intron);
+        }
+
+        public static int[,] ComboBox2_SelectedIndexChanged(System.Windows.Forms.ComboBox comboBox2, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ListBox listBox, int[,] Intron)
+        {
+            for (int i = 0; i < S_nameFile.Count; i++)
+            {
+                if (comboBox2.Text == S_nameFile[i])
+                {
+                    textBox.Text = S_textFile[i];
+                    Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0);
+                    Vlad.b1(listBox, "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt");
+                }
+            }
+            return Intron;
         }
     }
 }

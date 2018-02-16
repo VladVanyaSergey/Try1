@@ -51,6 +51,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -262,11 +263,21 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(45, 17);
             this.toolStripStatusLabel1.Text = "Готово";
             // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(146, 28);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(120, 21);
+            this.comboBox2.TabIndex = 12;
+            this.comboBox2.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 481);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -316,6 +327,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
 		private System.Windows.Forms.ToolStripMenuItem neo4jToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem подключениеToolStripMenuItem;
-	}
+        private System.Windows.Forms.ComboBox comboBox2;
+    }
 }
 
