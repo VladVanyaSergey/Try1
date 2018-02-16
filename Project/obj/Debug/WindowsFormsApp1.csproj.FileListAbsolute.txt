@@ -84,3 +84,5 @@ C:\Users\Влад\Documents\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.cspro
 C:\Users\Влад\Documents\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\Влад\Documents\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Влад\Documents\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\IvanLibrary.dll.config
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
