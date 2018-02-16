@@ -84,7 +84,7 @@ namespace WindowsFormsApp1
         private void добавитьДокументToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();             //Открытие диалогового окна для подгрузки текста из файла
-            Sergey.добавитьФайлToolStripMenuItem_Click(textBox1, comboBox1, openFileDialog);
+            Sergey.добавитьФайлToolStripMenuItem_Click(textBox1, comboBox1, listBox1, openFileDialog, Intron);
         }
 
         private void удалитьВсеДокументыToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -148,6 +148,31 @@ namespace WindowsFormsApp1
 		private void listBox1_MouseDown(object sender, MouseEventArgs e)
 		{
 			listBox1.SelectedIndex = listBox1.IndexFromPoint(e.X, e.Y);
+		}
+
+		private void toolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void textBox1_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.A)
+			{
+				string A = comboBox1.Text;
+				A = "Иван"; // Потом убрать, это времянка!!!!
+				int[] outdata = IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", Intron);
+				if (outdata[0] != -1)
+				{
+					Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, outdata[0]);
+				}
+				Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+			}
 		}
 	}
 }

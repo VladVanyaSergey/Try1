@@ -129,6 +129,7 @@
 			this.textBox1.TabIndex = 5;
 			this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+			this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
 			// 
 			// button4
 			// 
@@ -311,12 +312,14 @@
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
 			this.toolStripMenuItem1.Size = new System.Drawing.Size(214, 30);
 			this.toolStripMenuItem1.Text = "Переименовать";
+			this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
 			// 
 			// удалитьToolStripMenuItem
 			// 
 			this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
 			this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
 			this.удалитьToolStripMenuItem.Text = "Удалить";
+			this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
