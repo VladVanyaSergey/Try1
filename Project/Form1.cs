@@ -26,8 +26,9 @@ namespace WindowsFormsApp1
 		public Form1()
         {
 			InitializeComponent();
-            // Для Сережи! При запуске и подгрузки страницы должен запускаться вот этот фрагемнт!!!
-            string A = "Иван"; // Потом убрать, это времянка!!!!
+			listBox1.ContextMenuStrip = contextMenuStrip1;
+			// Для Сережи! При запуске и подгрузки страницы должен запускаться вот этот фрагемнт!!!
+			string A = "Иван"; // Потом убрать, это времянка!!!!
 			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1,0);
 			//Эксперимент
 		}
@@ -56,8 +57,8 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-        }
+			
+		}
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -71,7 +72,8 @@ namespace WindowsFormsApp1
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Intron = Sergey.ComboBox1_SelectedIndexChanged(comboBox1,textBox1,listBox1,Intron);          //Переход между документами в комбобоксе
+			
+			Intron = Sergey.ComboBox1_SelectedIndexChanged(comboBox1,textBox1,listBox1,Intron);          //Переход между документами в комбобоксе
         }
 
         private void удалитьДокументToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,7 +108,7 @@ namespace WindowsFormsApp1
         {
 
         }
-
+		
 		private void button3_Click(object sender, EventArgs e)
 		{
             Sergey.button3_Click(button1, button3, button4, button5, button6, button7, textBox1, comboBox1, comboBox2 ,Intron);
@@ -137,5 +139,15 @@ namespace WindowsFormsApp1
         {
             Intron = Sergey.ComboBox2_SelectedIndexChanged(comboBox2, textBox1, listBox1, Intron);          //Переход между документами в комбобоксе
         }
-    }
+
+		private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+		{
+			
+		}
+
+		private void listBox1_MouseDown(object sender, MouseEventArgs e)
+		{
+			listBox1.SelectedIndex = listBox1.IndexFromPoint(e.X, e.Y);
+		}
+	}
 }
