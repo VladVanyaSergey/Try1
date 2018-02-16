@@ -70,7 +70,7 @@ namespace VladLibrary
             }
             textBox1.Text = t;
         }
-        public static void b5(System.Windows.Forms.ListBox listBox1, string adr)//удаление СФа
+        public static void b4(System.Windows.Forms.ListBox listBox1, string adr)//удаление СФа
         {
             if (i == listBox1.SelectedIndex)
             {
