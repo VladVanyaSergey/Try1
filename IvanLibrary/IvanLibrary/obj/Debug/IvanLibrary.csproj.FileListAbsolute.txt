@@ -22,3 +22,15 @@ E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\Iva
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\Neo4jClient.xml
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\Newtonsoft.Json.xml
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\IvanLibrary.dll.config
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\IvanLibrary.dll.config
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\Neo4j.Driver.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\Neo4jClient.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\System.Net.Http.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\Neo4jClient.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\Neo4jClient.xml
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\Newtonsoft.Json.xml
