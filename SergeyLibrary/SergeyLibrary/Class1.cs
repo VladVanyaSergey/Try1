@@ -325,8 +325,6 @@ namespace SergeyLibrary
                 comboBox2.Items.Add(S_nameFile[i]);
                 comboBox2.Text = comboBox1.Text;
             }
-
-            Vlad.b3(textBox, Intron);
         }
 
         public static int[,] ComboBox2_SelectedIndexChanged(System.Windows.Forms.ComboBox comboBox2, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ListBox listBox, int[,] Intron)
@@ -337,6 +335,7 @@ namespace SergeyLibrary
                 {
                     textBox.Text = S_textFile[i];
                     Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + S_nameFile[i] + ".txt", "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0);
+                    Vlad.b3(textBox, Intron);
                     Vlad.b1(listBox, "Primer/The table of semantic fragments/" + S_nameFile[i] + ".txt");
                 }
             }

@@ -132,5 +132,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void comboBox2_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Intron = Sergey.ComboBox2_SelectedIndexChanged(comboBox2, textBox1, listBox1, Intron);          //Переход между документами в комбобоксе
+        }
     }
 }
