@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Word = Microsoft.Office.Interop.Word; //Введение алиаса пространства имен Word
+using Microsoft.VisualBasic;  //Подключение Inputbox (В обозревателе решений:Ссылки>Добавить ссылку>Сборки>выбрать Microsoft.VisualBasic  > написать здесь using Microsoft.VisualBasic
 using System.Reflection;
 using IvanLibrary;
 using SergeyLibrary;
@@ -47,13 +48,13 @@ namespace WindowsFormsApp1
 
 		}
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)// эту кнопку можно убрать
         {
-            string A = comboBox1.Text; //хотелось бы убрать по возможности
-            A = "Иван"; // Потом убрать, это времянка!!!!
-            Vlad.b4(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
-            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1,0); // потом добавить 0 в конец из-за изменений вани
-            Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+            //string A = comboBox1.Text; //хотелось бы убрать по возможности
+            //A = "Иван"; // Потом убрать, это времянка!!!!
+            //Vlad.b4(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+            //Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1,0); // потом добавить 0 в конец из-за изменений вани
+            //Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -153,13 +154,24 @@ namespace WindowsFormsApp1
 
 		private void toolStripMenuItem1_Click(object sender, EventArgs e)//переименовывание СФа
 		{
+            string nameSF;
+            nameSF = Interaction.InputBox("Хотите дать название смысловому фрагменту? Введите название и нажмите ОК.");
 
-		}
+            string A = comboBox1.Text; //хотелось бы убрать по возможности
+            A = "Иван"; // Потом убрать, это времянка!!!!
+            Vlad.pereimSF(listBox1, "Primer/The table of semantic fragments/" + A + ".txt", nameSF);
+            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при переименовывании
+            Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+        }
 
 		private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)//удаление СФа
 		{
-
-		}
+            string A = comboBox1.Text; //хотелось бы убрать по возможности
+            A = "Иван"; // Потом убрать, это времянка!!!!
+            Vlad.delSF(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при удалении
+            Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+        }
 
 		private void textBox1_KeyDown(object sender, KeyEventArgs e)
 		{
