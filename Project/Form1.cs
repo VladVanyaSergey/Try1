@@ -151,12 +151,12 @@ namespace WindowsFormsApp1
 			listBox1.SelectedIndex = listBox1.IndexFromPoint(e.X, e.Y);
 		}
 
-		private void toolStripMenuItem1_Click(object sender, EventArgs e)
+		private void toolStripMenuItem1_Click(object sender, EventArgs e)//переименовывание СФа
 		{
 
 		}
 
-		private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+		private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)//удаление СФа
 		{
 
 		}

@@ -94,6 +94,49 @@ namespace VladLibrary
             textBox1.Text = t;
         }
 
+        public static void delSF(System.Windows.Forms.ListBox listBox1, string adr)//удаление СФа
+        {
+            if (i == listBox1.SelectedIndex)
+            {
+                using (StreamWriter sdelSF = new StreamWriter(adr))
+                {
+
+                    for (int k = 0; k < i1; k++)
+                    {
+                        if (k != i)
+                        {
+                            sdelSF.WriteLine(rlt.ElementAt(k));
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void pereimSF(System.Windows.Forms.ListBox listBox1, string adr, string namesf)//переименовывание СФа
+        {
+            if (i == listBox1.SelectedIndex)
+            {
+                using (StreamWriter pereimenovSF = new StreamWriter(adr))
+                {
+
+                    for (int k = 0; k < i1; k++)
+                    {
+                        if (k != i)
+                        {
+                            pereimenovSF.WriteLine(rlt.ElementAt(k));
+                        }
+                        else
+                        {
+                            t = Convert.ToString(rlt.ElementAt(k));
+                            string[] t1 = t.Split('\t');
+                            c0 = t1[1];
+                            c1 = t1[2];
+                            pereimenovSF.WriteLine(namesf + '\t' + t1[1] + '\t' + c1);
+                        }
+                    }
+                }
+            }
+        }
         static public void tb1change(TextBox textBox1)
         {
             textBox1.RightToLeft = RightToLeft.No;
