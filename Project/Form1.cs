@@ -175,5 +175,10 @@ namespace WindowsFormsApp1
 				Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
 			}
 		}
-	}
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

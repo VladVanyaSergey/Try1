@@ -10,6 +10,8 @@ namespace VladLibrary
 {
     public class Vlad
     {
+        static string c0;
+        static string c1;
         static string tmp;
         static string t;
         static string trez;
@@ -17,6 +19,7 @@ namespace VladLibrary
         static int ts;
         static int i;
         static int i1;
+        static int pravka;
         static string namesf;
         static List<string> rlt = new List<string>();
 
@@ -63,33 +66,34 @@ namespace VladLibrary
             ts = ts / 4;
             for (i = ts - 1; i > 0;)
             {
-                t = t.Remove(Intron[i * 2 - 1, 1], Intron[i * 2, 0] - Intron[i * 2 - 1, 1]);
+                pravka = Intron[i * 2, 0] - Intron[i * 2 - 1, 1];
+                t = t.Remove(Intron[i * 2 - 1, 1], pravka);
+                for (int k = ts; k > i;)
+                {
+                    Intron[k * 2 - 2, 0] = Intron[k * 2 - 2, 0] - pravka;
+                    Intron[k * 2 - 2, 1] = Intron[k * 2 - 2, 1] - pravka;
+                    Intron[k * 2 - 1, 0] = Intron[k * 2 - 1, 0] - pravka;
+                    Intron[k * 2 - 1, 1] = Intron[k * 2 - 1, 1] - pravka;
+                    k = k - 1;
+                }
                 i = i - 1;
             }
             if (Intron[0, 0] != 0)
             {
-                t = t.Remove(0, Intron[0, 0] + 3);
+                t = t.Remove(0, Intron[0, 0]);
+                pravka = Intron[0, 0];
+                for (int k = ts; k > 0;)
+                {
+                    Intron[k * 2 - 2, 0] = Intron[k * 2 - 2, 0] - pravka;
+                    Intron[k * 2 - 2, 1] = Intron[k * 2 - 2, 1] - pravka;
+                    Intron[k * 2 - 1, 0] = Intron[k * 2 - 1, 0] - pravka;
+                    Intron[k * 2 - 1, 1] = Intron[k * 2 - 1, 1] - pravka;
+                    k = k - 1;
+                }
             }
             textBox1.Text = t;
         }
-        public static void b4(System.Windows.Forms.ListBox listBox1, string adr)//удаление СФа
-        {
-            if (i == listBox1.SelectedIndex)
-            {
-                using (StreamWriter sdelSF = new StreamWriter(adr))
-                {
 
-                    for (int k = 0; k < i1; k++)
-                    {
-                        if (k != i)
-                        {
-                            sdelSF.WriteLine(rlt.ElementAt(k));
-                        }
-                    }
-                }
-            }
-            //Vlad.b1(listBox1, adr);
-        }
         static public void tb1change(TextBox textBox1)
         {
             textBox1.RightToLeft = RightToLeft.No;
