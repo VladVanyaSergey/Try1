@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
 		int[,] Intron;
 		public static IvanLibrary.Neo4j neo4j = new IvanLibrary.Neo4j();
         //
-        /public int i;
+        public int i;
         //
 		public Form1()
         {

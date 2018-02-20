@@ -249,7 +249,7 @@ namespace IvanLibrary
 			}
 			return timeindex;
 		}//Удаляет один элемент из таблицы смысловых фрагментов
-		private static bool CheckUserSelectedIntrons(int start, int end, int[,] Intron)
+		public static bool CheckUserSelectedIntrons(int start, int end, int[,] Intron)
 		{
 			bool condition = false;
 			for (int i = 0; i < Intron.Length / 2; i++)
@@ -366,13 +366,16 @@ namespace IvanLibrary
 			outdata[0] = textBox.SelectionStart;
 			outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
 			string text = textBox.SelectedText;
-			if (VladLibrary.Vlad.f_dla_vani(outdata[0], outdata[1], Intron))
+			if (!CreateSemanticFile.CheckUserSelectedIntrons(outdata[0], outdata[1], Intron)) //(VladLibrary.Vlad.f_dla_vani(outdata[0], outdata[1], Intron)) // Здесь Влад писал функцию, которая определяет является ли выбранный участок Интроном или нет.
 			{
 				MessageBox.Show("Ошибка про магическое число");
 			}
-			//Сережа
-			neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
-			neo4j.AddTerm(text);
+			else
+			{
+				//Сережа
+				//neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
+				//neo4j.AddTerm(text);
+			}
 		}
 	}
 }
