@@ -360,13 +360,16 @@ namespace IvanLibrary
 	}
 	public class SelectedTextSecondForm
 	{
-		public static void SelecteTextSecondWindow(TextBox textBox, Neo4j neo4j)
+		public static void SelecteTextSecondWindow(TextBox textBox, Neo4j neo4j, int[,] Intron)
 		{
 			int[] outdata = new int[2];
 			outdata[0] = textBox.SelectionStart;
 			outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
 			string text = textBox.SelectedText;
-			//Влад
+			if (VladLibrary.Vlad.f_dla_vani(outdata[0], outdata[1], Intron))
+			{
+				MessageBox.Show("Ошибка про магическое число");
+			}
 			//Сережа
 			neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
 			neo4j.AddTerm(text);

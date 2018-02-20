@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
 		int[,] Intron;
 		public static IvanLibrary.Neo4j neo4j = new IvanLibrary.Neo4j();
         //
-        public int i;
+        /public int i;
         //
 		public Form1()
         {
@@ -131,7 +131,7 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-			IvanLibrary.SelectedTextSecondForm.SelecteTextSecondWindow(textBox1, neo4j);
+			IvanLibrary.SelectedTextSecondForm.SelecteTextSecondWindow(textBox1, neo4j, Intron);
 		}
 
         private void button5_Click(object sender, EventArgs e)
