@@ -54,12 +54,20 @@ namespace VladLibrary
 
         static public void focusirovka(int i, TextBox textBox1, int[,] Intron)//фокусировка
         {
-            ts = Intron[i * 2, 0];
-            tl = Intron[i * 2, 1] - ts - 3;
-            textBox1.Select(Intron[i * 2 + 1, 1], 0);
-            textBox1.ScrollToCaret();
-            textBox1.Select(ts, tl);
-            textBox1.ScrollToCaret();
+            if (i == -1)
+            {
+                i = 0;
+            }
+            else
+            {
+                ts = Intron[i * 2, 0];
+                tl = Intron[i * 2, 1] - ts - 3;
+                textBox1.Select(Intron[i * 2 + 1, 1], 0);
+                textBox1.ScrollToCaret();
+                textBox1.Select(ts, tl);
+                textBox1.ScrollToCaret();
+            }
+            
         }
 
         static public void b3(TextBox textBox1, int[,] Intron)//удаление лишнего текста

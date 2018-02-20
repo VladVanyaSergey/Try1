@@ -23,7 +23,9 @@ namespace WindowsFormsApp1
 		//
 		int[,] Intron;
 		public static IvanLibrary.Neo4j neo4j = new IvanLibrary.Neo4j();
-		//
+        //
+        public int i;
+        //
 		public Form1()
         {
 			InitializeComponent();
@@ -159,9 +161,11 @@ namespace WindowsFormsApp1
 
             string A = comboBox1.Text; //хотелось бы убрать по возможности
             A = "Иван"; // Потом убрать, это времянка!!!!
+            i= listBox1.SelectedIndex;
             Vlad.pereimSF(listBox1, "Primer/The table of semantic fragments/" + A + ".txt", nameSF);
             Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при переименовывании
             Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+            Vlad.focusirovka(i, textBox1, Intron);
         }
 
 		private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)//удаление СФа
