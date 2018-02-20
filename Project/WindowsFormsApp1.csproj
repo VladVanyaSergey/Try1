@@ -35,6 +35,7 @@
     <Reference Include="IvanLibrary">
       <HintPath>..\IvanLibrary\IvanLibrary\bin\Debug\IvanLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Neo4j.Driver, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Neo4j.Driver.1.5.2\lib\net452\Neo4j.Driver.dll</HintPath>
     </Reference>

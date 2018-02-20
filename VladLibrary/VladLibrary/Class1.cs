@@ -15,12 +15,12 @@ namespace VladLibrary
         static string tmp;
         static string t;
         static string trez;
+        static string namesf;
         static int tl;
         static int ts;
         static int i;
         static int i1;
         static int pravka;
-        static string namesf;
         static List<string> rlt = new List<string>();
 
         public static void b1(System.Windows.Forms.ListBox listBox1, string adr)//считывание данных из txt-файла и формирование СФ-ов в Listbox
@@ -46,11 +46,18 @@ namespace VladLibrary
             }
         }
 
-        static public void lb1(System.Windows.Forms.ListBox listBox1, TextBox textBox1, int[,] Intron)//навигация
+        static public void lb1(System.Windows.Forms.ListBox listBox1, TextBox textBox1, int[,] Intron)//навигация по листбоксу
         {
             i = listBox1.SelectedIndex;
+            Vlad.focusirovka(i, textBox1, Intron);
+        }
+
+        static public void focusirovka(int i, TextBox textBox1, int[,] Intron)//фокусировка
+        {
             ts = Intron[i * 2, 0];
-            tl = Intron[i * 2, 1] - ts-3;
+            tl = Intron[i * 2, 1] - ts - 3;
+            textBox1.Select(Intron[i * 2 + 1, 1], 0);
+            textBox1.ScrollToCaret();
             textBox1.Select(ts, tl);
             textBox1.ScrollToCaret();
         }
@@ -136,6 +143,27 @@ namespace VladLibrary
                     }
                 }
             }
+        }
+
+        static public bool f_dla_vani(int c1, int c2, int[,] Intron) //функция определяющая затронуты ли интроны по 2-ом окне или нет. Если затронуты возвращается булевское значение try
+        {
+            bool f_dla_van = false;
+            ts = Intron.Length;
+            ts = ts / 2;
+            for (i = 0; i < ts;)
+            {
+                if (c1 <= Intron[i, 0])
+                {
+                    f_dla_van = true;
+                }
+
+                if (c2 >= Intron[i, 1])
+                {
+                    f_dla_van = true;
+                }
+                i = i + 1;
+            }
+            return f_dla_van;
         }
         static public void tb1change(TextBox textBox1)
         {
