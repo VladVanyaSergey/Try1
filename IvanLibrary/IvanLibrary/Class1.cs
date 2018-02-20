@@ -15,15 +15,15 @@ namespace IvanLibrary
 {
 	public static class GiveMeBlockStructureWithRemainElements
 	{
-		public static int[,] StartWorking(string AdressTextFile ,string adressIndex, TextBox textbox, int startExon)
+		public static int[,] StartWorking(string AdressTextFile, string adressIndex, TextBox textbox, int startExon)
 		{
 			string[,] index = ReadInformFromSemanticFragmentTable(adressIndex);
 			string text = ReadText(AdressTextFile);
 			int inaccuracy = 0;
 			int start = startExon;
 			string underline = "";
-			int[,] Intron = new int[index.Length*2/3,2];
-			for (double i = 1; i < (textbox.Size.Width-21) / 6.135; i++)
+			int[,] Intron = new int[index.Length * 2 / 3, 2];
+			for (double i = 1; i < (textbox.Size.Width - 21) / 6.135; i++)
 			{
 				underline = underline + "_";
 			}
@@ -31,19 +31,19 @@ namespace IvanLibrary
 			for (int i = 0; i < index.Length / 3; i++)
 			{
 				string timetext = "\r\n" + "\r\n" + index[i, 2] + "\r\n" + "\r\n";
-				text = text.Insert(Convert.ToInt32(index[i,0])+ inaccuracy, timetext);
-				Intron[i*2, 0] = Convert.ToInt32(index[i, 0]) + inaccuracy;
+				text = text.Insert(Convert.ToInt32(index[i, 0]) + inaccuracy, timetext);
+				Intron[i * 2, 0] = Convert.ToInt32(index[i, 0]) + inaccuracy;
 				inaccuracy = inaccuracy + timetext.Length;
-				Intron[i*2, 1] = Convert.ToInt32(index[i, 0]) + inaccuracy;
+				Intron[i * 2, 1] = Convert.ToInt32(index[i, 0]) + inaccuracy;
 
 				timetext = "\r\n" + underline + "\r\n" + "\r\n";
-				text = text.Insert(Convert.ToInt32(index[i, 1])+1 + inaccuracy, timetext);
+				text = text.Insert(Convert.ToInt32(index[i, 1]) + 1 + inaccuracy, timetext);
 				Intron[i * 2 + 1, 0] = Convert.ToInt32(index[i, 1]) + inaccuracy;
 				inaccuracy = inaccuracy + timetext.Length;
 				Intron[i * 2 + 1, 1] = Convert.ToInt32(index[i, 1]) + inaccuracy;
-				if ((startExon >= Convert.ToInt32(index[i, 0]))&&(startExon >= Convert.ToInt32(index[i, 1])))
+				if ((startExon >= Convert.ToInt32(index[i, 0])) && (startExon >= Convert.ToInt32(index[i, 1])))
 				{
-					start += Intron[i * 2, 1] - Intron[i * 2, 0]+ Intron[i * 2 + 1, 1]- Intron[i * 2 + 1, 0];
+					start += Intron[i * 2, 1] - Intron[i * 2, 0] + Intron[i * 2 + 1, 1] - Intron[i * 2 + 1, 0];
 				}
 				if ((startExon >= Convert.ToInt32(index[i, 0])) && (startExon <= Convert.ToInt32(index[i, 1])))
 				{
@@ -53,13 +53,13 @@ namespace IvanLibrary
 			textbox.Text = text;
 			textbox.Select(start, 50);
 			textbox.ScrollToCaret();
-			textbox.Select(0,0);
+			textbox.Select(0, 0);
 			return Intron;
 		} // Текст --> текст разбитый на смысловой фрагмент 
 		private static string[,] ReadInformFromSemanticFragmentTable(string File)
 		{
 			int lengthTable = System.IO.File.ReadAllLines(File).Length;
-			string[,]  index = new string[lengthTable, 3];
+			string[,] index = new string[lengthTable, 3];
 			int ind = 0;
 			using (StreamReader sr = new StreamReader(File))   //System.IO.File.Create(File))
 			{
@@ -104,7 +104,7 @@ namespace IvanLibrary
 					outdata = CorrectionOutdata(outdata, Intron);
 					AddIndexIntoSemanticFragmentTable(File, outdata, textBox);
 				}
-				
+
 			}
 			else
 			{
@@ -251,7 +251,7 @@ namespace IvanLibrary
 		}//Удаляет один элемент из таблицы смысловых фрагментов
 		private static bool CheckUserSelectedIntrons(int start, int end, int[,] Intron)
 		{
-			bool condition=false;
+			bool condition = false;
 			for (int i = 0; i < Intron.Length / 2; i++)
 			{
 				condition = (((start >= Intron[i, 0]) && (start <= Intron[i, 1])) || ((end >= Intron[i, 0]) && (end <= Intron[i, 1])));
@@ -267,7 +267,7 @@ namespace IvanLibrary
 		}//Проверка выделенного текста на появление в нем элементов по типу "СФ" или "____"
 		private static int[] CorrectionOutdata(int[] outdata, int[,] Intron)
 		{
-			int Correction=0;
+			int Correction = 0;
 			for (int i = 0; i < Intron.Length / 2; i++)
 			{
 				if (outdata[0] > Intron[i, 0])
@@ -280,34 +280,34 @@ namespace IvanLibrary
 			return outdata;
 
 		}//Поправка выделенных координат с учетом координат элементов по типу "СФ" или "___"
-        //Все, чтобы вытащить нужный кусок текста
-        private static List<int> ArrayIntoList()
-        {
-            List<int> ListIndex = new List<int>();
-            ListIndex.Add(Convert.ToInt32(index[0, 0]));
-            ListIndex.Add(Convert.ToInt32(index[0, 1]));
-            for (int i = 0; i < ProblemElements.Count(); i++)
-            {
-                ListIndex.Add(Convert.ToInt32(index[ProblemElements[i], 0]));
-                ListIndex.Add(Convert.ToInt32(index[ProblemElements[i], 1]));
-            }
-            return ListIndex;
-        }//Перевод массива в список 
-    }
+		 //Все, чтобы вытащить нужный кусок текста
+		private static List<int> ArrayIntoList()
+		{
+			List<int> ListIndex = new List<int>();
+			ListIndex.Add(Convert.ToInt32(index[0, 0]));
+			ListIndex.Add(Convert.ToInt32(index[0, 1]));
+			for (int i = 0; i < ProblemElements.Count(); i++)
+			{
+				ListIndex.Add(Convert.ToInt32(index[ProblemElements[i], 0]));
+				ListIndex.Add(Convert.ToInt32(index[ProblemElements[i], 1]));
+			}
+			return ListIndex;
+		}//Перевод массива в список 
+	}
 	public class RewritingClass
 	{
-		public static void StartWork(TextBox textbox,RichTextBox richtextbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements, string ProblemText)
+		public static void StartWork(TextBox textbox, RichTextBox richtextbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements, string ProblemText)
 		{
 			listbox.Items.Clear();
-            listbox.Items.Add(index[0, 2]);
+			listbox.Items.Add(index[0, 2]);
 			for (int i = 0; i < ProblemElements.Count; i++)
 			{
 				listbox.Items.Add(index[ProblemElements[i], 2]);
-				listbox.SetSelected(0,true);
-            }
-            textbox.Text = ProblemText;
+				listbox.SetSelected(0, true);
+			}
+			textbox.Text = ProblemText;
 			richtextbox.Text = ProblemText;
-			richtextbox.Select(1,9);
+			richtextbox.Select(1, 9);
 			richtextbox.SelectionBackColor = Color.BlueViolet;
 			richtextbox.Select(31, 9);
 			richtextbox.SelectionBackColor = Color.Aquamarine;
@@ -317,7 +317,7 @@ namespace IvanLibrary
 		public static void SelectingText(TextBox textbox, RichTextBox richtextbox, System.Windows.Forms.ListBox listbox, string[,] index, List<int> ProblemElements)
 		{
 
-		    //textbox.Select
+			//textbox.Select
 		}
 	}//Временно потерянный код, возможно я к нему еще вернусь. Если я не помню зачем это нужно, то можно смело удалять (нужен для мастера выделения)
 	public class Neo4j
@@ -328,7 +328,7 @@ namespace IvanLibrary
 		public Exception ex;
 		GraphClient client;
 		public Neo4j()
-		{ 
+		{
 		}//Конструктор
 		public bool ConnectToDataBase(string ad, string us, string pa)
 		{
@@ -347,7 +347,29 @@ namespace IvanLibrary
 				ex = e;
 				return false;
 			}
-			
 		}//Команда для подключения к базе данных
+		public void AddTerm(string Term)
+		{
+			//var a=client.Create(new Node() { Name = "hey1" });
+			IndexConfiguration b = new IndexConfiguration();
+			client.CreateIndex("1",b,IndexFor.Node);
+		}
+		public class Node
+		{public string Name { get; set; }}
+
+	}
+	public class SelectedTextSecondForm
+	{
+		public static void SelecteTextSecondWindow(TextBox textBox, Neo4j neo4j)
+		{
+			int[] outdata = new int[2];
+			outdata[0] = textBox.SelectionStart;
+			outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
+			string text = textBox.SelectedText;
+			//Влад
+			//Сережа
+			neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
+			neo4j.AddTerm(text);
+		}
 	}
 }

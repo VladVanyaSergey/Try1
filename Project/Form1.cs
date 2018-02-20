@@ -131,8 +131,8 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-
-        }
+			IvanLibrary.SelectedTextSecondForm.SelecteTextSecondWindow(textBox1, neo4j);
+		}
 
         private void button5_Click(object sender, EventArgs e)
         {
