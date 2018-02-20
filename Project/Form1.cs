@@ -24,8 +24,6 @@ namespace WindowsFormsApp1
 		int[,] Intron;
 		public static IvanLibrary.Neo4j neo4j = new IvanLibrary.Neo4j();
         //
-        public int i;
-        //
 		public Form1()
         {
 			InitializeComponent();
@@ -161,7 +159,7 @@ namespace WindowsFormsApp1
 
             string A = comboBox1.Text; //хотелось бы убрать по возможности
             A = "Иван"; // Потом убрать, это времянка!!!!
-            i= listBox1.SelectedIndex;
+            int i= listBox1.SelectedIndex;
             Vlad.pereimSF(listBox1, "Primer/The table of semantic fragments/" + A + ".txt", nameSF);
             Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при переименовывании
             Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
@@ -172,9 +170,13 @@ namespace WindowsFormsApp1
 		{
             string A = comboBox1.Text; //хотелось бы убрать по возможности
             A = "Иван"; // Потом убрать, это времянка!!!!
+            int i = listBox1.SelectedIndex;
+            i = Intron[i * 2, 1] - (Intron[i * 2, 1] - Intron[i * 2, 0]) + 1;
             Vlad.delSF(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
             Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при удалении
             Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+            textBox1.Select(i, 0);
+            textBox1.ScrollToCaret();
         }
 
 		private void textBox1_KeyDown(object sender, KeyEventArgs e)
