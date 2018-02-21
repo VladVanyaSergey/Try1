@@ -70,43 +70,51 @@ namespace VladLibrary
             
         }
 
-        static public void b3(TextBox textBox1, int[,] Intron)//удаление лишнего текста
+        static public void b3(TextBox textBox1, int[,] Intron)//удаление лишнего текста   !!!доделать если интрон пустой
         {
             i = 0;
             trez = textBox1.Text;//пусть пока будет
             t = textBox1.Text;
             tl = t.Length;
             ts = Intron.Length;
-            t = t.Remove(Intron[ts / 2 - 1, 1]);
-            ts = ts / 4;
-            for (i = ts - 1; i > 0;)
+            if (ts == 0)////мессенджбокс и остальная хрень связанная с исключением когда интрон пустой
             {
-                pravka = Intron[i * 2, 0] - Intron[i * 2 - 1, 1];
-                t = t.Remove(Intron[i * 2 - 1, 1], pravka);
-                for (int k = ts; k > i;)
-                {
-                    Intron[k * 2 - 2, 0] = Intron[k * 2 - 2, 0] - pravka;
-                    Intron[k * 2 - 2, 1] = Intron[k * 2 - 2, 1] - pravka;
-                    Intron[k * 2 - 1, 0] = Intron[k * 2 - 1, 0] - pravka;
-                    Intron[k * 2 - 1, 1] = Intron[k * 2 - 1, 1] - pravka;
-                    k = k - 1;
-                }
-                i = i - 1;
+                textBox1.Text = "";
+                MessageBox.Show("Не выделено ни одного смыслового фрагмента. Перейдите обратно в окно смысловых фрагментов.");
             }
-            if (Intron[0, 0] != 0)
+            else
             {
-                t = t.Remove(0, Intron[0, 0]);
-                pravka = Intron[0, 0];
-                for (int k = ts; k > 0;)
+                t = t.Remove(Intron[ts / 2 - 1, 1]);
+                ts = ts / 4;
+                for (i = ts - 1; i > 0;)
                 {
-                    Intron[k * 2 - 2, 0] = Intron[k * 2 - 2, 0] - pravka;
-                    Intron[k * 2 - 2, 1] = Intron[k * 2 - 2, 1] - pravka;
-                    Intron[k * 2 - 1, 0] = Intron[k * 2 - 1, 0] - pravka;
-                    Intron[k * 2 - 1, 1] = Intron[k * 2 - 1, 1] - pravka;
-                    k = k - 1;
+                    pravka = Intron[i * 2, 0] - Intron[i * 2 - 1, 1];
+                    t = t.Remove(Intron[i * 2 - 1, 1], pravka);
+                    for (int k = ts; k > i;)
+                    {
+                        Intron[k * 2 - 2, 0] = Intron[k * 2 - 2, 0] - pravka;
+                        Intron[k * 2 - 2, 1] = Intron[k * 2 - 2, 1] - pravka;
+                        Intron[k * 2 - 1, 0] = Intron[k * 2 - 1, 0] - pravka;
+                        Intron[k * 2 - 1, 1] = Intron[k * 2 - 1, 1] - pravka;
+                        k = k - 1;
+                    }
+                    i = i - 1;
                 }
+                if (Intron[0, 0] != 0)
+                {
+                    t = t.Remove(0, Intron[0, 0]);
+                    pravka = Intron[0, 0];
+                    for (int k = ts; k > 0;)
+                    {
+                        Intron[k * 2 - 2, 0] = Intron[k * 2 - 2, 0] - pravka;
+                        Intron[k * 2 - 2, 1] = Intron[k * 2 - 2, 1] - pravka;
+                        Intron[k * 2 - 1, 0] = Intron[k * 2 - 1, 0] - pravka;
+                        Intron[k * 2 - 1, 1] = Intron[k * 2 - 1, 1] - pravka;
+                        k = k - 1;
+                    }
+                }
+                textBox1.Text = t;
             }
-            textBox1.Text = t;
         }
 
         public static void delSF(System.Windows.Forms.ListBox listBox1, string adr)//удаление СФа
