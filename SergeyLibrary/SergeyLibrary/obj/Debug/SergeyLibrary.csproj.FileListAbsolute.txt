@@ -9,3 +9,25 @@ C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\IvanLibrary.dl
 C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\VladLibrary.dll
 C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\IvanLibrary.pdb
 C:\Users\blhjk\Desktop\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\VladLibrary.pdb
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\SergeyLibrary.dll
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\SergeyLibrary.pdb
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\IvanLibrary.dll
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\VladLibrary.dll
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\IvanLibrary.pdb
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\VladLibrary.pdb
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.csprojResolveAssemblyReference.cache
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.csproj.ResolveComReference.cache
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.csproj.CoreCompileInputs.cache
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.dll
+C:\Users\blhjk\Desktop\биометрический паспорт\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.pdb
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\SergeyLibrary.dll
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\SergeyLibrary.pdb
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\IvanLibrary.dll
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\VladLibrary.dll
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\IvanLibrary.pdb
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\bin\Debug\VladLibrary.pdb
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.csprojResolveAssemblyReference.cache
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.csproj.ResolveComReference.cache
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.csproj.CoreCompileInputs.cache
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.dll
+C:\Users\blhjk\Desktop\Last4\Try1\SergeyLibrary\SergeyLibrary\obj\Debug\SergeyLibrary.pdb

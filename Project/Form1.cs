@@ -34,19 +34,26 @@ namespace WindowsFormsApp1
 			//Эксперимент
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
             string A = comboBox1.Text;
-			A = "Иван"; // Потом убрать, это времянка!!!!
-			int[] outdata=IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", Intron);
-			if (outdata[0] != -1)
-			{
-				Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, outdata[0]);
-			}
-			Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
-
-		}
+            string p1 = "";
+            //A = "Иван"; // Потом убрать, это времянка!!!!
+            if (label1.Text == "1")
+            {
+                Sergey.Serg(out p1);
+            }
+            else if (label1.Text == "0")
+            {
+                Sergey.Ukr(out p1);
+            }
+            int[] outdata = IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, p1 + "/The table of semantic fragments/" + A + ".txt", Intron);
+            if (outdata[0] != -1)
+            {
+                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1, outdata[0]);
+            }
+            Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
+        }
 
         private void button4_Click(object sender, EventArgs e)// эту кнопку можно убрать
         {
@@ -75,35 +82,35 @@ namespace WindowsFormsApp1
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 			
-			Intron = Sergey.ComboBox1_SelectedIndexChanged(comboBox1,textBox1,listBox1,Intron);          //Переход между документами в комбобоксе
+			Intron = Sergey.ComboBox1_SelectedIndexChanged(comboBox1,textBox1,listBox1,Intron,label1);          //Переход между документами в комбобоксе
         }
 
         private void удалитьДокументToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           Intron = Sergey.удалитьФайлToolStripMenuItem_Click(comboBox1, textBox1, listBox1, Intron);    //Удаление текущего документа (по значению в комбобоксе)
+           Intron = Sergey.удалитьФайлToolStripMenuItem_Click(comboBox1, textBox1, listBox1, Intron,label1,comboBox2);    //Удаление текущего документа (по значению в комбобоксе)
         }
 
         private void добавитьДокументToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();             //Открытие диалогового окна для подгрузки текста из файла
-            Intron = Sergey.добавитьФайлToolStripMenuItem_Click(textBox1, comboBox1, listBox1, openFileDialog, Intron);
+            Intron = Sergey.добавитьФайлToolStripMenuItem_Click(textBox1, comboBox1, listBox1, openFileDialog, Intron,label1);
         }
 
         private void удалитьВсеДокументыToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            Sergey.удалитьВсеДокументыToolStripMenuItem_Click(comboBox1, textBox1);  //Удаление всех существующих документов
+            Sergey.удалитьВсеДокументыToolStripMenuItem_Click(comboBox1, textBox1,listBox1,comboBox2);  //Удаление всех существующих документов
         }
 
         private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            Sergey.создатьToolStripMenuItem_Click(folderBrowserDialog, toolStripStatusLabel1);
+            Sergey.создатьToolStripMenuItem_Click(folderBrowserDialog, toolStripStatusLabel1,label1,Intron,comboBox1);
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            Sergey.открытьToolStripMenuItemToolStripMenuItem_Click(folderBrowserDialog, textBox1, comboBox1, toolStripStatusLabel1);
+            Sergey.открытьToolStripMenuItemToolStripMenuItem_Click(folderBrowserDialog, textBox1, comboBox1, toolStripStatusLabel1,label1);
         }
 
         private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
@@ -118,7 +125,7 @@ namespace WindowsFormsApp1
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Intron = Sergey.ComboBox2_SelectedIndexChanged(comboBox2, textBox1, listBox1, Intron);          //Переход между документами в комбобоксе
+            Intron = Sergey.ComboBox2_SelectedIndexChanged(comboBox2, textBox1, listBox1, Intron,label1);          //Переход между документами в комбобоксе
         }
 
         private void подключениеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,7 +146,7 @@ namespace WindowsFormsApp1
 
         private void comboBox2_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            Intron = Sergey.ComboBox2_SelectedIndexChanged(comboBox2, textBox1, listBox1, Intron);          //Переход между документами в комбобоксе
+            Intron = Sergey.ComboBox2_SelectedIndexChanged(comboBox2, textBox1, listBox1, Intron,label1);          //Переход между документами в комбобоксе
         }
 
 		private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -158,45 +165,79 @@ namespace WindowsFormsApp1
             nameSF = Interaction.InputBox("Хотите дать название смысловому фрагменту? Введите название и нажмите ОК.");
 
             string A = comboBox1.Text; //хотелось бы убрать по возможности
-            A = "Иван"; // Потом убрать, это времянка!!!!
+            //A = "Иван"; // Потом убрать, это времянка!!!!
+            string p1 = "";
+            if (label1.Text == "1")
+            {
+                Sergey.Serg(out p1);
+            }
+            else if (label1.Text == "0")
+            {
+                Sergey.Ukr(out p1);
+            }
             int i= listBox1.SelectedIndex;
-            Vlad.pereimSF(listBox1, "Primer/The table of semantic fragments/" + A + ".txt", nameSF);
-            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при переименовывании
-            Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+            Vlad.pereimSF(listBox1,p1 + "/The table of semantic fragments/" + A + ".txt", nameSF);
+            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при переименовывании
+            Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
             Vlad.focusirovka(i, textBox1, Intron);
         }
 
 		private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)//удаление СФа
 		{
             string A = comboBox1.Text; //хотелось бы убрать по возможности
-            A = "Иван"; // Потом убрать, это времянка!!!!
+            // A = "Иван"; // Потом убрать, это времянка!!!!
+            string p1 = "";
+            if (label1.Text == "1")
+            {
+                Sergey.Serg(out p1);
+            }
+            else if (label1.Text == "0")
+            {
+                Sergey.Ukr(out p1);
+            }
             int i = listBox1.SelectedIndex;
             i = Intron[i * 2, 1] - (Intron[i * 2, 1] - Intron[i * 2, 0]) + 1;
-            Vlad.delSF(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
-            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при удалении
-            Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+            Vlad.delSF(listBox1,p1 + "/The table of semantic fragments/" + A + ".txt");
+            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при удалении
+            Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
             textBox1.Select(i, 0);
             textBox1.ScrollToCaret();
         }
 
 		private void textBox1_KeyDown(object sender, KeyEventArgs e)
 		{
-			if (e.KeyCode == Keys.A)
-			{
-				string A = comboBox1.Text;
-				A = "Иван"; // Потом убрать, это времянка!!!!
-				int[] outdata = IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, "Primer/The table of semantic fragments/" + A + ".txt", Intron);
-				if (outdata[0] != -1)
-				{
-					Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1, outdata[0]);
-				}
-				Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
-			}
-		}
+            if (e.KeyCode == Keys.A)
+            {
+                string A = comboBox1.Text;
+                //A = "Иван"; // Потом убрать, это времянка!!!!
+                if (label1.Text == "1")
+                {
+                    string p1; //
+                    Sergey.Serg(out p1); //
+                    int[] outdata = IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, p1 + "/The table of semantic fragments/" + A + ".txt", Intron);
+                    if (outdata[0] != -1)
+                    {
+                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1, outdata[0]);
+                    }
+                    Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
+                }
+                else if (label1.Text == "0")
+                {
+                    string p2;
+                    Sergey.Ukr(out p2);//
+                    int[] outdata = IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, p2 + "/The table of semantic fragments/" + A + ".txt", Intron);
+                    if (outdata[0] != -1)
+                    {
+                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p2 + "/Text documents/" + A + ".txt", p2 + "/The table of semantic fragments/" + A + ".txt", textBox1, outdata[0]);
+                    }
+                    Vlad.b1(listBox1, p2 + "/The table of semantic fragments/" + A + ".txt");
+                }
+            }
+        }
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            Sergey.button7_Click(button1, button3, button4, button5, button6, button7, textBox1, comboBox1, comboBox2, Intron);
         }
     }
 }
