@@ -137,24 +137,31 @@ namespace VladLibrary
 
         public static void pereimSF(System.Windows.Forms.ListBox listBox1, string adr, string namesf)//переименовывание СФа
         {
-            if (i == listBox1.SelectedIndex)
+            if (namesf == "")
             {
-                using (StreamWriter pereimenovSF = new StreamWriter(adr))
+                MessageBox.Show("Вы ничего не ввели. Имя смыслового фрагмента не может быть пустым.");
+            }
+            else
+            {
+                if (i == listBox1.SelectedIndex)
                 {
-
-                    for (int k = 0; k < i1; k++)
+                    using (StreamWriter pereimenovSF = new StreamWriter(adr))
                     {
-                        if (k != i)
+
+                        for (int k = 0; k < i1; k++)
                         {
-                            pereimenovSF.WriteLine(rlt.ElementAt(k));
-                        }
-                        else
-                        {
-                            t = Convert.ToString(rlt.ElementAt(k));
-                            string[] t1 = t.Split('\t');
-                            c0 = t1[1];
-                            c1 = t1[2];
-                            pereimenovSF.WriteLine(namesf + '\t' + t1[1] + '\t' + c1);
+                            if (k != i)
+                            {
+                                pereimenovSF.WriteLine(rlt.ElementAt(k));
+                            }
+                            else
+                            {
+                                t = Convert.ToString(rlt.ElementAt(k));
+                                string[] t1 = t.Split('\t');
+                                c0 = t1[1];
+                                c1 = t1[2];
+                                pereimenovSF.WriteLine(namesf + '\t' + t1[1] + '\t' + c1);
+                            }
                         }
                     }
                 }
