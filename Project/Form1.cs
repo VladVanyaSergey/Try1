@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
 			listBox1.ContextMenuStrip = contextMenuStrip1;
 			// Для Сережи! При запуске и подгрузки страницы должен запускаться вот этот фрагемнт!!!
 			string A = "Иван"; // Потом убрать, это времянка!!!!
-			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1,0);
+			Intron=IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1);
 			//Эксперимент
 		}
 
@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
         {
             string A = comboBox1.Text;
             string p1 = "";
-            //A = "Иван"; // Потом убрать, это времянка!!!!
+            A = "Иван"; // Потом убрать, это времянка!!!!
             if (label1.Text == "1")
             {
                 Sergey.Serg(out p1);
@@ -47,12 +47,13 @@ namespace WindowsFormsApp1
             {
                 Sergey.Ukr(out p1);
             }
-            int[] outdata = IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, p1 + "/The table of semantic fragments/" + A + ".txt", Intron);
-            if (outdata[0] != -1)
-            {
-                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1, outdata[0]);
-            }
-            Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
+			p1 = "E://Иван/Рабочий стол/Primer";
+			if (IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, p1 + "/The table of semantic fragments/" + A + ".txt", Intron))
+			{
+				Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1);
+				Vlad.focusirovka(IvanLibrary.FocusAfterCreateSemanticFile.FindNewElementofSFT(p1 + "/The table of semantic fragments/" + A + ".txt"), textBox1, Intron);
+			}
+			Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
         }
 
         private void button4_Click(object sender, EventArgs e)// эту кнопку можно убрать
@@ -177,7 +178,7 @@ namespace WindowsFormsApp1
             }
             int i= listBox1.SelectedIndex;
             Vlad.pereimSF(listBox1,p1 + "/The table of semantic fragments/" + A + ".txt", nameSF);
-            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при переименовывании
+            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при переименовывании
             Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
             Vlad.focusirovka(i, textBox1, Intron);
         }
@@ -198,7 +199,7 @@ namespace WindowsFormsApp1
             int i = listBox1.SelectedIndex;
             i = Intron[i * 2, 1] - (Intron[i * 2, 1] - Intron[i * 2, 0]) + 1;
             Vlad.delSF(listBox1,p1 + "/The table of semantic fragments/" + A + ".txt");
-            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1, 0); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при удалении
+            Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при удалении
             Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
             textBox1.Select(i, 0);
             textBox1.ScrollToCaret();
@@ -208,31 +209,25 @@ namespace WindowsFormsApp1
 		{
             if (e.KeyCode == Keys.A)
             {
-                string A = comboBox1.Text;
-                //A = "Иван"; // Потом убрать, это времянка!!!!
-                if (label1.Text == "1")
-                {
-                    string p1; //
-                    Sergey.Serg(out p1); //
-                    int[] outdata = IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, p1 + "/The table of semantic fragments/" + A + ".txt", Intron);
-                    if (outdata[0] != -1)
-                    {
-                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1, outdata[0]);
-                    }
-                    Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
-                }
-                else if (label1.Text == "0")
-                {
-                    string p2;
-                    Sergey.Ukr(out p2);//
-                    int[] outdata = IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, p2 + "/The table of semantic fragments/" + A + ".txt", Intron);
-                    if (outdata[0] != -1)
-                    {
-                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p2 + "/Text documents/" + A + ".txt", p2 + "/The table of semantic fragments/" + A + ".txt", textBox1, outdata[0]);
-                    }
-                    Vlad.b1(listBox1, p2 + "/The table of semantic fragments/" + A + ".txt");
-                }
-            }
+				string A = comboBox1.Text;
+				string p1 = "";
+				//A = "Иван"; // Потом убрать, это времянка!!!!
+				if (label1.Text == "1")
+				{
+					Sergey.Serg(out p1);
+				}
+				else if (label1.Text == "0")
+				{
+					Sergey.Ukr(out p1);
+				}
+				//p1 = "E://Иван/Рабочий стол/Primer";
+				if (IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, p1 + "/The table of semantic fragments/" + A + ".txt", Intron))
+				{
+					Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1);
+					Vlad.focusirovka(IvanLibrary.FocusAfterCreateSemanticFile.FindNewElementofSFT(p1 + "/The table of semantic fragments/" + A + ".txt"), textBox1, Intron);
+				}
+				Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
+			}
         }
 
         private void button7_Click(object sender, EventArgs e)
