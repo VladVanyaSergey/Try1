@@ -57,7 +57,7 @@ namespace SergeyLibrary
                         listBox.Items.Clear();                                                                                //очистка листбкса
                         S_nameFile.Add(S_namefile);                                                                           //Добавление в список имени файла
                         S_textFile.Add(S_text);                                                                               //Добавление в список текста файла
-                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova + "/Text documents/" + S_namefile + ".txt", S_Osnova + "/The table of semantic fragments/" + S_namefile + ".txt", textBox, 0);
+                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova + "/Text documents/" + S_namefile + ".txt", S_Osnova + "/The table of semantic fragments/" + S_namefile + ".txt", textBox); // <- Здесь был Ваня
                         Vlad.b1(listBox, S_Osnova + "/The table of semantic fragments/" + S_namefile + ".txt");
                         Object saveChanges = Word.WdSaveOptions.wdPromptToSaveChanges;
                         Object originalFormat = Word.WdOriginalFormat.wdWordDocument;
@@ -74,8 +74,8 @@ namespace SergeyLibrary
                         listBox.Items.Clear();                                                                                //очистка листбкса
                         S_nameFile.Add(S_namefile);                                                                           //Добавление в список имени файла
                         S_textFile.Add(S_text);                                                                               //Добавление в список текста файла
-                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_namefile + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_namefile + ".txt", textBox, 0);
-                        Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_namefile + ".txt");
+                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_namefile + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_namefile + ".txt", textBox); // <- Здесь был Ваня
+						Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_namefile + ".txt");
                         Object saveChanges = Word.WdSaveOptions.wdPromptToSaveChanges;
                         Object originalFormat = Word.WdOriginalFormat.wdWordDocument;
                         Object routeDocument = Type.Missing;
@@ -111,8 +111,8 @@ namespace SergeyLibrary
                         listBox.Items.Clear();                                                                                //очистка листбкса
                         S_nameFile.Add(S_namefile);                                                                           //Добавление в список имени файла
                         S_textFile.Add(S_text);                                                                               //Добавление в список текста файла
-                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova + "/Text documents/" + S_namefile + ".txt", S_Osnova + "/The table of semantic fragments/" + S_namefile + ".txt", textBox, 0);
-                        Vlad.b1(listBox, S_Osnova + "/The table of semantic fragments/" + S_namefile + ".txt");
+                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova + "/Text documents/" + S_namefile + ".txt", S_Osnova + "/The table of semantic fragments/" + S_namefile + ".txt", textBox); // <- Здесь был Ваня
+						Vlad.b1(listBox, S_Osnova + "/The table of semantic fragments/" + S_namefile + ".txt");
                         Object saveChanges = Word.WdSaveOptions.wdPromptToSaveChanges;
                         Object originalFormat = Word.WdOriginalFormat.wdWordDocument;
                         Object routeDocument = Type.Missing;
@@ -128,8 +128,8 @@ namespace SergeyLibrary
                         listBox.Items.Clear();                                                                                //очистка листбкса
                         S_nameFile.Add(S_namefile);                                                                           //Добавление в список имени файла
                         S_textFile.Add(S_text);                                                                               //Добавление в список текста файла
-                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_namefile + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_namefile + ".txt", textBox, 0);
-                        Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_namefile + ".txt");
+                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_namefile + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_namefile + ".txt", textBox); // <- Здесь был Ваня
+						Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_namefile + ".txt");
                         Object saveChanges = Word.WdSaveOptions.wdPromptToSaveChanges;
                         Object originalFormat = Word.WdOriginalFormat.wdWordDocument;
                         Object routeDocument = Type.Missing;
@@ -150,8 +150,8 @@ namespace SergeyLibrary
                     if (comboBox.Text == S_nameFile[i])
                     {
                         textBox.Text = S_textFile[i];
-                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_nameFile[i] + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0);
-                        Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");
+                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_nameFile[i] + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox); // <- Здесь был Ваня
+						Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");
                     }
                 }
             }
@@ -162,8 +162,8 @@ namespace SergeyLibrary
                     if (comboBox.Text == S_nameFile[i])
                     {
                         textBox.Text = S_textFile[i];
-                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova + "/Text documents/" + S_nameFile[i] + ".txt", S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0);
-                        Vlad.b1(listBox, S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");
+                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova + "/Text documents/" + S_nameFile[i] + ".txt", S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox); // <- Здесь был Ваня
+						Vlad.b1(listBox, S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");
                     }
                 }
             }
@@ -190,8 +190,8 @@ namespace SergeyLibrary
                                 comboBox.Text = S_nameFile[i];
                                 comboBox2.Text = S_nameFile[i];
                                 textBox.Text = S_textFile[i];
-                                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova +"/Text documents/" + S_nameFile[i] + ".txt", S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0); //вставка
-                                Vlad.b1(listBox, S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");//вставка
+                                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova +"/Text documents/" + S_nameFile[i] + ".txt", S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox); // <- Здесь был Ваня
+								Vlad.b1(listBox, S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");//вставка
                                 FileInfo fileInf = new FileInfo(S_STD + "/" + S_Perem1 + ".txt");
                                 if (fileInf.Exists)
                                 {
@@ -219,8 +219,8 @@ namespace SergeyLibrary
                                 comboBox.Text = S_nameFile[i - 1];
                                 comboBox2.Text = S_nameFile[i - 1];
                                 textBox.Text = S_textFile[i - 1];
-                                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova + "/Text documents/" + S_nameFile[i - 1] + ".txt", S_Osnova + "/The table of semantic fragments/" + S_nameFile[i - 1] + ".txt", textBox, 0); //вставка
-                                Vlad.b1(listBox, S_Osnova + "/The table of semantic fragments/" + S_nameFile[i - 1] + ".txt");//вставка
+                                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova + "/Text documents/" + S_nameFile[i - 1] + ".txt", S_Osnova + "/The table of semantic fragments/" + S_nameFile[i - 1] + ".txt", textBox); // <- Здесь был Ваня
+								Vlad.b1(listBox, S_Osnova + "/The table of semantic fragments/" + S_nameFile[i - 1] + ".txt");//вставка
                                 FileInfo fileInf = new FileInfo(S_STD + "/" + S_Perem1 + ".txt");
                                 if (fileInf.Exists)
                                 {
@@ -296,8 +296,8 @@ namespace SergeyLibrary
                                 comboBox.Text = S_nameFile[i];
                                 comboBox2.Text = S_nameFile[i];
                                 textBox.Text = S_textFile[i];
-                                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_nameFile[i] + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0); //вставка
-                                Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");//вставка
+                                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_nameFile[i] + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox); // <- Здесь был Ваня
+								Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");//вставка
                                 FileInfo fileInf = new FileInfo(S_STD + "/" + S_Perem1 + ".txt");
                                 if (fileInf.Exists)
                                 {
@@ -325,8 +325,8 @@ namespace SergeyLibrary
                                 comboBox.Text = S_nameFile[i - 1];
                                 comboBox2.Text = S_nameFile[i - 1];
                                 textBox.Text = S_textFile[i - 1];
-                                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_nameFile[i - 1] + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i - 1] + ".txt", textBox, 0); //вставка
-                                Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i - 1] + ".txt");//вставка
+                                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_nameFile[i - 1] + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i - 1] + ".txt", textBox); // <- Здесь был Ваня
+								Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i - 1] + ".txt");//вставка
                                 FileInfo fileInf = new FileInfo(S_STD + "/" + S_Perem1 + ".txt");
                                 if (fileInf.Exists)
                                 {
@@ -563,8 +563,8 @@ namespace SergeyLibrary
                     if (comboBox2.Text == S_nameFile[i])
                     {
                         textBox.Text = S_textFile[i];
-                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_nameFile[i] + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0);
-                        Vlad.b3(textBox, Intron);
+                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_nameFile[i] + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox); // <- Здесь был Ваня
+						Vlad.b3(textBox, Intron);
                         Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");
                     }
                 }
@@ -576,8 +576,8 @@ namespace SergeyLibrary
                     if (comboBox2.Text == S_nameFile[i])
                     {
                         textBox.Text = S_textFile[i];
-                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova + "/Text documents/" + S_nameFile[i] + ".txt", S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0);
-                        Vlad.b3(textBox, Intron);
+                        Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Osnova + "/Text documents/" + S_nameFile[i] + ".txt", S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox); // <- Здесь был Ваня
+						Vlad.b3(textBox, Intron);
                         Vlad.b1(listBox, S_Osnova + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");
                     }
                 }

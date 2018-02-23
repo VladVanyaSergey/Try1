@@ -13,7 +13,6 @@ using Neo4jClient;
 
 namespace IvanLibrary
 {
-
 	public static class GiveMeBlockStructureWithRemainElements
 	{
 		public static int[,] StartWorking(string AdressTextFile, string adressIndex, TextBox textbox)
@@ -280,6 +279,25 @@ namespace IvanLibrary
 			return ListIndex;
 		}//Перевод массива в список 
 	}
+	public class FocusAfterCreateSemanticFile
+	{
+		public static int FindNewElementofSFT(string File)
+		{
+			string[,] index = GiveMeBlockStructureWithRemainElements.ReadInformFromSemanticFragmentTable(File);
+			int ind = 1;
+			int position = 0;
+			for (int i = 0; i < index.GetLength(0); i++)
+			{
+				if ("СФ" + ind.ToString() == index[i, 5])
+				{
+					position = i;
+					i = -1;
+					ind += 1;
+				}
+			}
+			return position;
+		}
+	}
 	public class Neo4j
 	{
 		public string adress = "http://localhost:7474/db/data";
@@ -315,25 +333,6 @@ namespace IvanLibrary
 		public class Node
 		{public string Name { get; set; }}
 
-	}
-	public class FocusAfterCreateSemanticFile
-	{
-		public static int FindNewElementofSFT(string File)
-		{
-			string[,] index = GiveMeBlockStructureWithRemainElements.ReadInformFromSemanticFragmentTable(File);
-			int ind = 1;
-			int position = 0;
-			for (int i = 0; i < index.GetLength(0); i++)
-			{
-				if ("СФ" + ind.ToString() == index[i, 5])
-				{
-					position = i;
-					i = -1;
-					ind += 1;
-				}
-			}
-			return position;
-		}
 	}
 	public class SelectedTextSecondForm
 	{
