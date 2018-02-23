@@ -159,8 +159,9 @@ namespace WindowsFormsApp1
 		private void toolStripMenuItem1_Click(object sender, EventArgs e)//переименовывание СФа
 		{
             string nameSF;
-            nameSF = Interaction.InputBox("Хотите дать название смысловому фрагменту? Введите название и нажмите ОК.");
-
+            int i = listBox1.SelectedIndex;
+            nameSF = Interaction.InputBox("Хотите дать название смысловому фрагменту? Введите название и нажмите ОК.", "", Convert.ToString(listBox1.Items[i]));
+            if (nameSF == "") { nameSF = Convert.ToString(listBox1.Items[i]); }
             string A = comboBox1.Text; //хотелось бы убрать по возможности
             //A = "Иван"; // Потом убрать, это времянка!!!!
             string p1 = "";
@@ -172,7 +173,6 @@ namespace WindowsFormsApp1
             {
                 Sergey.Ukr(out p1);
             }
-            int i= listBox1.SelectedIndex;
             Vlad.pereimSF(listBox1,p1 + "/The table of semantic fragments/" + A + ".txt", nameSF);
             Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1); // потом добавить 0 в конец из-за изменений вани. Надо доработать координату фокуса при переименовывании
             Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
