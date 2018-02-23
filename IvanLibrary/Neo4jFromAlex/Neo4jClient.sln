@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neo4jClient", "Neo4jClient\Neo4jClient.csproj", "{B6555815-EC9B-4C07-9F31-ADD8D2B041B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphDB", "GraphDB\GraphDB.csproj", "{6DA2C4A6-AC8C-4541-8991-36048C63E046}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6555815-EC9B-4C07-9F31-ADD8D2B041B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6555815-EC9B-4C07-9F31-ADD8D2B041B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6555815-EC9B-4C07-9F31-ADD8D2B041B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6555815-EC9B-4C07-9F31-ADD8D2B041B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DA2C4A6-AC8C-4541-8991-36048C63E046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DA2C4A6-AC8C-4541-8991-36048C63E046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DA2C4A6-AC8C-4541-8991-36048C63E046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DA2C4A6-AC8C-4541-8991-36048C63E046}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EFA14E81-53EB-494E-8D83-49FD8698AD4F}
+	EndGlobalSection
+EndGlobal
