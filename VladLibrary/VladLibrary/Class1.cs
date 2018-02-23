@@ -93,8 +93,8 @@ namespace VladLibrary
                     for (int k = ts; k > i;)
                     {
                         Intron[k * 2 - 2, 0] = Intron[k * 2 - 2, 0] - pravka;
-                        Intron[k * 2 - 2, 1] = Intron[k * 2 - 2, 1] - pravka;
-                        Intron[k * 2 - 1, 0] = Intron[k * 2 - 1, 0] - pravka;
+                        Intron[k * 2 - 2, 1] = Intron[k * 2 - 2, 1] - pravka - 4;
+                        Intron[k * 2 - 1, 0] = Intron[k * 2 - 1, 0] - pravka + 4;
                         Intron[k * 2 - 1, 1] = Intron[k * 2 - 1, 1] - pravka;
                         k = k - 1;
                     }
@@ -107,8 +107,8 @@ namespace VladLibrary
                     for (int k = ts; k > 0;)
                     {
                         Intron[k * 2 - 2, 0] = Intron[k * 2 - 2, 0] - pravka;
-                        Intron[k * 2 - 2, 1] = Intron[k * 2 - 2, 1] - pravka;
-                        Intron[k * 2 - 1, 0] = Intron[k * 2 - 1, 0] - pravka;
+                        Intron[k * 2 - 2, 1] = Intron[k * 2 - 2, 1] - pravka - 4;
+                        Intron[k * 2 - 1, 0] = Intron[k * 2 - 1, 0] - pravka + 4;
                         Intron[k * 2 - 1, 1] = Intron[k * 2 - 1, 1] - pravka;
                         k = k - 1;
                     }
