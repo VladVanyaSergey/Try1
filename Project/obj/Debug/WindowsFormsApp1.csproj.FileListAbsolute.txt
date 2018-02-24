@@ -115,3 +115,4 @@ C:\Users\Влад\Documents\GitHub\Try1\Project\bin\Debug\System.Security.Crypto
 C:\Users\Влад\Documents\GitHub\Try1\Project\bin\Debug\System.Security.Cryptography.Encoding.dll
 C:\Users\Влад\Documents\GitHub\Try1\Project\bin\Debug\System.Security.Cryptography.Primitives.dll
 C:\Users\Влад\Documents\GitHub\Try1\Project\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.ThirdWindow.resources

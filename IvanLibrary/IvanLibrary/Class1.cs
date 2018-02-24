@@ -303,11 +303,12 @@ namespace IvanLibrary
 		public string adress = "http://localhost:7474/db/data";
 		public string username = "neo4j";
 		public string password = "1234";
-		public Exception ex;
 		GraphClient client;
 		public Neo4j()
 		{
 		}//Конструктор
+
+
 		public bool ConnectToDataBase(string ad, string us, string pa)
 		{
 			adress = ad;
@@ -322,15 +323,34 @@ namespace IvanLibrary
 			catch (Exception e)
 			{
 				MessageBox.Show(e.Message.ToString());
-				ex = e;
 				return false;
 			}
 		}//Команда для подключения к базе данных
 		public void AddTerm(string Term)
 		{
-			var a=client.Create(new Node() { Name = Term });
+			//var addterm=client.Create(new Node() { Name = Term });
+			client.Cypher
+				.Create(CommandForCreate("Terms","Name",Term))
+				//.WithParams(new {Name = "1" })
+				.ExecuteWithoutResults();
+			MessageBox.Show("Понятие \""+Term + "\" был успешно добавлен. Сережа тут должен быть твой label помошник");
 		}
-		public class Node
+		public void FindAllTerms()
+		{
+			var text = client.Cypher
+				.Match("(p:Terms)")
+				.Return<Node<Nodes>>("p");
+			var ss = text.Results.LongCount();
+			//NodeReference<Node> tryd = new NodeReference<Node>(1, client);
+			//var findallterms = client.Get(tryd);
+			MessageBox.Show("1");
+		}
+
+		private string CommandForCreate(string Node, string key, string value)
+		{
+			return "(u:" + Node + " {" + key + ":\'" + value + "\'})";
+		}
+		public class Nodes
 		{public string Name { get; set; }}
 
 	}
@@ -345,8 +365,9 @@ namespace IvanLibrary
 			if (!CreateSemanticFile.CheckUserSelectedIntrons(outdata[0], outdata[1], Intron)) //(VladLibrary.Vlad.f_dla_vani(outdata[0], outdata[1], Intron)) // Здесь Влад писал функцию, которая определяет является ли выбранный участок Интроном или нет.
 			{
 				//Сережа
-				//neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
-				//neo4j.AddTerm(text);
+				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
+				neo4j.AddTerm(text);
+				neo4j.FindAllTerms();
 			}
 		}
 	}
