@@ -328,29 +328,35 @@ namespace IvanLibrary
 		}//Команда для подключения к базе данных
 		public void AddTerm(string Term)
 		{
-			//var addterm=client.Create(new Node() { Name = Term });
 			client.Cypher
 				.Create(CommandForCreate("Terms","Name",Term))
-				//.WithParams(new {Name = "1" })
 				.ExecuteWithoutResults();
 			MessageBox.Show("Понятие \""+Term + "\" был успешно добавлен. Сережа тут должен быть твой label помошник");
 		}
-		public void FindAllTerms()
+		public string[] FindAllTerms()
 		{
-			var text = client.Cypher
-				.Match("(p:Terms)")
-				.Return<Node<Nodes>>("p");
-			var ss = text.Results.LongCount();
-			//NodeReference<Node> tryd = new NodeReference<Node>(1, client);
-			//var findallterms = client.Get(tryd);
-			MessageBox.Show("1");
+			var OutputArray_from_neo4j = client.Cypher
+				.Match("(List:Terms)")
+				.Return<ClassForOneAttribute>("List")
+				.Results.ToArray();
+			MessageBox.Show("Список успешно получен");
+			return Neo4jOutputArray_IntoNormalArray(OutputArray_from_neo4j);
 		}
 
+		private string[] Neo4jOutputArray_IntoNormalArray(ClassForOneAttribute[] OutputArray_from_neo4j)
+		{
+			string[] array = new string[OutputArray_from_neo4j.Length];
+			for (int i = 0; i < OutputArray_from_neo4j.Length; i++)
+			{
+				array[i] = OutputArray_from_neo4j[i].Name;
+			}
+			return array;
+		}
 		private string CommandForCreate(string Node, string key, string value)
 		{
 			return "(u:" + Node + " {" + key + ":\'" + value + "\'})";
 		}
-		public class Nodes
+		public class ClassForOneAttribute
 		{public string Name { get; set; }}
 
 	}
