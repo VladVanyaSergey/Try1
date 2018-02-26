@@ -57,14 +57,9 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -79,7 +74,7 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 70);
+            this.listBox1.Location = new System.Drawing.Point(13, 70);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(122, 381);
             this.listBox1.TabIndex = 1;
@@ -98,21 +93,20 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(13, 26);
+            this.button2.Location = new System.Drawing.Point(404, 28);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 34);
+            this.button2.Size = new System.Drawing.Size(88, 38);
             this.button2.TabIndex = 3;
-            this.button2.Text = "Переход в окно 3";
+            this.button2.Text = "Хз зачем эта кнопка";
             this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(392, 26);
+            this.button3.Location = new System.Drawing.Point(516, 28);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 36);
+            this.button3.Size = new System.Drawing.Size(87, 38);
             this.button3.TabIndex = 4;
             this.button3.Text = "Переход в окно понятий";
             this.button3.UseVisualStyleBackColor = true;
@@ -121,7 +115,7 @@
             // textBox1
             // 
             this.textBox1.HideSelection = false;
-            this.textBox1.Location = new System.Drawing.Point(146, 70);
+            this.textBox1.Location = new System.Drawing.Point(148, 72);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -133,13 +127,12 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(498, 28);
+            this.button4.Location = new System.Drawing.Point(13, 28);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(103, 51);
+            this.button4.Size = new System.Drawing.Size(122, 23);
             this.button4.TabIndex = 6;
-            this.button4.Text = "Выбрать";
+            this.button4.Text = "Удалить СФ";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // menuStrip1
@@ -168,22 +161,21 @@
             // создатьToolStripMenuItem
             // 
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.создатьToolStripMenuItem.Text = "Создать проект";
+            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.создатьToolStripMenuItem.Text = "Создать";
             this.создатьToolStripMenuItem.Click += new System.EventHandler(this.создатьToolStripMenuItem_Click);
             // 
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.открытьToolStripMenuItem.Text = "Открыть проект";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // сохранитьКакToolStripMenuItem
             // 
-            this.сохранитьКакToolStripMenuItem.Enabled = false;
             this.сохранитьКакToolStripMenuItem.Name = "сохранитьКакToolStripMenuItem";
-            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.сохранитьКакToolStripMenuItem.Text = "Сохранить как";
             this.сохранитьКакToolStripMenuItem.Click += new System.EventHandler(this.сохранитьКакToolStripMenuItem_Click);
             // 
@@ -193,7 +185,6 @@
             this.добавитьДокументToolStripMenuItem,
             this.удалитьДокументToolStripMenuItem,
             this.удалитьВсеДокументыToolStripMenuItem});
-            this.проектToolStripMenuItem.Enabled = false;
             this.проектToolStripMenuItem.Name = "проектToolStripMenuItem";
             this.проектToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.проектToolStripMenuItem.Text = "Проект";
@@ -236,11 +227,11 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(498, 85);
+            this.button5.Location = new System.Drawing.Point(13, 28);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(103, 51);
+            this.button5.Size = new System.Drawing.Size(122, 23);
             this.button5.TabIndex = 8;
-            this.button5.Text = "Связать";
+            this.button5.Text = "Удалить понятие";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -258,9 +249,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(392, 27);
+            this.button7.Location = new System.Drawing.Point(514, 28);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(87, 36);
+            this.button7.Size = new System.Drawing.Size(87, 38);
             this.button7.TabIndex = 10;
             this.button7.Text = "Переход в окно СФ";
             this.button7.UseVisualStyleBackColor = true;
@@ -321,62 +312,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(105, 47);
+            this.label1.Location = new System.Drawing.Point(78, 169);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "label1";
-            this.label1.Visible = false;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(498, 142);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(103, 51);
-            this.button8.TabIndex = 14;
-            this.button8.Text = "Синонимы";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Visible = false;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(498, 199);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(103, 51);
-            this.button9.TabIndex = 15;
-            this.button9.Text = "Удалить";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Visible = false;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(14, 26);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(86, 34);
-            this.button10.TabIndex = 16;
-            this.button10.Text = "Переход в окно СФ";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Visible = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 85);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(479, 180);
-            this.dataGridView1.TabIndex = 17;
-            this.dataGridView1.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 481);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.statusStrip1);
@@ -399,7 +345,6 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,10 +380,6 @@
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

@@ -295,15 +295,9 @@ namespace SergeyLibrary
                             {
                                 comboBox.Text = S_nameFile[i];
                                 comboBox2.Text = S_nameFile[i];
-<<<<<<< HEAD
-                                textBox.Text = S_textFile[i];//
-                                Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_nameFile[i] + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox, 0); //вставка
-                                Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");//вставка
-=======
                                 textBox.Text = S_textFile[i];
                                 Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(S_Dobavl + "/Text documents/" + S_nameFile[i] + ".txt", S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt", textBox); // <- Здесь был Ваня
 								Vlad.b1(listBox, S_Dobavl + "/The table of semantic fragments/" + S_nameFile[i] + ".txt");//вставка
->>>>>>> 3f29cda0c23fbc086be82a8ecc5bb179879a394f
                                 FileInfo fileInf = new FileInfo(S_STD + "/" + S_Perem1 + ".txt");
                                 if (fileInf.Exists)
                                 {
@@ -452,7 +446,7 @@ namespace SergeyLibrary
                 }
             }
         }
-        public static void создатьToolStripMenuItem_Click(System.Windows.Forms.FolderBrowserDialog folderBrowserDialog, System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel, System.Windows.Forms.Label label,int[,] Intron, System.Windows.Forms.ComboBox comboBox,System.Windows.Forms.ToolStripMenuItem проектToolStripMenuItem)
+        public static void создатьToolStripMenuItem_Click(System.Windows.Forms.FolderBrowserDialog folderBrowserDialog, System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel, System.Windows.Forms.Label label,int[,] Intron, System.Windows.Forms.ComboBox comboBox)
         {
             comboBox.Items.Clear();
             label.Text = "1"; //дополнение
@@ -470,16 +464,11 @@ namespace SergeyLibrary
                 S_Dobavl = S_Osnova;
                 S_Osnova = (folderBrowserDialog.SelectedPath + "/" + "Text documents");
                 S_STD = S_Osnova;
-                проектToolStripMenuItem.Enabled = true;
-                toolStripStatusLabel.Text = "Проект создан"; //изменение в строке состояний
             }
-            else
-            {
-                проектToolStripMenuItem.Enabled = false;
-            }
+            toolStripStatusLabel.Text = "Проект создан"; //изменение в строке состояний
         }
 
-        public static void открытьToolStripMenuItemToolStripMenuItem_Click(System.Windows.Forms.FolderBrowserDialog folderBrowserDialog, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel, System.Windows.Forms.Label label, System.Windows.Forms.ToolStripMenuItem проектToolStripMenuItem)
+        public static void открытьToolStripMenuItemToolStripMenuItem_Click(System.Windows.Forms.FolderBrowserDialog folderBrowserDialog, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox, System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel, System.Windows.Forms.Label label)
         {
             comboBox.Items.Clear();
             label.Text = "0"; //дополнение
@@ -487,7 +476,6 @@ namespace SergeyLibrary
             {
                 S_Osnova = folderBrowserDialog.SelectedPath;
                 S_STD = (folderBrowserDialog.SelectedPath + "/Text documents");  //директория, в которой содержатся текстовые документы
-                S_Dobavl = S_Osnova;
                 string[] fileEntries = Directory.GetFiles(S_STD);                              //в массив записываем имена файлов из директории
                 for (int i = 0; i < fileEntries.Length; i++)                                   //создание цикла на проход по массиву
                 {
@@ -502,56 +490,41 @@ namespace SergeyLibrary
                     S_nameFile.Add(S_namefile);                                                //Добавление в список названий файлов
                     comboBox.Items.Add(S_namefile);                                            //Добавление в combobox1 имени файла, с которого мы скопировали текст 
                     comboBox.Text = S_namefile;                                                //Надпись комбобокса меняется на имя файла
-                    проектToolStripMenuItem.Enabled = true;
-                    toolStripStatusLabel.Text = "Проект открыт"; //изменение в строке состояний
                 }
             }
-            else 
-            {
-                проектToolStripMenuItem.Enabled = false;
-            }
+            toolStripStatusLabel.Text = "Проект открыт"; //изменение в строке состояний
         }
         
-        public static void button2_Click(System.Windows.Forms.ComboBox comboBox2, System.Windows.Forms.Button button2, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox,System.Windows.Forms.ListBox listBox, System.Windows.Forms.Button button8, System.Windows.Forms.Button button9, System.Windows.Forms.Button button10, System.Windows.Forms.DataGridView dataGridView1)
+        public static void button2_Click(System.Windows.Forms.ComboBox comboBox)
         {
-            button6.Visible = false;// окно 2
-            button7.Visible = false;
-            button2.Visible = false;
-            comboBox2.Visible = false;
-            textBox.Visible = false;
-            listBox.Visible = false;
-            button4.Visible = true; // окно 3
-            button5.Visible = true;
-            button8.Visible = true;
-            button9.Visible = true;
-            button10.Visible = true;
-            dataGridView1.Visible = true;
+            FileInfo fileInf = new FileInfo(S_Osnova + "/" + "The table of semantic fragments" + "/" + comboBox.Text + ".txt");
+            if (fileInf.Exists)
+            {
+                //Обновление таблици
+            }
+            else
+            {
+                if (S_Osnova != S_STD) //При открытии существующего проекта
+                {
+                    System.IO.File.WriteAllText((S_Osnova + "/" + "The table of semantic fragments" + "/" + comboBox.Text + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
+                }
+                if (S_Osnova == S_STD) //При создании нового проекта
+                {
+                    System.IO.File.WriteAllText((S_Dobavl + "/" + "The table of semantic fragments" + "/" + comboBox.Text + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
+                }
+            }
+            //если файла нет, то создаем файл
+            // System.IO.File.WriteAllText((S_Osnova + "/" + "Таблици смысловых фрагментов" +"/" + comboBox.Text + ".txt"), ""); //Создание текстового файла для таблиц смысловых фрагментов
+            //еслий файл есть, то пишем меседж бокс, о том, что таблица смысловых фрагментов для данного файла создана
         }
 
-        public static void button10_Click(System.Windows.Forms.ComboBox comboBox2, System.Windows.Forms.Button button2, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ListBox listBox, System.Windows.Forms.Button button8, System.Windows.Forms.Button button9, System.Windows.Forms.Button button10, System.Windows.Forms.DataGridView dataGridView1)
-        {
-            button6.Visible = true;// окно 2
-            button7.Visible = true;
-            button2.Visible = true;
-            comboBox2.Visible = true;
-            textBox.Visible = true;
-            listBox.Visible = true;
-            button4.Visible = false; // окно 3
-            button5.Visible = false;
-            button8.Visible = false;
-            button9.Visible = false;
-            button10.Visible = false;
-            dataGridView1.Visible = false;
-        }
-
-        public static void button3_Click(System.Windows.Forms.Button button1, System.Windows.Forms.Button button2, System.Windows.Forms.Button button3, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox1, System.Windows.Forms.ComboBox comboBox2, int[,] Intron)
+        public static void button3_Click(System.Windows.Forms.Button button1, System.Windows.Forms.Button button3, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox1, System.Windows.Forms.ComboBox comboBox2, int[,] Intron)
         {
             button1.Visible = false; //кнопки окна СФ
             button3.Visible = false;
             button4.Visible = false;
             comboBox1.Visible = false;
-            button5.Visible = false; //кнопки окна Понятий
-            button2.Visible = true;
+            button5.Visible = true; //кнопки окна Понятий
             button6.Visible = true;
             button7.Visible = true;
             comboBox2.Visible = true;
@@ -563,14 +536,13 @@ namespace SergeyLibrary
             }
         }
 
-        public static void button7_Click(System.Windows.Forms.Button button1, System.Windows.Forms.Button button2, System.Windows.Forms.Button button3, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox1, System.Windows.Forms.ComboBox comboBox2, int[,] Intron)
+        public static void button7_Click(System.Windows.Forms.Button button1, System.Windows.Forms.Button button3, System.Windows.Forms.Button button4, System.Windows.Forms.Button button5, System.Windows.Forms.Button button6, System.Windows.Forms.Button button7, System.Windows.Forms.TextBox textBox, System.Windows.Forms.ComboBox comboBox1, System.Windows.Forms.ComboBox comboBox2, int[,] Intron)
         {
             button1.Visible = true; //кнопки окна СФ
             button3.Visible = true;
+            button4.Visible = true;
             comboBox1.Visible = true;
-            button4.Visible = false; //кнопки окна Понятий
-            button2.Visible = false;
-            button5.Visible = false;
+            button5.Visible = false; //кнопки окна Понятий
             button6.Visible = false;
             button7.Visible = false;
             comboBox2.Visible = false;
@@ -612,7 +584,6 @@ namespace SergeyLibrary
             }
             return Intron;
         }
-
 
         public static string Serg(out string x1)  //
         {

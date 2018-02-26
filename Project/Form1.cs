@@ -52,15 +52,19 @@ namespace WindowsFormsApp1
 			Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)// эту кнопку можно убрать
         {
-           
+            //string A = comboBox1.Text; //хотелось бы убрать по возможности
+            //A = "Иван"; // Потом убрать, это времянка!!!!
+            //Vlad.b4(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
+            //Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking("Primer/Text documents/" + A + ".txt", "Primer/The table of semantic fragments/" + A + ".txt", textBox1,0); // потом добавить 0 в конец из-за изменений вани
+            //Vlad.b1(listBox1, "Primer/The table of semantic fragments/" + A + ".txt");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Sergey.button2_Click(comboBox2,button2, button4, button5, button6, button7, textBox1, listBox1, button8, button9, button10, dataGridView1);
-        }
+			
+		}
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -97,13 +101,13 @@ namespace WindowsFormsApp1
         private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            Sergey.создатьToolStripMenuItem_Click(folderBrowserDialog, toolStripStatusLabel1,label1,Intron,comboBox1,проектToolStripMenuItem);
+            Sergey.создатьToolStripMenuItem_Click(folderBrowserDialog, toolStripStatusLabel1,label1,Intron,comboBox1);
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            Sergey.открытьToolStripMenuItemToolStripMenuItem_Click(folderBrowserDialog, textBox1, comboBox1, toolStripStatusLabel1,label1,проектToolStripMenuItem);
+            Sergey.открытьToolStripMenuItemToolStripMenuItem_Click(folderBrowserDialog, textBox1, comboBox1, toolStripStatusLabel1,label1);
         }
 
         private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
@@ -113,7 +117,7 @@ namespace WindowsFormsApp1
 		
 		private void button3_Click(object sender, EventArgs e)
 		{
-            Sergey.button3_Click(button1, button2, button3, button4, button5, button6, button7, textBox1, comboBox1, comboBox2 ,Intron);
+            Sergey.button3_Click(button1, button3, button4, button5, button6, button7, textBox1, comboBox1, comboBox2 ,Intron);
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -224,12 +228,7 @@ namespace WindowsFormsApp1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Sergey.button7_Click(button1, button2, button3, button4, button5, button6, button7, textBox1, comboBox1, comboBox2, Intron);
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            Sergey.button10_Click(comboBox2, button2, button4, button5, button6, button7, textBox1, listBox1, button8, button9, button10, dataGridView1);
+            Sergey.button7_Click(button1, button3, button4, button5, button6, button7, textBox1, comboBox1, comboBox2, Intron);
         }
     }
 }
