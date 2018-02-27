@@ -47,8 +47,7 @@ namespace WindowsFormsApp1
 			if (IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, p1 + "/The table of semantic fragments/" + A + ".txt", Intron))
 			{
 				Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1);
-				var hhh =  IvanLibrary.FocusAfterCreateSemanticFile.FindNewElementofSFT(p1 + "/The table of semantic fragments/" + A + ".txt");
-				Vlad.focusirovka(hhh, textBox1, Intron);
+				Vlad.focusirovka(IvanLibrary.FocusAfterCreateSemanticFile.FindNewElementofSFT(p1 + "/The table of semantic fragments/" + A + ".txt");, textBox1, Intron);
 			}
 			Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
         }
