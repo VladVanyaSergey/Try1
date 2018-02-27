@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
         {
             string A = comboBox1.Text;
             string p1 = "";
-            A = "Иван"; // Потом убрать, это времянка!!!!
+            //A = "Иван"; // Потом убрать, это времянка!!!!
             if (label1.Text == "1")
             {
                 Sergey.Serg(out p1);
@@ -43,11 +43,12 @@ namespace WindowsFormsApp1
             {
                 Sergey.Ukr(out p1);
             }
-			p1 = "E://Иван/Рабочий стол/Primer";
+			//p1 = "E://Иван/Рабочий стол/Primer";
 			if (IvanLibrary.CreateSemanticFile.SelectedTextIntoIndexForSemanticFragmentTable(textBox1, p1 + "/The table of semantic fragments/" + A + ".txt", Intron))
 			{
 				Intron = IvanLibrary.GiveMeBlockStructureWithRemainElements.StartWorking(p1 + "/Text documents/" + A + ".txt", p1 + "/The table of semantic fragments/" + A + ".txt", textBox1);
-				Vlad.focusirovka(IvanLibrary.FocusAfterCreateSemanticFile.FindNewElementofSFT(p1 + "/The table of semantic fragments/" + A + ".txt"), textBox1, Intron);
+				var hhh =  IvanLibrary.FocusAfterCreateSemanticFile.FindNewElementofSFT(p1 + "/The table of semantic fragments/" + A + ".txt");
+				Vlad.focusirovka(hhh, textBox1, Intron);
 			}
 			Vlad.b1(listBox1, p1 + "/The table of semantic fragments/" + A + ".txt");
         }

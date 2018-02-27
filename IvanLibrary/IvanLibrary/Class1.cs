@@ -288,7 +288,7 @@ namespace IvanLibrary
 			int position = 0;
 			for (int i = 0; i < index.GetLength(0); i++)
 			{
-				if ("СФ" + ind.ToString() == index[i, 5])
+				if ("СФ" + ind.ToString() == index[i, 2])
 				{
 					position = i;
 					i = -1;
@@ -342,6 +342,7 @@ namespace IvanLibrary
 			MessageBox.Show("Список успешно получен");
 			return Neo4jOutputArray_IntoNormalArray(OutputArray_from_neo4j);
 		}
+		
 
 		private string[] Neo4jOutputArray_IntoNormalArray(ClassForOneAttribute[] OutputArray_from_neo4j)
 		{

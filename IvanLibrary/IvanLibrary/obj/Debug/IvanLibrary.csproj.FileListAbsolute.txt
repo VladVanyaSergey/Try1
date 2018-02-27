@@ -38,3 +38,7 @@ E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\Iva
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\VladLibrary.pdb
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\GraphDB.dll
 E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\GraphDB.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\GraphDB.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\VladLibrary.dll
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\GraphDB.pdb
+C:\Users\ivan_\YandexDisk\Документы\СНК\GitHub\Try1\IvanLibrary\IvanLibrary\bin\Debug\VladLibrary.pdb
