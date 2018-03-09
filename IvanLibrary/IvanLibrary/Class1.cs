@@ -307,6 +307,24 @@ namespace IvanLibrary
 		GraphClient client;
 		public Neo4j()
 		{
+			//https://ru.wikipedia.org/wiki/Семантическая_сеть
+			CreateRelationships("Функциональная");
+			CreateRelationships("Количественная");
+			CreateRelationships("Пространственная");
+			CreateRelationships("Временная");
+			CreateRelationships("Атрибутивная");
+			CreateRelationships("Логическая");
+			CreateRelationships("Лингвистическая");
+			CreateRelationships("Родо-видовая");
+			//http://present5.com/intralinguistic-relations-of-words-types-of-semantic-relations/
+			CreateRelationships("Функциональная");
+			CreateRelationships("Количественная");
+			CreateRelationships("Пространственная");
+			CreateRelationships("Временная");
+			CreateRelationships("Атрибутивная");
+			CreateRelationships("Логическая");
+			CreateRelationships("Lexical");
+			CreateRelationships("Hyponymic");
 		}//Конструктор
 		//Рабочая часть
 		public bool ConnectToDataBase(string ad, string us, string pa)
@@ -363,7 +381,42 @@ namespace IvanLibrary
 				.ExecuteWithoutResults();
 			MessageBox.Show("Связь создана");
 		}
-
+		public void CreateRelationships(string Nametype)
+		{
+			client.Cypher
+				.Create(CommandCreateRelationships(Nametype))
+				.ExecuteWithoutResults();
+			MessageBox.Show("Новый тип отношений создан");
+		}
+		public List<Relationship> MassiveRelationships()
+		{
+			List<Relationship> Relationships = new List<Relationship>();
+			string[] OutRelationsMassive = TakeRelationFromData();
+			for (int i = 0; i < OutRelationsMassive.Length; i++)
+			{
+				Relationship relationship = new Relationship();
+				string[] line = OutRelationsMassive[i].Split('\r');
+				relationship.id = TakeIDRelationFromData(line[3]);
+				relationship.type = TakeTypeRelationFromData(line[4]);
+				relationship.startElement = TakeStartElementOfRelationFromData(line[6]);
+				relationship.endElement = TakeEndElementOfRelationFromData(line[9]);
+				Relationships.Add(relationship);
+			}
+			return Relationships;
+		}
+		public List<string> ListOfRelationships()
+		{
+			List<Relationship> massive = MassiveRelationships();
+			List<string> listRelationShips = new List<string>();
+			for (int i = 0; i < massive.Count; i++)
+			{
+				listRelationShips.Add(massive[i].type);
+			}
+			var list= listRelationShips.Distinct<string>();
+			listRelationShips=list.ToList<string>();
+			return listRelationShips;
+		}
+		
 		//Вспомогательные методы
 		private string[] Neo4jOutputArray_IntoNormalArray(ClassForOneAttribute[] OutputArray_from_neo4j)
 		{
@@ -373,6 +426,39 @@ namespace IvanLibrary
 				array[i] = OutputArray_from_neo4j[i].Name;
 			}
 			return array;
+		}
+		private string[] TakeRelationFromData()
+		{
+			var OutputArray_from_neo4j = client.Cypher
+				.Match("(n:Terms)-[r]->(m:Terms)")
+				.Return<string>("r")
+				.Results.ToArray();
+			return OutputArray_from_neo4j;
+		}
+		private int TakeIDRelationFromData(string line)
+		{
+			line=line.Split(':')[1];
+			line=line.Replace(',', ' ');
+			return Convert.ToInt32(line);
+		}
+		private string TakeTypeRelationFromData(string line)
+		{
+			line = line.Split(':')[1];
+			line=line.Remove(1, 1);
+			line=line.Remove(line.Length-1, 1);
+			return line;
+		}
+		private string TakeStartElementOfRelationFromData(string line)
+		{
+			line = line.Substring(13);
+			line = line.Remove(line.Length - 2, 2);
+			return line;
+		}
+		private string TakeEndElementOfRelationFromData(string line)
+		{
+			line = line.Substring(11);
+			line = line.Remove(line.Length - 2, 2);
+			return line;
 		}
 		private string CommandForCreate(string Node, string key, string value)
 		{
@@ -384,11 +470,20 @@ namespace IvanLibrary
 		{ return "(" + ResMatch + "." + attribute + " = \'" + required + "\')"; }
 		private string CommandMerge(string ResMatchOut, string ResMatchIn, string Relation)
 		{ return "(" + ResMatchOut + ")-[:" + Relation + "]->(" + ResMatchIn + ")"; }
-		
+		private string CommandCreateRelationships(string Nametype)
+		{ return "(()-[:" + Nametype + "]->())"; }
+
 		//Вспомогательные классы (Если их будет мало, то объединить с блоком "Вспомогательные методы")
 		public class ClassForOneAttribute
 		{public string Name { get; set; }}
-
+		public class Relationship
+		{
+			public int id;
+			public string type;
+			public string startElement;
+			public string endElement;
+			public Relationship() { }
+		}
 	}
 	public class SelectedTextSecondForm
 	{
@@ -398,13 +493,13 @@ namespace IvanLibrary
 			outdata[0] = textBox.SelectionStart;
 			outdata[1] = textBox.SelectionStart + textBox.SelectionLength - 1;
 			string text = textBox.SelectedText;
-			if (!CreateSemanticFile.CheckUserSelectedIntrons(outdata[0], outdata[1], Intron)) //(VladLibrary.Vlad.f_dla_vani(outdata[0], outdata[1], Intron)) // Здесь Влад писал функцию, которая определяет является ли выбранный участок Интроном или нет.
+			if (!CreateSemanticFile.CheckUserSelectedIntrons(outdata[0], outdata[1], Intron))
 			{
 				//Защита от дурака
 				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
 				neo4j.AddTerm(text);
-				neo4j.CreateLink("зано","анов","love");
 			}
 		}
 	}
+
 }
