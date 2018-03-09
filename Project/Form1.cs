@@ -231,5 +231,10 @@ namespace WindowsFormsApp1
         {
             Sergey.button10_Click(comboBox2, button2, button4, button5, button6, button7, textBox1, listBox1, button8, button9, button10, dataGridView1);
         }
-    }
+
+		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+		{
+
+		}
+	}
 }

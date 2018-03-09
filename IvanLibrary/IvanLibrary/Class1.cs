@@ -300,6 +300,7 @@ namespace IvanLibrary
 	}
 	public class Neo4j
 	{
+		//Переменные
 		public string adress = "http://localhost:7474/db/data";
 		public string username = "neo4j";
 		public string password = "1234";
@@ -307,8 +308,7 @@ namespace IvanLibrary
 		public Neo4j()
 		{
 		}//Конструктор
-
-
+		//Рабочая часть
 		public bool ConnectToDataBase(string ad, string us, string pa)
 		{
 			adress = ad;
@@ -342,8 +342,29 @@ namespace IvanLibrary
 			MessageBox.Show("Список успешно получен");
 			return Neo4jOutputArray_IntoNormalArray(OutputArray_from_neo4j);
 		}
-		
+		public string[] FindOneTerm(string text)
+		{
+			var OutputArray_from_neo4j = client.Cypher
+				.Match(CommandMatch("Result","Terms"))
+				.Where(CommandWhere("Result","Name",text))
+				.Return<ClassForOneAttribute>("Result")
+				.Results.ToArray();
+			MessageBox.Show("Список успешно получен");
+			return Neo4jOutputArray_IntoNormalArray(OutputArray_from_neo4j);
+		}
+		public void CreateLink(string Term1,string Term2, string Relation)
+		{
+			client.Cypher
+				.Match(CommandMatch("Term1", "Terms"))
+				.Where(CommandWhere("Term1", "Name", Term1))
+				.Match(CommandMatch("Term2", "Terms"))
+				.Where(CommandWhere("Term2", "Name", Term2))
+				.Merge(CommandMerge("Term1","Term2", Relation))
+				.ExecuteWithoutResults();
+			MessageBox.Show("Связь создана");
+		}
 
+		//Вспомогательные методы
 		private string[] Neo4jOutputArray_IntoNormalArray(ClassForOneAttribute[] OutputArray_from_neo4j)
 		{
 			string[] array = new string[OutputArray_from_neo4j.Length];
@@ -357,6 +378,14 @@ namespace IvanLibrary
 		{
 			return "(u:" + Node + " {" + key + ":\'" + value + "\'})";
 		}
+		private string CommandMatch(string res, string Group)
+		{ return "(" + res + ":" + Group + ")"; }
+		private string CommandWhere(string ResMatch, string attribute, string required)
+		{ return "(" + ResMatch + "." + attribute + " = \'" + required + "\')"; }
+		private string CommandMerge(string ResMatchOut, string ResMatchIn, string Relation)
+		{ return "(" + ResMatchOut + ")-[:" + Relation + "]->(" + ResMatchIn + ")"; }
+		
+		//Вспомогательные классы (Если их будет мало, то объединить с блоком "Вспомогательные методы")
 		public class ClassForOneAttribute
 		{public string Name { get; set; }}
 
@@ -371,10 +400,10 @@ namespace IvanLibrary
 			string text = textBox.SelectedText;
 			if (!CreateSemanticFile.CheckUserSelectedIntrons(outdata[0], outdata[1], Intron)) //(VladLibrary.Vlad.f_dla_vani(outdata[0], outdata[1], Intron)) // Здесь Влад писал функцию, которая определяет является ли выбранный участок Интроном или нет.
 			{
-				//Сережа
+				//Защита от дурака
 				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
 				neo4j.AddTerm(text);
-				neo4j.FindAllTerms();
+				neo4j.CreateLink("зано","анов","love");
 			}
 		}
 	}
