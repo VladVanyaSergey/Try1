@@ -305,27 +305,7 @@ namespace IvanLibrary
 		public string username = "neo4j";
 		public string password = "1234";
 		GraphClient client;
-		public Neo4j()
-		{
-			//https://ru.wikipedia.org/wiki/Семантическая_сеть
-			CreateRelationships("Функциональная");
-			CreateRelationships("Количественная");
-			CreateRelationships("Пространственная");
-			CreateRelationships("Временная");
-			CreateRelationships("Атрибутивная");
-			CreateRelationships("Логическая");
-			CreateRelationships("Лингвистическая");
-			CreateRelationships("Родо-видовая");
-			//http://present5.com/intralinguistic-relations-of-words-types-of-semantic-relations/
-			CreateRelationships("Функциональная");
-			CreateRelationships("Количественная");
-			CreateRelationships("Пространственная");
-			CreateRelationships("Временная");
-			CreateRelationships("Атрибутивная");
-			CreateRelationships("Логическая");
-			CreateRelationships("Lexical");
-			CreateRelationships("Hyponymic");
-		}//Конструктор
+		public Neo4j(){}//Конструктор
 		//Рабочая часть
 		public bool ConnectToDataBase(string ad, string us, string pa)
 		{
@@ -344,6 +324,26 @@ namespace IvanLibrary
 				return false;
 			}
 		}//Команда для подключения к базе данных
+		public void BasicTools()
+		{   //https://ru.wikipedia.org/wiki/Семантическая_сеть
+			CreateRelationships("Функциональная");
+			CreateRelationships("Количественная");
+			CreateRelationships("Пространственная");
+			CreateRelationships("Временная");
+			CreateRelationships("Атрибутивная");
+			CreateRelationships("Логическая");
+			CreateRelationships("Лингвистическая");
+			CreateRelationships("Родо-видовая");
+			//http://present5.com/intralinguistic-relations-of-words-types-of-semantic-relations/
+			CreateRelationships("Функциональная");
+			CreateRelationships("Количественная");
+			CreateRelationships("Пространственная");
+			CreateRelationships("Временная");
+			CreateRelationships("Атрибутивная");
+			CreateRelationships("Логическая");
+			CreateRelationships("Lexical");
+			CreateRelationships("Hyponymic");
+		}
 		public void AddTerm(string Term)
 		{
 			client.Cypher
@@ -351,14 +351,27 @@ namespace IvanLibrary
 				.ExecuteWithoutResults();
 			MessageBox.Show("Понятие \""+Term + "\" был успешно добавлен. Сережа тут должен быть твой label помошник");
 		}
-		public string[] FindAllTerms()
+		public List<AllTerms> FindAllTerms()
 		{
 			var OutputArray_from_neo4j = client.Cypher
 				.Match("(List:Terms)")
 				.Return<ClassForOneAttribute>("List")
 				.Results.ToArray();
+			var OutputArray_from_neo4j_id = client.Cypher
+				.Match("(List:Terms)")
+				.Return<string>("id(List)")
+				.Results.ToArray();
 			MessageBox.Show("Список успешно получен");
-			return Neo4jOutputArray_IntoNormalArray(OutputArray_from_neo4j);
+			var listterms = Neo4jOutputArray_IntoNormalArray(OutputArray_from_neo4j);
+			List<AllTerms> allterms = new List<AllTerms>();
+			for (int i = 0; i < listterms.Length; i++)
+			{
+				AllTerms all = new AllTerms();
+				all.id = OutputArray_from_neo4j_id[i];
+				all.name = listterms[i];
+				allterms.Add(all);
+			}
+			return allterms;
 		}
 		public string[] FindOneTerm(string text)
 		{
@@ -476,6 +489,11 @@ namespace IvanLibrary
 		//Вспомогательные классы (Если их будет мало, то объединить с блоком "Вспомогательные методы")
 		public class ClassForOneAttribute
 		{public string Name { get; set; }}
+		public class AllTerms
+		{
+			public string id;
+			public string name;
+		}
 		public class Relationship
 		{
 			public int id;
@@ -498,8 +516,8 @@ namespace IvanLibrary
 				//Защита от дурака
 				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
 				neo4j.AddTerm(text);
+				neo4j.FindAllTerms();
 			}
 		}
 	}
-
 }

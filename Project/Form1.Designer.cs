@@ -62,6 +62,7 @@
 			this.button10 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+			this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.contextMenuStrip1.SuspendLayout();
@@ -373,6 +374,10 @@
 			// 
 			this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
 			// 
+			// backgroundWorker2
+			// 
+			this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,6 +450,7 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.DataGridView dataGridView1;
 		private System.ComponentModel.BackgroundWorker backgroundWorker1;
+		private System.ComponentModel.BackgroundWorker backgroundWorker2;
 	}
 }
 

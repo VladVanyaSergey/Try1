@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string A = comboBox1.Text;
+			string A = comboBox1.Text;
             string p1 = "";
             //A = "Иван"; // Потом убрать, это времянка!!!!
             if (label1.Text == "1")
@@ -233,6 +233,11 @@ namespace WindowsFormsApp1
         }
 
 		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+		{
+
+		}
+
+		private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
 		{
 
 		}
