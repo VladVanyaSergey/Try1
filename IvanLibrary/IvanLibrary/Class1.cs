@@ -350,33 +350,40 @@ namespace IvanLibrary
 		{
 			var OutputArray_from_neo4j = client.Cypher
 				.Match("(List:Terms)")
-				.Return<ClassForOneAttribute>("List")
+				.Return<ID>("List")
 				.Results.ToArray();
 			var OutputArray_from_neo4j_id = client.Cypher
 				.Match("(List:Terms)")
 				.Return<string>("id(List)")
 				.Results.ToArray();
 			MessageBox.Show("Список успешно получен");
-			var listterms = Neo4jOutputArray_IntoNormalArray(OutputArray_from_neo4j);
 			List<AllTerms> allterms = new List<AllTerms>();
-			for (int i = 0; i < listterms.Length; i++)
+			for (int i = 0; i < OutputArray_from_neo4j.Length; i++)
 			{
 				AllTerms all = new AllTerms();
 				all.id = OutputArray_from_neo4j_id[i];
-				all.name = listterms[i];
+				all.name = OutputArray_from_neo4j[i].id;
 				allterms.Add(all);
 			}
 			return allterms;
 		}
-		public string[] FindOneTerm(string text)
+		public List<AllTerms> FindOneTermReturnID(string text)
 		{
+			List<AllTerms> OneTerm = new List<AllTerms>();
 			var OutputArray_from_neo4j = client.Cypher
 				.Match(CommandMatch("Result","Terms"))
 				.Where(CommandWhere("Result","Name",text))
-				.Return<ClassForOneAttribute>("Result")
+				.Return<ID>("id(Result)")
 				.Results.ToArray();
 			MessageBox.Show("Список успешно получен");
-			return Neo4jOutputArray_IntoNormalArray(OutputArray_from_neo4j);
+			for (int i = 0; i < OutputArray_from_neo4j.Length; i++)
+			{
+				AllTerms allterms = new AllTerms();
+				allterms.id = OutputArray_from_neo4j[i].id;
+				allterms.name = text;
+				OneTerm.Add(allterms);
+			}
+			return OneTerm;
 		}
 		public void CreateLink(string Term1,string Term2, string Relation)
 		{
@@ -442,15 +449,6 @@ namespace IvanLibrary
 		}
 
 		//Вспомогательные методы
-		private string[] Neo4jOutputArray_IntoNormalArray(ClassForOneAttribute[] OutputArray_from_neo4j)
-		{
-			string[] array = new string[OutputArray_from_neo4j.Length];
-			for (int i = 0; i < OutputArray_from_neo4j.Length; i++)
-			{
-				array[i] = OutputArray_from_neo4j[i].Name;
-			}
-			return array;
-		}
 		private string[] TakeRelationFromDataUsingOneGroupOfTerms()
 		{
 			var OutputArray_from_neo4j = client.Cypher
@@ -499,7 +497,7 @@ namespace IvanLibrary
 		{ return "(" + ResMatchOut + ")-[:" + Relation + "]->(" + ResMatchIn + ")"; }
 		private string CommandCreateRelationships(string Nametype)
 		{ return "(()-[:" + Nametype + "]->())"; }
-		public int FindNecessaryElementOfStringArray(string[] line, string pattern)
+		private int FindNecessaryElementOfStringArray(string[] line, string pattern)
 		{
 			for (int j = 0; j < line.Length; j++)
 			{
@@ -522,8 +520,8 @@ namespace IvanLibrary
 		}
 
 		//Вспомогательные классы (Если их будет мало, то объединить с блоком "Вспомогательные методы")
-		public class ClassForOneAttribute
-		{public string Name { get; set; }}
+		public class ID
+		{public string id { get; set; }}
 		public class AllTerms
 		{
 			public string id;
@@ -551,7 +549,6 @@ namespace IvanLibrary
 				//Защита от дурака
 				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
 				neo4j.AddTerm(text);
-				neo4j.MassiveRelationships();
 			}
 		}
 	}
