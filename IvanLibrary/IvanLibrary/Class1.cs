@@ -344,7 +344,7 @@ namespace IvanLibrary
 			client.Cypher
 				.Create(CommandForCreate("Terms","Name",Term))
 				.ExecuteWithoutResults();
-			MessageBox.Show("Понятие \""+Term + "\" был успешно добавлен. Сережа тут должен быть твой label помошник");
+			MessageBox.Show("Понятие \""+Term + "\" был успешно добавлено. Сережа тут должен быть твой label помошник");
 		}
 		public List<AllTerms> FindAllTerms()
 		{
@@ -447,6 +447,40 @@ namespace IvanLibrary
 			listOfRelationships = list.ToList<string>();
 			TypesRelationships = listOfRelationships;
 		}
+		public void DeleteLink(string Term1, string Term2)
+		{
+			client.Cypher
+				.Match(CommandMatchForDeleteLink("Result", "nodeTerm", "Terms", Term1, "link", "nodeOther", Term2))
+				.Delete("link")
+				.ExecuteWithoutResults();
+			MessageBox.Show("Связь удалена");
+		}
+		public void RenameLink(string Term1, string Term2, string link)
+		{
+			client.Cypher
+				.Match(CommandMatchForDeleteLink("Result", "nodeTerm", "Terms", Term1, "link", "nodeOther", Term2))
+				.Delete("link")
+				.Create(CommandCreateForDeleteLink("Result1", "nodeTerm", "Terms", Term1, link, "nodeOther", Term2))
+				.ExecuteWithoutResults();
+			MessageBox.Show("Связь изменена");
+		}
+		public void DeleteAllLinksWithOneNode(string Term)
+		{
+			client.Cypher
+				.Match(CommandMatchForDelete("Result","n","Terms",Term,"link"))
+				.Delete("link")
+				.ExecuteWithoutResults();
+			MessageBox.Show("Связи с понятием \"" + Term + "\" были успешно удалены. Сережа тут должен быть твой label помошник");
+		}
+		public void DeleteTerm(string Term)
+		{
+			client.Cypher
+				.Match(CommandMatchForDelete("Result", "n", "Terms", Term, "link"))
+				.Delete("link")
+				.Delete("n")
+				.ExecuteWithoutResults();
+			MessageBox.Show("Понятие \"" + Term + "\" был успешно удалено. Сережа тут должен быть твой label помошник");
+		}
 
 		//Вспомогательные методы
 		private string[] TakeRelationFromDataUsingOneGroupOfTerms()
@@ -491,6 +525,18 @@ namespace IvanLibrary
 		}
 		private string CommandMatch(string res, string Group)
 		{ return "(" + res + ":" + Group + ")"; }
+		private string CommandMatchForDelete(string res, string nodeRes, string Group, string Term, string link)
+		{
+			return res + "=(" + nodeRes + ":" + Group + "{Name:\"" + Term + "\"})-[" + link + "]-()";
+		}
+		private string CommandMatchForDeleteLink(string res, string nodeResIn, string Group, string Term1, string link, string nodeResOut,string Term2)
+		{
+			return res + "=(" + nodeResOut + ":" + Group + "{Name:\"" + Term1 + "\"})-[" + link + "]->(" + nodeResIn + ":" + Group + "{Name:\"" + Term2 + "\"})";
+		}
+		private string CommandCreateForDeleteLink(string res, string nodeResIn, string Group, string Term1, string link, string nodeResOut, string Term2)
+		{
+			return res + "=(" + nodeResOut + ")-[:" + link + "]->(" + nodeResIn + ")";
+		}
 		private string CommandWhere(string ResMatch, string attribute, string required)
 		{ return "(" + ResMatch + "." + attribute + " = \'" + required + "\')"; }
 		private string CommandMerge(string ResMatchOut, string ResMatchIn, string Relation)
@@ -549,6 +595,7 @@ namespace IvanLibrary
 				//Защита от дурака
 				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
 				neo4j.AddTerm(text);
+				neo4j.RenameLink("зано", "зан","род");
 			}
 		}
 	}
