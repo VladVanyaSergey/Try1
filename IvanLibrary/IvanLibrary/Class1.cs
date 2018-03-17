@@ -619,10 +619,35 @@ namespace IvanLibrary
 			string text = textBox.SelectedText;
 			if (!CreateSemanticFile.CheckUserSelectedIntrons(outdata[0], outdata[1], Intron))
 			{
-				//Защита от дурака
 				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
-				neo4j.AddTerm(text);
+				text = ProtectFromCrazyMan(text, neo4j);
+				if (text != "")
+				{
+					neo4j.AddTerm(text);
+				}
 			}
+		}
+		public static string ProtectFromCrazyMan(string text, Neo4j neo4J)
+		{
+			text=KillStrangeElements(text);
+			text = text[0].ToString().ToUpper() + text.Substring(1);
+			var allterms = neo4J.FindAllTerms();
+			var repeats = allterms.FindAll(x => x.name == text);
+			if (repeats.Count == 0) { return text; }
+			else
+			{
+				MessageBox.Show("Такое понятие уже существует");
+			}
+			return "";
+		}
+		public static string KillStrangeElements(string text)
+		{
+			char[] killElements = new char[3];
+			killElements[0] = '\n';
+			killElements[1] = '\r';
+			killElements[2] = ' ';
+			text.Trim(killElements);
+			return text;
 		}
 	}
 }
