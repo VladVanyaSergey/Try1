@@ -362,7 +362,7 @@ namespace IvanLibrary
 			{
 				AllTerms all = new AllTerms();
 				all.id = OutputArray_from_neo4j_id[i];
-				all.name = OutputArray_from_neo4j[i].id;
+				all.name = OutputArray_from_neo4j[i].Name;
 				allterms.Add(all);
 			}
 			return allterms;
@@ -379,7 +379,7 @@ namespace IvanLibrary
 			for (int i = 0; i < OutputArray_from_neo4j.Length; i++)
 			{
 				AllTerms allterms = new AllTerms();
-				allterms.id = OutputArray_from_neo4j[i].id;
+				allterms.id = OutputArray_from_neo4j[i].Name;
 				allterms.name = text;
 				OneTerm.Add(allterms);
 			}
@@ -463,6 +463,15 @@ namespace IvanLibrary
 				.Create(CommandCreateForDeleteLink("Result1", "nodeTerm", "Terms", Term1, link, "nodeOther", Term2))
 				.ExecuteWithoutResults();
 			MessageBox.Show("Связь изменена");
+		}
+		private void InverseLink(string Term1, string Term2)
+		{
+			client.Cypher
+				.Match(CommandMatchForDeleteLink("Result", "nodeTerm", "Terms", Term1, "link", "nodeOther", Term2))
+				.Delete("link as links")
+				.Create(CommandCreateForDeleteLink("Result1", "nodeTerm", "Terms", Term2, "links", "nodeOther", Term1))
+				.ExecuteWithoutResults();
+			MessageBox.Show("Связь инвертирована");
 		}
 		public void DeleteAllLinksWithOneNode(string Term)
 		{
@@ -567,7 +576,7 @@ namespace IvanLibrary
 
 		//Вспомогательные классы (Если их будет мало, то объединить с блоком "Вспомогательные методы")
 		public class ID
-		{public string id { get; set; }}
+		{public string Name { get; set; }}
 		public class AllTerms
 		{
 			public string id;
@@ -595,7 +604,7 @@ namespace IvanLibrary
 				//Защита от дурака
 				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
 				neo4j.AddTerm(text);
-				neo4j.RenameLink("зано", "зан","род");
+				neo4j.FindAllTerms();
 			}
 		}
 	}
