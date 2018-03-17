@@ -318,6 +318,7 @@ namespace IvanLibrary
 				client = new GraphClient(new Uri(adress), username, password);
 				client.Connect();
 				ListOfRelationships();
+				BasicTools();
 				return true;
 			}
 			catch (Exception e)
@@ -327,24 +328,16 @@ namespace IvanLibrary
 			}
 		}//Команда для подключения к базе данных
 		public void BasicTools()
-		{   //https://ru.wikipedia.org/wiki/Семантическая_сеть
-			CreateRelationships("Функциональная");
-			CreateRelationships("Количественная");
-			CreateRelationships("Пространственная");
-			CreateRelationships("Временная");
-			CreateRelationships("Атрибутивная");
-			CreateRelationships("Логическая");
-			CreateRelationships("Лингвистическая");
-			CreateRelationships("Родо-видовая");
-			//http://present5.com/intralinguistic-relations-of-words-types-of-semantic-relations/
-			CreateRelationships("Функциональная");
-			CreateRelationships("Количественная");
-			CreateRelationships("Пространственная");
-			CreateRelationships("Временная");
-			CreateRelationships("Атрибутивная");
-			CreateRelationships("Логическая");
-			CreateRelationships("Lexical");
-			CreateRelationships("Hyponymic");
+		{
+			CheckAndCreateRelationships("Функциональная");
+			CheckAndCreateRelationships("Количественная");
+			CheckAndCreateRelationships("Пространственная");
+			CheckAndCreateRelationships("Временная");
+			CheckAndCreateRelationships("Атрибутивная");
+			CheckAndCreateRelationships("Логическая");
+			CheckAndCreateRelationships("Лингвистическая");
+			CheckAndCreateRelationships("Родовидовая");
+			CheckAndCreateRelationships("Синонимы");
 		}
 		public void AddTerm(string Term)
 		{
@@ -477,6 +470,9 @@ namespace IvanLibrary
 			line = line.Split(':')[1];
 			line=line.Remove(1, 1);
 			line=line.Remove(line.Length-1, 1);
+			char[] ch = new char[1];
+			ch[0] = ' ';
+			line=line.Trim(ch);
 			return line;
 		}
 		private string TakeStartElementOfRelationFromData(string line)
@@ -514,6 +510,15 @@ namespace IvanLibrary
 				}
 			}
 			return -1;
+		}
+		private void CheckAndCreateRelationships(string newRelation)
+		{
+			bool f = TypesRelationships.Contains(newRelation);
+			if (!TypesRelationships.Contains(newRelation))
+			{
+				CreateRelationships(newRelation);
+				TypesRelationships.Add(newRelation);
+			}
 		}
 
 		//Вспомогательные классы (Если их будет мало, то объединить с блоком "Вспомогательные методы")

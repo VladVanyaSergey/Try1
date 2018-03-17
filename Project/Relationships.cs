@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
 				try
 				{
 					WindowsFormsApp1.Form1.neo4j.CreateRelationships(newRelation);
-					WindowsFormsApp1.Form1.neo4j.ListOfRelationships();
+					WindowsFormsApp1.Form1.neo4j.TypesRelationships.Add(newRelation);
 					listBox1.Items.Clear();
 					for (int i = 0; i < WindowsFormsApp1.Form1.neo4j.TypesRelationships.Count; i++)
 					{
