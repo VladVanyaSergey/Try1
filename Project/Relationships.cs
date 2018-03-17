@@ -34,6 +34,7 @@ namespace WindowsFormsApp1
 				{
 					WindowsFormsApp1.Form1.neo4j.CreateRelationships(newRelation);
 					WindowsFormsApp1.Form1.neo4j.TypesRelationships.Add(newRelation);
+					WindowsFormsApp1.Form1.neo4j.TypesRelationships.Sort();
 					listBox1.Items.Clear();
 					for (int i = 0; i < WindowsFormsApp1.Form1.neo4j.TypesRelationships.Count; i++)
 					{
@@ -54,6 +55,46 @@ namespace WindowsFormsApp1
 		private void button4_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			if (listBox1.SelectedIndex != -1)
+			{
+				WindowsFormsApp1.Form1.neo4j.DeleteRelationship(listBox1.SelectedItem.ToString());
+				WindowsFormsApp1.Form1.neo4j.TypesRelationships.Remove(listBox1.SelectedItem.ToString());
+				WindowsFormsApp1.Form1.neo4j.TypesRelationships.Sort();
+				listBox1.Items.Clear();
+				for (int i = 0; i < WindowsFormsApp1.Form1.neo4j.TypesRelationships.Count; i++)
+				{
+					listBox1.Items.Add(WindowsFormsApp1.Form1.neo4j.TypesRelationships[i]);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Выберите тип отношений");
+			}
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			if (listBox1.SelectedIndex != -1)
+			{
+				var newRelation = Interaction.InputBox("Введите новое название выбранного типа отношений", "");
+				WindowsFormsApp1.Form1.neo4j.RenameRelationship(listBox1.SelectedItem.ToString(), newRelation);
+				WindowsFormsApp1.Form1.neo4j.TypesRelationships.Remove(listBox1.SelectedItem.ToString());
+				WindowsFormsApp1.Form1.neo4j.TypesRelationships.Add(newRelation);
+				WindowsFormsApp1.Form1.neo4j.TypesRelationships.Sort();
+				listBox1.Items.Clear();
+				for (int i = 0; i < WindowsFormsApp1.Form1.neo4j.TypesRelationships.Count; i++)
+				{
+					listBox1.Items.Add(WindowsFormsApp1.Form1.neo4j.TypesRelationships[i]);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Выберите тип отношений");
+			}
 		}
 	}
 }

@@ -446,6 +446,7 @@ namespace IvanLibrary
 			var list = listOfRelationships.Distinct<string>();
 			listOfRelationships = list.ToList<string>();
 			TypesRelationships = listOfRelationships;
+			TypesRelationships.Sort();
 		}
 		public void DeleteLink(string Term1, string Term2)
 		{
@@ -472,7 +473,7 @@ namespace IvanLibrary
 				.Create(CommandCreateForDeleteLink("Result1", "nodeTerm", "Terms", Term2, "links", "nodeOther", Term1))
 				.ExecuteWithoutResults();
 			MessageBox.Show("Связь инвертирована");
-		}
+		}//Надо допилить
 		public void DeleteAllLinksWithOneNode(string Term)
 		{
 			client.Cypher
@@ -489,6 +490,23 @@ namespace IvanLibrary
 				.Delete("n")
 				.ExecuteWithoutResults();
 			MessageBox.Show("Понятие \"" + Term + "\" был успешно удалено. Сережа тут должен быть твой label помошник");
+		}
+		public void DeleteRelationship(string Relationship)
+		{
+			client.Cypher
+				.Match("p=()-[link:"+ Relationship + "]-()")
+				.Delete("link")
+				.ExecuteWithoutResults();
+			MessageBox.Show("Связь \"" + Relationship + "\" была успешно удалена. Сережа тут должен быть твой label помошник");
+		}
+		public void RenameRelationship(string RelationshipOld, string RelationshipNew)
+		{
+			client.Cypher
+				.Match("p=(n)-[link:" + RelationshipOld + "]->(m)")
+				.Delete("link")
+				.Create("(n)-[:" + RelationshipNew + "]->(m)")
+				.ExecuteWithoutResults();
+			MessageBox.Show("Связь \"" + RelationshipOld + "\" была успешно переименованна в \""+ RelationshipNew + "\". Сережа тут должен быть твой label помошник");
 		}
 
 		//Вспомогательные методы
@@ -604,7 +622,6 @@ namespace IvanLibrary
 				//Защита от дурака
 				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
 				neo4j.AddTerm(text);
-				neo4j.FindAllTerms();
 			}
 		}
 	}
