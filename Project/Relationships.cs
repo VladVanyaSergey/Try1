@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
 		{
 			InitializeComponent();
 			WindowsFormsApp1.Form1.neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
-			for (int i = 0; i < WindowsFormsApp1.Form1.neo4j.TypesRelationships.Count; i++){listBox1.Items.Add(WindowsFormsApp1.Form1.neo4j.TypesRelationships[i]);}
+			for (int i = 0; i < WindowsFormsApp1.Form1.neo4j.TypesRelationships.Count; i++) { listBox1.Items.Add(WindowsFormsApp1.Form1.neo4j.TypesRelationships[i]); }
 		}
 
 		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -28,7 +28,32 @@ namespace WindowsFormsApp1
 		private void button1_Click(object sender, EventArgs e)
 		{
 			var newRelation = Interaction.InputBox("Введите название нового типа отношений", "");
-			//WindowsFormsApp1.Form1
+			if (!WindowsFormsApp1.Form1.neo4j.TypesRelationships.Contains(newRelation))
+			{
+				try
+				{
+					WindowsFormsApp1.Form1.neo4j.CreateRelationships(newRelation);
+					WindowsFormsApp1.Form1.neo4j.ListOfRelationships();
+					listBox1.Items.Clear();
+					for (int i = 0; i < WindowsFormsApp1.Form1.neo4j.TypesRelationships.Count; i++)
+					{
+						listBox1.Items.Add(WindowsFormsApp1.Form1.neo4j.TypesRelationships[i]);
+					}
+				}
+				catch (Exception error)
+				{
+					MessageBox.Show(error.ToString());
+				}
+			}
+			else
+			{
+				MessageBox.Show("Такой тип отношений существует");
+			}
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

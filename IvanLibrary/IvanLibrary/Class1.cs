@@ -317,7 +317,7 @@ namespace IvanLibrary
 			{
 				client = new GraphClient(new Uri(adress), username, password);
 				client.Connect();
-				//TypesRelationships = ListOfRelationships();
+				ListOfRelationships();
 				return true;
 			}
 			catch (Exception e)
@@ -431,7 +431,7 @@ namespace IvanLibrary
 			listRelationShips=list.ToList<string>();
 			TypesRelationships = listRelationShips;
 		}
-		public List<string> ListOfRelationships()
+		public void ListOfRelationships()
 		{
 			var Neo4jOutputRelationship  = client.Cypher
 				.Match("p=()-[r]-()")
@@ -445,7 +445,7 @@ namespace IvanLibrary
 			}
 			var list = listOfRelationships.Distinct<string>();
 			listOfRelationships = list.ToList<string>();
-			return listOfRelationships;
+			TypesRelationships = listOfRelationships;
 		}
 
 		//Вспомогательные методы
@@ -503,7 +503,7 @@ namespace IvanLibrary
 		{ return "(" + ResMatchOut + ")-[:" + Relation + "]->(" + ResMatchIn + ")"; }
 		private string CommandCreateRelationships(string Nametype)
 		{ return "(()-[:" + Nametype + "]->())"; }
-		private int FindNecessaryElementOfStringArray(string[] line, string pattern)
+		public int FindNecessaryElementOfStringArray(string[] line, string pattern)
 		{
 			for (int j = 0; j < line.Length; j++)
 			{
