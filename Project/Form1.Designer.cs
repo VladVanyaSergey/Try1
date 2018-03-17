@@ -63,6 +63,7 @@
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+			this.типыОтношенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.contextMenuStrip1.SuspendLayout();
@@ -224,7 +225,8 @@
 			// neo4jToolStripMenuItem
 			// 
 			this.neo4jToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.подключениеToolStripMenuItem});
+            this.подключениеToolStripMenuItem,
+            this.типыОтношенийToolStripMenuItem});
 			this.neo4jToolStripMenuItem.Name = "neo4jToolStripMenuItem";
 			this.neo4jToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
 			this.neo4jToolStripMenuItem.Text = "Neo4j";
@@ -378,6 +380,13 @@
 			// 
 			this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
 			// 
+			// типыОтношенийToolStripMenuItem
+			// 
+			this.типыОтношенийToolStripMenuItem.Name = "типыОтношенийToolStripMenuItem";
+			this.типыОтношенийToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+			this.типыОтношенийToolStripMenuItem.Text = "Типы отношений";
+			this.типыОтношенийToolStripMenuItem.Click += new System.EventHandler(this.типыОтношенийToolStripMenuItem_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,6 +460,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
 		private System.ComponentModel.BackgroundWorker backgroundWorker1;
 		private System.ComponentModel.BackgroundWorker backgroundWorker2;
+		private System.Windows.Forms.ToolStripMenuItem типыОтношенийToolStripMenuItem;
 	}
 }
 

@@ -241,5 +241,11 @@ namespace WindowsFormsApp1
 		{
 
 		}
+
+		private void типыОтношенийToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Relationships relation = new Relationships();
+			relation.Show();
+		}
 	}
 }
