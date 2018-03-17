@@ -164,3 +164,5 @@ C:\Users\blhjk\Desktop\биометрический паспорт\Try1\Project\
 C:\Users\blhjk\Desktop\биометрический паспорт\Try1\Project\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\blhjk\Desktop\биометрический паспорт\Try1\Project\obj\Debug\WindowsFormsApp1.exe
 C:\Users\blhjk\Desktop\биометрический паспорт\Try1\Project\obj\Debug\WindowsFormsApp1.pdb
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\bin\Debug\IvanLibrary.dll.config
+E:\Яндекс\YandexDisk\Документы\СНК\GitHub\Try1\Project\obj\Debug\WindowsFormsApp1.Relationships.resources

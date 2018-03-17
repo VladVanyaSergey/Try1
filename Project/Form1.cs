@@ -18,12 +18,12 @@ using VladLibrary;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+	public partial class Form1 : Form
     {
 		//
 		int[,] Intron;
 		public static IvanLibrary.Neo4j neo4j = new IvanLibrary.Neo4j();
-        //
+		//
 		public Form1()
         {
 			InitializeComponent();

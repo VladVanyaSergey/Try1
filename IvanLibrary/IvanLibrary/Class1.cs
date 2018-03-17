@@ -305,6 +305,7 @@ namespace IvanLibrary
 		public string username = "neo4j";
 		public string password = "1234";
 		GraphClient client;
+		public List<string> TypesRelationships;
 		public Neo4j(){}//Конструктор
 		//Рабочая часть
 		public bool ConnectToDataBase(string ad, string us, string pa)
@@ -316,6 +317,7 @@ namespace IvanLibrary
 			{
 				client = new GraphClient(new Uri(adress), username, password);
 				client.Connect();
+				//TypesRelationships = ListOfRelationships();
 				return true;
 			}
 			catch (Exception e)
@@ -409,15 +411,15 @@ namespace IvanLibrary
 			{
 				Relationship relationship = new Relationship();
 				string[] line = OutRelationsMassive[i].Split('\r');
-				relationship.id = TakeIDRelationFromData(line[3]);
-				relationship.type = TakeTypeRelationFromData(line[4]);
-				relationship.startElement = TakeStartElementOfRelationFromData(line[6]);
-				relationship.endElement = TakeEndElementOfRelationFromData(line[9]);
+				try { relationship.id = TakeIDRelationFromData(line[FindNecessaryElementOfStringArray(line, "id")]); } catch { }
+				try { relationship.type = TakeTypeRelationFromData(line[FindNecessaryElementOfStringArray(line, "type")]); } catch { }
+				try { relationship.startElement = TakeStartElementOfRelationFromData(line[FindNecessaryElementOfStringArray(line, "start")]); } catch { }
+				try { relationship.endElement = TakeEndElementOfRelationFromData(line[FindNecessaryElementOfStringArray(line, "end")]); } catch { }
 				Relationships.Add(relationship);
 			}
 			return Relationships;
 		}
-		public List<string> ListOfRelationshipsTerms()
+		public void ListOfRelationshipsTerms()
 		{
 			List<Relationship> massive = MassiveRelationships();
 			List<string> listRelationShips = new List<string>();
@@ -427,7 +429,7 @@ namespace IvanLibrary
 			}
 			var list= listRelationShips.Distinct<string>();
 			listRelationShips=list.ToList<string>();
-			return listRelationShips;
+			TypesRelationships = listRelationShips;
 		}
 		public List<string> ListOfRelationships()
 		{
@@ -501,6 +503,18 @@ namespace IvanLibrary
 		{ return "(" + ResMatchOut + ")-[:" + Relation + "]->(" + ResMatchIn + ")"; }
 		private string CommandCreateRelationships(string Nametype)
 		{ return "(()-[:" + Nametype + "]->())"; }
+		private int FindNecessaryElementOfStringArray(string[] line, string pattern)
+		{
+			for (int j = 0; j < line.Length; j++)
+			{
+				var index = line[j].IndexOf(pattern);
+				if (index != -1)
+				{
+					return j;
+				}
+			}
+			return -1;
+		}
 
 		//Вспомогательные классы (Если их будет мало, то объединить с блоком "Вспомогательные методы")
 		public class ClassForOneAttribute
@@ -532,6 +546,7 @@ namespace IvanLibrary
 				//Защита от дурака
 				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
 				neo4j.AddTerm(text);
+				neo4j.MassiveRelationships();
 			}
 		}
 	}
