@@ -404,7 +404,7 @@ namespace IvanLibrary
 		public List<Relationship> MassiveRelationships()
 		{
 			List<Relationship> Relationships = new List<Relationship>();
-			string[] OutRelationsMassive = TakeRelationFromData();
+			string[] OutRelationsMassive = TakeRelationFromDataUsingOneGroupOfTerms();
 			for (int i = 0; i < OutRelationsMassive.Length; i++)
 			{
 				Relationship relationship = new Relationship();
@@ -417,7 +417,7 @@ namespace IvanLibrary
 			}
 			return Relationships;
 		}
-		public List<string> ListOfRelationships()
+		public List<string> ListOfRelationshipsTerms()
 		{
 			List<Relationship> massive = MassiveRelationships();
 			List<string> listRelationShips = new List<string>();
@@ -429,7 +429,23 @@ namespace IvanLibrary
 			listRelationShips=list.ToList<string>();
 			return listRelationShips;
 		}
-		
+		public List<string> ListOfRelationships()
+		{
+			var Neo4jOutputRelationship  = client.Cypher
+				.Match("p=()-[r]-()")
+				.Return<string>("r")
+				.Results.ToArray();
+			List<string> listOfRelationships = new List<string>();
+			for (int i = 0; i < Neo4jOutputRelationship.Length; i++)
+			{
+				string[] line = Neo4jOutputRelationship[i].Split('\r');
+				listOfRelationships.Add(TakeTypeRelationFromData(line[4]));
+			}
+			var list = listOfRelationships.Distinct<string>();
+			listOfRelationships = list.ToList<string>();
+			return listOfRelationships;
+		}
+
 		//Вспомогательные методы
 		private string[] Neo4jOutputArray_IntoNormalArray(ClassForOneAttribute[] OutputArray_from_neo4j)
 		{
@@ -440,7 +456,7 @@ namespace IvanLibrary
 			}
 			return array;
 		}
-		private string[] TakeRelationFromData()
+		private string[] TakeRelationFromDataUsingOneGroupOfTerms()
 		{
 			var OutputArray_from_neo4j = client.Cypher
 				.Match("(n:Terms)-[r]->(m:Terms)")
@@ -516,7 +532,6 @@ namespace IvanLibrary
 				//Защита от дурака
 				neo4j.ConnectToDataBase("http://localhost:7474/db/data", "neo4j", "1234");
 				neo4j.AddTerm(text);
-				neo4j.FindAllTerms();
 			}
 		}
 	}
